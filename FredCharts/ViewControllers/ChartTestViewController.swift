@@ -43,8 +43,13 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         chartDetailsTableView.delegate = self
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
+        registerTableViewCellNibs()
+    }
+    
+    func registerTableViewCellNibs(){
         chartDetailsTableView.register(UINib(nibName: "ChartSegmentedControlTableViewCell", bundle: nil), forCellReuseIdentifier: segmentedControlReuseID)
         chartDetailsTableView.register(UINib(nibName: "ChartNormalControlTableViewCell", bundle: nil), forCellReuseIdentifier: normalControlReuseID)
+        chartDetailsTableView.register(UINib(nibName: "ChartSliderControlTableViewCell", bundle: nil), forCellReuseIdentifier: sliderControlReuseID)
     }
     
     func updateChart(){
@@ -59,7 +64,7 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         
         let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "Year", settings: labelSettings))
         let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: series?.units ?? "", settings: labelSettings.defaultVertical()))
-        let chartFrame = chartContainerView.frame
+        let chartFrame = chartContainerView.bounds
         
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
         
@@ -112,32 +117,6 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         
         chartContainerView.addSubview(chart.view)
         self.chart = chart
-        
-//        let chartConfig = ChartConfigXY(
-//            xAxisConfig: ChartAxisConfig(from: 0, to: Double(modelPoints.count), by: 100),
-//            yAxisConfig: ChartAxisConfig(from: 0, to: 20.0, by: 0.1)
-//        )
-//        let labelSettings = ChartLabelSettings()
-//        let valuesGenerator = ChartAxisGeneratorMultiplier(5)
-//        let labelsGenerator = ChartAxisLabelsGeneratorNumber(labelSettings: labelSettings)
-//
-//        let xModel = ChartAxisModel(firstModelValue: 0, lastModelValue: 100, axisTitleLabels: [ChartAxisLabel(text: "Axis title", settings: labelSettings)], axisValuesGenerator: valuesGenerator, labelsGenerator: labelsGenerator)
-//
-//
-//        let chartPoints = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel1, lineModel2])
-//        let chart =
-//
-//            LineChart(
-//            frame: chartContainerView.frame,
-//            chartConfig: chartConfig,
-//            xTitle: "X axis",
-//            yTitle: "Y axis",
-//            lines: [
-//                (chartPoints: modelPoints, color: UIColor.red),
-//            ]
-//
-//        )
-        
         
     }
     
@@ -231,9 +210,9 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         case 1:
             return "Graph Appearance"
         case 2:
-            return "Graph Appearance"
+            return "Add Series"
         default:
-            return "Edit Series"
+            return "Edit Series: \(String(describing: series!.title))"
         }
     }
     
@@ -259,6 +238,7 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
     
-    let segmentedControlReuseID = "SegmentedControlCell1"
-    let normalControlReuseID = "NormalControlCell1"
+    let segmentedControlReuseID = "SegmentedControlCell"
+    let normalControlReuseID = "NormalControlCell"
+    let sliderControlReuseID = "SliderControlCell"
 }
