@@ -8,22 +8,56 @@
 
 /* Begin PBXBuildFile section */
 		D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DDC22346A10001D8B91 /* AppDelegate.swift */; };
-		D1393DDF22346A10001D8B91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DDE22346A10001D8B91 /* ViewController.swift */; };
 		D1393DE222346A10001D8B91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE022346A10001D8B91 /* Main.storyboard */; };
 		D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */; };
 		D1393DE722346A12001D8B91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE622346A12001D8B91 /* Assets.xcassets */; };
 		D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE822346A12001D8B91 /* LaunchScreen.storyboard */; };
+		D1393DF322346F42001D8B91 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1393DF222346F42001D8B91 /* SwiftCharts.framework */; };
+		D1393DF622347490001D8B91 /* FredController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DF522347490001D8B91 /* FredController.swift */; };
+		D1393DFD2234806F001D8B91 /* FredSearchSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DFC2234806F001D8B91 /* FredSearchSearchResults.swift */; };
+		D1393DFF22348150001D8B91 /* FredSeriesS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DFE22348150001D8B91 /* FredSeriesS.swift */; };
+		D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */; };
+		D1393E0622348711001D8B91 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1393E0522348711001D8B91 /* Default-568h@2x.png */; };
+		D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */; };
+		D1393E0D22348B72001D8B91 /* ChartTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0C22348B72001D8B91 /* ChartTestViewController.swift */; };
+		D1393E0F2234900A001D8B91 /* Observations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0E2234900A001D8B91 /* Observations.swift */; };
+		D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */; };
+		D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */; };
+		D13B1CAC2236C3310013B514 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CAB2236C3310013B514 /* FavoritesTableViewController.swift */; };
+		D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */; };
+		D13B1CB02236D40C0013B514 /* ChartControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CAF2236D40C0013B514 /* ChartControlTableViewCell.swift */; };
+		D13B1CB52236E5580013B514 /* ChartSegmentedControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CB32236E5580013B514 /* ChartSegmentedControlTableViewCell.swift */; };
+		D13B1CB62236E5580013B514 /* ChartSegmentedControlTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D13B1CB42236E5580013B514 /* ChartSegmentedControlTableViewCell.xib */; };
+		D13B1CBA2236EC0C0013B514 /* ChartNormalControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CB82236EC0C0013B514 /* ChartNormalControlTableViewCell.swift */; };
+		D13B1CBB2236EC0C0013B514 /* ChartNormalControlTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D13B1CB92236EC0C0013B514 /* ChartNormalControlTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D1393DD922346A10001D8B91 /* FredCharts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FredCharts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1393DDC22346A10001D8B91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1393DDE22346A10001D8B91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1393DE122346A10001D8B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1393DE422346A10001D8B91 /* FredCharts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FredCharts.xcdatamodel; sourceTree = "<group>"; };
 		D1393DE622346A12001D8B91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1393DE922346A12001D8B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1393DEB22346A12001D8B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1393DF222346F42001D8B91 /* SwiftCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCharts.framework; path = Carthage/Build/iOS/SwiftCharts.framework; sourceTree = "<group>"; };
+		D1393DF522347490001D8B91 /* FredController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredController.swift; sourceTree = "<group>"; };
+		D1393DFC2234806F001D8B91 /* FredSearchSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSearchSearchResults.swift; sourceTree = "<group>"; };
+		D1393DFE22348150001D8B91 /* FredSeriesS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesS.swift; sourceTree = "<group>"; };
+		D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
+		D1393E0522348711001D8B91 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		D1393E0C22348B72001D8B91 /* ChartTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTestViewController.swift; sourceTree = "<group>"; };
+		D1393E0E2234900A001D8B91 /* Observations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observations.swift; sourceTree = "<group>"; };
+		D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
+		D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerExampleViewController.swift; sourceTree = "<group>"; };
+		D13B1CAB2236C3310013B514 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailsTableView.swift; sourceTree = "<group>"; };
+		D13B1CAF2236D40C0013B514 /* ChartControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartControlTableViewCell.swift; sourceTree = "<group>"; };
+		D13B1CB32236E5580013B514 /* ChartSegmentedControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegmentedControlTableViewCell.swift; sourceTree = "<group>"; };
+		D13B1CB42236E5580013B514 /* ChartSegmentedControlTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartSegmentedControlTableViewCell.xib; sourceTree = "<group>"; };
+		D13B1CB82236EC0C0013B514 /* ChartNormalControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartNormalControlTableViewCell.swift; sourceTree = "<group>"; };
+		D13B1CB92236EC0C0013B514 /* ChartNormalControlTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartNormalControlTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1393DF322346F42001D8B91 /* SwiftCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +77,7 @@
 			children = (
 				D1393DDB22346A10001D8B91 /* FredCharts */,
 				D1393DDA22346A10001D8B91 /* Products */,
+				D1393DF122346F42001D8B91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +92,95 @@
 		D1393DDB22346A10001D8B91 /* FredCharts */ = {
 			isa = PBXGroup;
 			children = (
+				D13B1CA62235DC560013B514 /* Helpers */,
+				D1393E0B22348AE1001D8B91 /* ModelController */,
+				D1393E0822348844001D8B91 /* Views */,
+				D1393E072234883D001D8B91 /* ViewControllers */,
+				D1393E04223486E0001D8B91 /* Resources */,
 				D1393DDC22346A10001D8B91 /* AppDelegate.swift */,
-				D1393DDE22346A10001D8B91 /* ViewController.swift */,
-				D1393DE022346A10001D8B91 /* Main.storyboard */,
-				D1393DE622346A12001D8B91 /* Assets.xcassets */,
-				D1393DE822346A12001D8B91 /* LaunchScreen.storyboard */,
-				D1393DEB22346A12001D8B91 /* Info.plist */,
-				D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */,
+				D1393DFB22348057001D8B91 /* Model */,
 			);
 			path = FredCharts;
+			sourceTree = "<group>";
+		};
+		D1393DF122346F42001D8B91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1393DF222346F42001D8B91 /* SwiftCharts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D1393DFB22348057001D8B91 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D1393DFC2234806F001D8B91 /* FredSearchSearchResults.swift */,
+				D1393DFE22348150001D8B91 /* FredSeriesS.swift */,
+				D1393E0E2234900A001D8B91 /* Observations.swift */,
+				D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D1393E04223486E0001D8B91 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1393DE022346A10001D8B91 /* Main.storyboard */,
+				D1393DE822346A12001D8B91 /* LaunchScreen.storyboard */,
+				D1393DE622346A12001D8B91 /* Assets.xcassets */,
+				D1393E0522348711001D8B91 /* Default-568h@2x.png */,
+				D1393DEB22346A12001D8B91 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D1393E072234883D001D8B91 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */,
+				D13B1CAB2236C3310013B514 /* FavoritesTableViewController.swift */,
+				D1393E0C22348B72001D8B91 /* ChartTestViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D1393E0822348844001D8B91 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D13B1CB72236E55E0013B514 /* ChartControl */,
+				D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */,
+				D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D1393E0B22348AE1001D8B91 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				D1393DF522347490001D8B91 /* FredController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		D13B1CA62235DC560013B514 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */,
+				D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D13B1CB72236E55E0013B514 /* ChartControl */ = {
+			isa = PBXGroup;
+			children = (
+				D13B1CAF2236D40C0013B514 /* ChartControlTableViewCell.swift */,
+				D13B1CB32236E5580013B514 /* ChartSegmentedControlTableViewCell.swift */,
+				D13B1CB42236E5580013B514 /* ChartSegmentedControlTableViewCell.xib */,
+				D13B1CB82236EC0C0013B514 /* ChartNormalControlTableViewCell.swift */,
+				D13B1CB92236EC0C0013B514 /* ChartNormalControlTableViewCell.xib */,
+			);
+			path = ChartControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +193,7 @@
 				D1393DD522346A10001D8B91 /* Sources */,
 				D1393DD622346A10001D8B91 /* Frameworks */,
 				D1393DD722346A10001D8B91 /* Resources */,
+				D1393DF422346F5C001D8B91 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -126,21 +243,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */,
+				D1393E0622348711001D8B91 /* Default-568h@2x.png in Resources */,
 				D1393DE722346A12001D8B91 /* Assets.xcassets in Resources */,
+				D13B1CBB2236EC0C0013B514 /* ChartNormalControlTableViewCell.xib in Resources */,
 				D1393DE222346A10001D8B91 /* Main.storyboard in Resources */,
+				D13B1CB62236E5580013B514 /* ChartSegmentedControlTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D1393DF422346F5C001D8B91 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftCharts.framework",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Carthage/Build/iOS/SwiftCharts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage  copy-frameworks\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D1393DD522346A10001D8B91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
+				D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */,
+				D1393E0D22348B72001D8B91 /* ChartTestViewController.swift in Sources */,
+				D13B1CAC2236C3310013B514 /* FavoritesTableViewController.swift in Sources */,
+				D13B1CB52236E5580013B514 /* ChartSegmentedControlTableViewCell.swift in Sources */,
+				D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */,
+				D1393DFD2234806F001D8B91 /* FredSearchSearchResults.swift in Sources */,
+				D1393DF622347490001D8B91 /* FredController.swift in Sources */,
 				D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */,
-				D1393DDF22346A10001D8B91 /* ViewController.swift in Sources */,
+				D13B1CB02236D40C0013B514 /* ChartControlTableViewCell.swift in Sources */,
 				D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */,
+				D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */,
+				D1393DFF22348150001D8B91 /* FredSeriesS.swift in Sources */,
+				D1393E0F2234900A001D8B91 /* Observations.swift in Sources */,
+				D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */,
+				D13B1CBA2236EC0C0013B514 /* ChartNormalControlTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,12 +444,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5U94G8XN2;
-				INFOPLIST_FILE = FredCharts/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = FredCharts/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mettabits.FredCharts;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mettabits.Contacts-Swift-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -306,12 +466,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5U94G8XN2;
-				INFOPLIST_FILE = FredCharts/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = FredCharts/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mettabits.FredCharts;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mettabits.Contacts-Swift-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
