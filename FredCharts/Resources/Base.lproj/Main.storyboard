@@ -25,13 +25,23 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-vw-ZTq">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yEb-Za-VhQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="44"/>
+                                        <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEb-Za-VhQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="315" height="44"/>
+                                            <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="barTintColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvO-tN-HCb">
-                                            <rect key="frame" x="314" y="0.0" width="61" height="44"/>
-                                            <state key="normal" title="Filter"/>
+                                            <rect key="frame" x="315" y="0.0" width="60" height="44"/>
+                                            <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="JJ7-iB-nN8"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Filter">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <action selector="filterButtonTapped:" destination="Pqg-9v-bdZ" eventType="touchUpInside" id="3w1-gr-3aV"/>
                                             </connections>

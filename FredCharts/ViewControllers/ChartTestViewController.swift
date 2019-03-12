@@ -54,69 +54,12 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     
     func updateChart(){
         
-        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+        guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
+        chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
         
-        let chartPoints = modelPoints.map{ChartPoint(x: ChartAxisValueDouble($0.0, labelSettings: labelSettings), y: ChartAxisValueDouble($0.1))}
-        
-        let xValues = chartPoints.map{$0.x}
-        
-        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 10, maxSegmentCount: 20, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
-        
-        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "Year", settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: series?.units ?? "", settings: labelSettings.defaultVertical()))
-        let chartFrame = chartContainerView.bounds
-        
-        let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
-        
-        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
-        let (xAxisLayer, yAxisLayer, innerFrame) = (coordsSpace.xAxisLayer, coordsSpace.yAxisLayer, coordsSpace.chartInnerFrame)
-        
-        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.red, animDuration: 1, animDelay: 0)
-        
-        let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel], useView: false)
-        
-        let thumbSettings = ChartPointsLineTrackerLayerThumbSettings(thumbSize: Env.iPad ? 20 : 10, thumbBorderWidth: Env.iPad ? 4 : 2)
-        let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
-        
-        var currentPositionLabels: [UILabel] = []
-        
-        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.black, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {chartPointsWithScreenLoc in
-            
-            currentPositionLabels.forEach{$0.removeFromSuperview()}
-            
-            for (index, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
-                
-                let label = UILabel()
-                label.text = chartPointWithScreenLoc.chartPoint.description
-                label.sizeToFit()
-                label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
-                
-                label.backgroundColor = index == 0 ? UIColor.red : UIColor.blue
-                label.textColor = UIColor.white
-                
-                currentPositionLabels.append(label)
-                self.chartContainerView.addSubview(label)
-            }
-        }
-        
-//        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
-//        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
-        
-        let chart = Chart(
-            frame: chartFrame,
-            innerFrame: innerFrame,
-            settings: chartSettings,
-            layers: [
-                xAxisLayer,
-                yAxisLayer,
-//                guidelinesLayer,
-                chartPointsLineLayer,
-                chartPointsTrackerLayer
-            ]
-        )
+        guard let chart = chart else { fatalError("Could not produce chart") }
         
         chartContainerView.addSubview(chart.view)
-        self.chart = chart
         
     }
     
@@ -124,16 +67,14 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     
     func parseObseration (for seriesObservations: Observations) ->[GridPoint]{
         
-        
-        var counter = 0
         for observation in seriesObservations.observations {
             
             guard let value = Double(observation.value) else { continue }
-          
-            let dateValue = Double(counter)
-            let gp = GridPoint(dateValue, value)
+            
+            let date = DateHelper.makeDateFromString(with: observation.date)
+            
+            let gp = GridPoint( date.timeIntervalSince1970, value)
             modelPoints.append(gp)
-            counter += 1
         }
         
         return modelPoints
@@ -231,6 +172,7 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     
     // MARK: - Properties
     var seriesObservations: Observations?
+    var chartController: ChartController = ChartController()
     fileprivate var chart: Chart?
     var series: FredSeriesS?
     var modelPoints: [GridPoint] = []

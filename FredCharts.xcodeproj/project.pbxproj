@@ -32,6 +32,8 @@
 		D13B1CBE223700E10013B514 /* ChartSliderControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CBC223700E10013B514 /* ChartSliderControlTableViewCell.swift */; };
 		D13B1CBF223700E10013B514 /* ChartSliderControlTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D13B1CBD223700E10013B514 /* ChartSliderControlTableViewCell.xib */; };
 		D13B1CC12237017B0013B514 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CC02237017B0013B514 /* Appearance.swift */; };
+		D13B1CC5223718E60013B514 /* ChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CC4223718E60013B514 /* ChartController.swift */; };
+		D13B1CC722371B520013B514 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CC622371B520013B514 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		D13B1CBC223700E10013B514 /* ChartSliderControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSliderControlTableViewCell.swift; sourceTree = "<group>"; };
 		D13B1CBD223700E10013B514 /* ChartSliderControlTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartSliderControlTableViewCell.xib; sourceTree = "<group>"; };
 		D13B1CC02237017B0013B514 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		D13B1CC4223718E60013B514 /* ChartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartController.swift; sourceTree = "<group>"; };
+		D13B1CC622371B520013B514 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				D1393DF522347490001D8B91 /* FredController.swift */,
+				D13B1CC4223718E60013B514 /* ChartController.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */,
 				D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */,
 				D13B1CC02237017B0013B514 /* Appearance.swift */,
+				D13B1CC622371B520013B514 /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -287,10 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D13B1CC5223718E60013B514 /* ChartController.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
 				D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */,
 				D1393E0D22348B72001D8B91 /* ChartTestViewController.swift in Sources */,
+				D13B1CC722371B520013B514 /* DateHelper.swift in Sources */,
 				D13B1CAC2236C3310013B514 /* FavoritesTableViewController.swift in Sources */,
 				D13B1CB52236E5580013B514 /* ChartSegmentedControlTableViewCell.swift in Sources */,
 				D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */,
