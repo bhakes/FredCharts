@@ -12,10 +12,10 @@ struct Appearance {
     
     // setup Nav Bar Appearance
     static func setupNavAppearance() {
-        UINavigationBar.appearance().tintColor = .accentColor
-        UINavigationBar.appearance().barTintColor = .darkColor
-        UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.accentColor]
-        UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.accentColor]
+        UINavigationBar.appearance().tintColor = .lightAccentColor
+        UINavigationBar.appearance().barTintColor = .mainColor
+        UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.lightAccentColor]
+        UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.lightAccentColor]
 //        UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().isTranslucent = false
         
@@ -23,9 +23,9 @@ struct Appearance {
     
     // setup SegmentedControlAppearance
     static func setupSegmentedControlAppearance() {
-        UISegmentedControl.appearance().tintColor = .accentColor
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkColor], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkAccentColor], for: .normal)
+        UISegmentedControl.appearance().tintColor = .mainColor
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightAccentColor], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightAccentColor], for: .normal)
         
     }
     
@@ -33,10 +33,13 @@ struct Appearance {
 
 // add UIColor extensions
 extension UIColor {
-    static let darkColor = UIColor(red: 62/255, green: 80/255, blue: 97/255, alpha: 1)
-    static let accentColor = UIColor(red: 170/255, green: 186/255, blue: 202/255, alpha: 1)
-    static let darkAccentColor = UIColor(red: 18/255, green: 21/255, blue: 32/255, alpha: 1)
-    static let submitColor = UIColor(red: 128/255, green: 143/255, blue: 159/255, alpha: 1)
+    static let mainColor = #colorLiteral(red: 0.2431372549, green: 0.3137254902, blue: 0.3803921569, alpha: 1)
+    static let darkAccentColor = #colorLiteral(red: 0.07058823529, green: 0.08235294118, blue: 0.1254901961, alpha: 1)
+    static let lightAccentColor = #colorLiteral(red: 0.6666666667, green: 0.7294117647, blue: 0.7921568627, alpha: 1)
+    static let darkAccentColor2 = #colorLiteral(red: 0.3490196078, green: 0.4196078431, blue: 0.4901960784, alpha: 1)
+    static let lightAccentColor2 = #colorLiteral(red: 0.5019607843, green: 0.5607843137, blue: 0.6235294118, alpha: 1)
+    
+
 }
 
 //0x0c1017 0x2f4d76 0x2b2737 0x785442 0xead49f

@@ -153,11 +153,6 @@ class FredController {
             // We know now we have no error *and* we have data to work with
             
             // Convert the data to JSON
-            // We need to convert snake_case decoding to camelCase
-            // Oddly there is no kebab-case equivalent
-            // Note issues with naming and show similar thing
-            // For example: https://github.com/erica/AssetCatalog/blob/master/AssetCatalog%2BImageSet.swift#L295
-            // See https://randomuser.me for future
             do {
                 // Declare, customize, use the decoder
                 let jsonDecoder = JSONDecoder()

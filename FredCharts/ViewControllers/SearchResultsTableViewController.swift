@@ -23,6 +23,12 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     
     func setupViews(){
         self.tableView.tableFooterView = UIView()
+        searchFilterButton.setTitleColor(.lightAccentColor, for: .normal)
+        searchFilterButton.backgroundColor = .mainColor
+        searchFilterButton.layer.borderWidth = 0.0
+        navigationController?.navigationBar.layer.borderWidth = 0.0
+        searchBar.barTintColor = .mainColor
+        searchBar.layer.borderWidth = 0.0
     }
     // MARK: - Table view data source
 
@@ -52,6 +58,8 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
                 self.tableView.reloadData()
             }
         }
+        
+        searchBar.resignFirstResponder()
     }
     
     // MARK: - Navigation
@@ -63,8 +71,10 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         guard let destVC = segue.destination as? ChartTestViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Could not get IndexPath for selected row.") }
         
+        let seriesToSend = self.fredController.searchResults[indexPath.row]
+        
         destVC.fredController = self.fredController
-        destVC.series = self.fredController.searchResults[indexPath.row]
+        destVC.series = seriesToSend
     }
     
     // MARK: - IBActions

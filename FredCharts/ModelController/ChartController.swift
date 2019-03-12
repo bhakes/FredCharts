@@ -15,22 +15,23 @@ class ChartController {
     
     func updateChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart{
         
-        
-        //
-        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+        // Build Label Settings
+        let labelSettingsYAxis = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+        let labelSettingsXAxis = ChartLabelSettings(font: UIFont.systemFont(ofSize: 8) , rotation: CGFloat(90.0), rotationKeep: ChartLabelDrawerRotationKeep.top)
         
         // build chartpoints
-        let chartPoints = modelPoints.map{ChartPoint(x: ChartAxisValueDouble($0.0, labelSettings: labelSettings), y: ChartAxisValueDouble($0.1))}
+        let chartPoints = modelPoints.map{ChartPoint(x: ChartAxisValueDouble($0.0, labelSettings: labelSettingsXAxis), y: ChartAxisValueDouble($0.1))}
         
-        let xValues = ChartAxisValuesStaticGenerator.generateXAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDate(date: Date(timeIntervalSince1970: $0), formatter: {return self.getDateFormatter(with: $0)})}, addPaddingSegmentIfEdge: false)
+        // build xValues and yValues
+        let xValues = ChartAxisValuesStaticGenerator.generateXAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDate(date: Date(timeIntervalSince1970: $0), formatter: {return self.getDateFormatter(with: $0)}, labelSettings: labelSettingsXAxis)}, addPaddingSegmentIfEdge: false)
+        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettingsYAxis)}, addPaddingSegmentIfEdge: false)
         
-        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
+        // build xModels and yModels
+        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "Test", settings: labelSettingsYAxis))
+        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: series.units, settings: labelSettingsYAxis.defaultVertical()))
         
-        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
-        
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: series.units, settings: labelSettings.defaultVertical()))
+        // build chartFrame
         let chartFrame = viewToPlaceChart.bounds
-        
         
         // build settings
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
@@ -38,14 +39,15 @@ class ChartController {
         // build coordsSpace
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
         
-        
         // build xAxisLayer, yAxisLayer, innerFrame
         let (xAxisLayer, yAxisLayer, innerFrame) = (coordsSpace.xAxisLayer, coordsSpace.yAxisLayer, coordsSpace.chartInnerFrame)
         
+        // Line Model
+        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.darkAccentColor, animDuration: 1, animDelay: 0)
         
-        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.darkColor, animDuration: 1, animDelay: 0)
-        
+        // Chart Points Line Layer
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel], useView: false)
+        
         
         let thumbSettings = ChartPointsLineTrackerLayerThumbSettings(thumbSize: Env.iPad ? 12 : 6, thumbBorderWidth: Env.iPad ? 4 : 2)
         let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
@@ -59,15 +61,13 @@ class ChartController {
             for (index, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
                 
                 let label = UILabel()
-                label.layer.cornerRadius = 4
-                
                 let date = Date(timeIntervalSince1970: chartPointWithScreenLoc.chartPoint.x.scalar)
+                
                 label.text = "\(self.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
                 label.sizeToFit()
                 label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
-                
-                label.backgroundColor = index == 0 ? UIColor.darkColor : UIColor.darkAccentColor
-                label.textColor = UIColor.accentColor
+                label.backgroundColor = index == 0 ? UIColor.darkAccentColor : UIColor.darkAccentColor
+                label.textColor = UIColor.lightAccentColor
                 
                 currentPositionLabels.append(label)
                 viewToPlaceChart.addSubview(label)
@@ -89,10 +89,8 @@ class ChartController {
                 chartPointsTrackerLayer
             ]
         )
-        
         return chart
 
-        
     }
     
     func getDateFormatter(with date: Date) -> String{
@@ -105,6 +103,8 @@ class ChartController {
     }
     
     func formatChartDates(for chart: Chart, with beginDate: Date, and endDate: Date){
+        
+        
         
     }
     

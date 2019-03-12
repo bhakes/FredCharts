@@ -20,7 +20,6 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         guard let fredController = fredController else { fatalError("FredController is empty")}
         guard let series = series else { fatalError("FredController is empty")}
         
-        self.title = series.title
         fredController.getObservationsForFredSeries(with: series.id) { resultingObservations, error in
             
             self.seriesObservations = resultingObservations
@@ -43,6 +42,15 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         chartDetailsTableView.delegate = self
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
+        headerContainer.backgroundColor = .mainColor
+        seriesLabel.textColor = .lightAccentColor
+        seriesLabel.text = series?.title
+        seriesLabel.adjustsFontSizeToFitWidth = true
+        seriesLabel.minimumScaleFactor = 0.7
+        
+        idLabel.text = series?.id
+        idLabel.textColor = .lightAccentColor
+        
         registerTableViewCellNibs()
     }
     
@@ -56,9 +64,7 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         
         guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
         chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
-        
         guard let chart = chart else { fatalError("Could not produce chart") }
-        
         chartContainerView.addSubview(chart.view)
         
     }
@@ -114,8 +120,6 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -126,7 +130,7 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
             
             default:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
-                
+               
                 return cell
             }
         case 1:
@@ -163,7 +167,7 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
 //        view.backgroundColor = UIColor.lightGray
 //        return view
 //    }
-//
+
 //    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //        return 10
 //    }
@@ -175,10 +179,14 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     var chartController: ChartController = ChartController()
     fileprivate var chart: Chart?
     var series: FredSeriesS?
+    
     var modelPoints: [GridPoint] = []
     var fredController: FredController?
+    @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
+    @IBOutlet weak var headerContainer: UIView!
+    @IBOutlet weak var idLabel: UILabel!
     
     let segmentedControlReuseID = "SegmentedControlCell"
     let normalControlReuseID = "NormalControlCell"
