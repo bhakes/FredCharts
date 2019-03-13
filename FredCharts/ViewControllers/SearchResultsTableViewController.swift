@@ -23,7 +23,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     
     func setupViews(){
         self.tableView.tableFooterView = UIView()
-        searchFilterButton.setTitleColor(.lightAccentColor, for: .normal)
+        searchFilterButton.setTitleColor(.white, for: .normal)
         searchFilterButton.backgroundColor = .mainColor
         searchFilterButton.layer.borderWidth = 0.0
         navigationController?.navigationBar.layer.borderWidth = 0.0
@@ -68,7 +68,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        guard let destVC = segue.destination as? ChartTestViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
+        guard let destVC = segue.destination as? ChartViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Could not get IndexPath for selected row.") }
         
         let seriesToSend = self.fredController.searchResults[indexPath.row]

@@ -11,7 +11,7 @@ import SwiftCharts
 
 typealias GridPoint = (Double, Double)
 
-class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
+class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate, ChartSegementedControlDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,8 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
                 
                 self.modelPoints = self.parseObseration(for: seriesObservations)
                 DispatchQueue.main.async {
-                    self.updateChart()
+                    self.updateChart(with: self.modelPoints)
+                    self.chartDetailsTableView.reloadData()
                 }
             }
 
@@ -37,30 +38,56 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     
     // MARK: - Private Methods
     
-    func setupViews(){
+    private func setupViews(){
         
         chartDetailsTableView.delegate = self
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
         headerContainer.backgroundColor = .mainColor
-        seriesLabel.textColor = .lightAccentColor
+        seriesLabel.textColor = .white
         seriesLabel.text = series?.title
         seriesLabel.adjustsFontSizeToFitWidth = true
         seriesLabel.minimumScaleFactor = 0.7
-        
+        peakLabel.adjustsFontSizeToFitWidth = true
+        peakLabel.minimumScaleFactor = 0.5
+        lastLabel.adjustsFontSizeToFitWidth = true
+        lastLabel.minimumScaleFactor = 0.5
+        chartContainerView.backgroundColor = .mainColor
         idLabel.text = series?.id
-        idLabel.textColor = .lightAccentColor
+        idLabel.textColor = .white
         
         registerTableViewCellNibs()
     }
     
-    func registerTableViewCellNibs(){
+    func filterChartDates(by filterYears: Int){
+        
+        var newModelPoints: [GridPoint] = []
+        
+        if (filterYears == 0) {
+            let months = 6
+            newModelPoints = modelPoints.filter({
+                Date.dateXMonthsAgo(numberOfMonthsAgo: months).timeIntervalSince1970 < $0.0
+            })
+        } else {
+            newModelPoints = modelPoints.filter({ (x, y) -> Bool in
+                Date.dateXYearsAgo(numberOfYearsAgo: filterYears).timeIntervalSince1970 < x
+            })
+        }
+
+        DispatchQueue.main.async {
+            self.chart?.view.removeFromSuperview()
+            self.updateChart(with: newModelPoints)
+        }
+        
+    }
+    
+    private func registerTableViewCellNibs(){
         chartDetailsTableView.register(UINib(nibName: "ChartSegmentedControlTableViewCell", bundle: nil), forCellReuseIdentifier: segmentedControlReuseID)
         chartDetailsTableView.register(UINib(nibName: "ChartNormalControlTableViewCell", bundle: nil), forCellReuseIdentifier: normalControlReuseID)
         chartDetailsTableView.register(UINib(nibName: "ChartSliderControlTableViewCell", bundle: nil), forCellReuseIdentifier: sliderControlReuseID)
     }
     
-    func updateChart(){
+    func updateChart(with modelPoints: [GridPoint]){
         
         guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
         chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
@@ -86,6 +113,28 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
         return modelPoints
         
     }
+    
+    // MARK: - ChartSegementedControlDelegate
+    func segmentedControlDidChange(with integer: Int?) {
+        
+        // catch if the data is old and
+        // cannot be filtered by the segmented control0
+        let lastDate = self.modelPoints.last?.0
+        if lastDate! < (Date.dateXMonthsAgo(numberOfMonthsAgo: 6).timeIntervalSince1970), (lastDate! < (Date.dateXYearsAgo(numberOfYearsAgo: integer ?? 0).timeIntervalSince1970) && integer ?? 0 > 0) {
+            return
+        }
+        guard let integer = integer else {
+            DispatchQueue.main.async {
+                self.chart?.view.removeFromSuperview()
+                self.updateChart(with: self.modelPoints)
+                
+            }
+            return
+        }
+        
+        filterChartDates(by: integer)
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -125,9 +174,38 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
             switch indexPath.row {
             case 0:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: segmentedControlReuseID, for: indexPath) as? ChartSegmentedControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
+                cell.delegate = self
                 
                 return cell
+                
+            case 1:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
+                
+                cell.attributeTitleLabel.text = "Begin Date:"
+                
+                let beginDate = self.modelPoints.min {$0.0<$1.0}?.0
+                
+                let dateF = DateFormatter()
+                dateF.dateFormat = "MM-dd-YYYY"
+                let dateStr = dateF.string(from: Date(timeIntervalSince1970: beginDate ?? 0))
+                
+                cell.attributeValueLabel.text = "\(dateStr)"
+                return cell
             
+            case 2:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
+                
+                cell.attributeTitleLabel.text = "End Date:"
+                
+                let endDate = self.modelPoints.max {$0.0<$1.0}?.0
+                
+                let dateF = DateFormatter()
+                dateF.dateFormat = "MM-dd-YYYY"
+                let dateStr = dateF.string(from: Date(timeIntervalSince1970: endDate ?? 0))
+                
+                cell.attributeValueLabel.text = "\(dateStr)"
+                return cell
+                
             default:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
                
@@ -160,18 +238,6 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
             return "Edit Series: \(String(describing: series!.title))"
         }
     }
-    
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        view.backgroundColor = UIColor.lightGray
-//        return view
-//    }
-
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 10
-//    }
-//
 
     
     // MARK: - Properties
@@ -180,13 +246,51 @@ class ChartTestViewController: UIViewController, UITableViewDataSource ,UITableV
     fileprivate var chart: Chart?
     var series: FredSeriesS?
     
-    var modelPoints: [GridPoint] = []
+    var modelPoints: [GridPoint] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                
+                var units: String
+                if self.series?.units != nil {
+                    units = (self.series?.units)!
+                } else {
+                    units = "Units"
+                }
+                
+                let peakValue = self.modelPoints.max {$0.1<$1.1}?.1
+                let peakDate = self.modelPoints.max {$0.1<$1.1}?.0
+                
+                let lastValue = self.modelPoints.last?.1
+                let lastDate = self.modelPoints.last?.0
+                
+                let formattedPeakValue = UnitDefinition.bestDefinition(for: units).format(peakValue!)
+                let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(lastValue!)
+                
+                self.peakLabel.text = formattedPeakValue
+                self.lastLabel.text = formattedLastValue
+                let dateF = DateFormatter()
+                dateF.dateFormat = "M/YY"
+                let dateStr = dateF.string(from: Date(timeIntervalSince1970: peakDate ?? 0))
+                
+                let dateStr2 = dateF.string(from: Date(timeIntervalSince1970: lastDate ?? 0))
+                
+                self.peakDateLabel.text = "\(dateStr)"
+                self.lastDateLabel.text = "\(dateStr2)"
+
+            }
+        }
+    }
     var fredController: FredController?
     @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
     @IBOutlet weak var headerContainer: UIView!
     @IBOutlet weak var idLabel: UILabel!
+    
+    @IBOutlet weak var lastLabel: UILabel!
+    @IBOutlet weak var peakLabel: UILabel!
+    @IBOutlet weak var lastDateLabel: UILabel!
+    @IBOutlet weak var peakDateLabel: UILabel!
     
     let segmentedControlReuseID = "SegmentedControlCell"
     let normalControlReuseID = "NormalControlCell"

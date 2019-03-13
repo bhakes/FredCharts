@@ -11,7 +11,7 @@ import SwiftCharts
 
 class Env {
     
-    static var iPad: Bool {
+    static var iPad: Bool {         
         return UIDevice.current.userInterfaceIdiom == .pad
     }
 }

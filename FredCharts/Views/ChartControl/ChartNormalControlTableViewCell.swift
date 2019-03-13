@@ -21,4 +21,6 @@ class ChartNormalControlTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBOutlet weak var attributeTitleLabel: UILabel!
+    @IBOutlet weak var attributeValueLabel: UILabel!
 }

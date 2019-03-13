@@ -22,12 +22,27 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
     }
     
     // MARK: IBActions
-    @IBAction func segmentedControlDidChange(_ sender: Any) {
-        
+    @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
+//        swit segmentControl.selectedSegmentIndex
+        switch segmentControl.selectedSegmentIndex  {
+        case 0:
+            delegate?.segmentedControlDidChange(with: nil)
+        case 1:
+            delegate?.segmentedControlDidChange(with: 10)
+        case 2:
+            delegate?.segmentedControlDidChange(with: 5)
+        case 3:
+            delegate?.segmentedControlDidChange(with: 1)
+        case 4:
+            delegate?.segmentedControlDidChange(with: 0)
+
+        default:
+            delegate?.segmentedControlDidChange(with: nil)
+        }
     }
     
     
     // MARK: Properties
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    
+    var delegate: ChartSegementedControlDelegate?
 }

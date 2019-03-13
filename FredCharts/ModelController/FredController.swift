@@ -83,6 +83,10 @@ class FredController {
 
                 self.searchResults = results.seriess
                 
+                for result in self.searchResults{
+                    print(result.units)
+                }
+
                 // Send back the results to the completion handler
                 completion(results.seriess, nil)
                 

@@ -26,7 +26,7 @@
                             <segment title="10Y"/>
                             <segment title="5Y"/>
                             <segment title="1Y"/>
-                            <segment title="1M"/>
+                            <segment title="6M"/>
                         </segments>
                         <connections>
                             <action selector="segmentedControlDidChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="P6J-pS-TFP"/>

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */; };
 		D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DDC22346A10001D8B91 /* AppDelegate.swift */; };
 		D1393DE222346A10001D8B91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE022346A10001D8B91 /* Main.storyboard */; };
 		D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */; };
-		D1393DE722346A12001D8B91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE622346A12001D8B91 /* Assets.xcassets */; };
 		D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE822346A12001D8B91 /* LaunchScreen.storyboard */; };
 		D1393DF322346F42001D8B91 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1393DF222346F42001D8B91 /* SwiftCharts.framework */; };
 		D1393DF622347490001D8B91 /* FredController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DF522347490001D8B91 /* FredController.swift */; };
@@ -18,7 +18,7 @@
 		D1393DFF22348150001D8B91 /* FredSeriesS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DFE22348150001D8B91 /* FredSeriesS.swift */; };
 		D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */; };
 		D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */; };
-		D1393E0D22348B72001D8B91 /* ChartTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0C22348B72001D8B91 /* ChartTestViewController.swift */; };
+		D1393E0D22348B72001D8B91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0C22348B72001D8B91 /* ChartViewController.swift */; };
 		D1393E0F2234900A001D8B91 /* Observations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0E2234900A001D8B91 /* Observations.swift */; };
 		D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */; };
 		D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */; };
@@ -34,14 +34,23 @@
 		D13B1CC12237017B0013B514 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CC02237017B0013B514 /* Appearance.swift */; };
 		D13B1CC5223718E60013B514 /* ChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CC4223718E60013B514 /* ChartController.swift */; };
 		D13B1CC722371B520013B514 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CC622371B520013B514 /* DateHelper.swift */; };
+		D13B1CCB223845710013B514 /* Date+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCA223845710013B514 /* Date+Convenience.swift */; };
+		D13B1CCE223849D50013B514 /* ChartSegementedControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */; };
+		D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */; };
+		D13B1CD2223870410013B514 /* UnitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CD1223870410013B514 /* UnitTypes.swift */; };
+		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
+		D1799FCA2239CAF700AD8D56 /* SCNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC92239CAF700AD8D56 /* SCNViewController.swift */; };
+		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
+		D1799FCF2239CBEA00AD8D56 /* ScrollChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FCE2239CBEA00AD8D56 /* ScrollChooserView.swift */; };
+		D1FBDE0E2238B72A001E1DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Convenience.swift"; sourceTree = "<group>"; };
 		D1393DD922346A10001D8B91 /* FredCharts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FredCharts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1393DDC22346A10001D8B91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1393DE122346A10001D8B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1393DE422346A10001D8B91 /* FredCharts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FredCharts.xcdatamodel; sourceTree = "<group>"; };
-		D1393DE622346A12001D8B91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1393DE922346A12001D8B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1393DEB22346A12001D8B91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1393DF222346F42001D8B91 /* SwiftCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftCharts.framework; path = Carthage/Build/iOS/SwiftCharts.framework; sourceTree = "<group>"; };
@@ -50,7 +59,7 @@
 		D1393DFE22348150001D8B91 /* FredSeriesS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesS.swift; sourceTree = "<group>"; };
 		D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
-		D1393E0C22348B72001D8B91 /* ChartTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTestViewController.swift; sourceTree = "<group>"; };
+		D1393E0C22348B72001D8B91 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		D1393E0E2234900A001D8B91 /* Observations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observations.swift; sourceTree = "<group>"; };
 		D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
 		D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerExampleViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +75,16 @@
 		D13B1CC02237017B0013B514 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D13B1CC4223718E60013B514 /* ChartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartController.swift; sourceTree = "<group>"; };
 		D13B1CC622371B520013B514 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		D13B1CCA223845710013B514 /* Date+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Convenience.swift"; sourceTree = "<group>"; };
+		D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSegementedControlDelegate.swift; sourceTree = "<group>"; };
+		D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatterForCharts.swift; sourceTree = "<group>"; };
+		D13B1CD1223870410013B514 /* UnitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTypes.swift; sourceTree = "<group>"; };
+		D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FredCharts.entitlements; sourceTree = "<group>"; };
+		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
+		D1799FC92239CAF700AD8D56 /* SCNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNViewController.swift; sourceTree = "<group>"; };
+		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
+		D1799FCE2239CBEA00AD8D56 /* ScrollChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollChooserView.swift; sourceTree = "<group>"; };
+		D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +119,9 @@
 		D1393DDB22346A10001D8B91 /* FredCharts */ = {
 			isa = PBXGroup;
 			children = (
+				D1799FC82239CA8400AD8D56 /* ARData */,
+				D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */,
+				D13B1CCC223849BF0013B514 /* Protocol */,
 				D13B1CA62235DC560013B514 /* Helpers */,
 				D1393E0B22348AE1001D8B91 /* ModelController */,
 				D1393E0822348844001D8B91 /* Views */,
@@ -133,9 +155,10 @@
 		D1393E04223486E0001D8B91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */,
+				D1799FCC2239CB7A00AD8D56 /* testValues.json */,
 				D1393DE022346A10001D8B91 /* Main.storyboard */,
 				D1393DE822346A12001D8B91 /* LaunchScreen.storyboard */,
-				D1393DE622346A12001D8B91 /* Assets.xcassets */,
 				D1393DEB22346A12001D8B91 /* Info.plist */,
 			);
 			path = Resources;
@@ -146,7 +169,9 @@
 			children = (
 				D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */,
 				D13B1CAB2236C3310013B514 /* FavoritesTableViewController.swift */,
-				D1393E0C22348B72001D8B91 /* ChartTestViewController.swift */,
+				D1393E0C22348B72001D8B91 /* ChartViewController.swift */,
+				D1799FC62239C87A00AD8D56 /* TestARViewController.swift */,
+				D1799FC92239CAF700AD8D56 /* SCNViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -157,6 +182,7 @@
 				D13B1CB72236E55E0013B514 /* ChartControl */,
 				D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */,
 				D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */,
+				D1799FCE2239CBEA00AD8D56 /* ScrollChooserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +203,10 @@
 				D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */,
 				D13B1CC02237017B0013B514 /* Appearance.swift */,
 				D13B1CC622371B520013B514 /* DateHelper.swift */,
+				D13B1CCA223845710013B514 /* Date+Convenience.swift */,
+				D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */,
+				D13B1CD1223870410013B514 /* UnitTypes.swift */,
+				D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -193,6 +223,21 @@
 				D13B1CBD223700E10013B514 /* ChartSliderControlTableViewCell.xib */,
 			);
 			path = ChartControl;
+			sourceTree = "<group>";
+		};
+		D13B1CCC223849BF0013B514 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D1799FC82239CA8400AD8D56 /* ARData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ARData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +273,14 @@
 				TargetAttributes = {
 					D1393DD822346A10001D8B91 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -256,9 +309,10 @@
 			files = (
 				D13B1CBF223700E10013B514 /* ChartSliderControlTableViewCell.xib in Resources */,
 				D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */,
-				D1393DE722346A12001D8B91 /* Assets.xcassets in Resources */,
 				D13B1CBB2236EC0C0013B514 /* ChartNormalControlTableViewCell.xib in Resources */,
 				D1393DE222346A10001D8B91 /* Main.storyboard in Resources */,
+				D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */,
+				D1FBDE0E2238B72A001E1DD2 /* Assets.xcassets in Resources */,
 				D13B1CB62236E5580013B514 /* ChartSegmentedControlTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,10 +348,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D13B1CC5223718E60013B514 /* ChartController.swift in Sources */,
+				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
 				D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */,
-				D1393E0D22348B72001D8B91 /* ChartTestViewController.swift in Sources */,
+				D13B1CCE223849D50013B514 /* ChartSegementedControlDelegate.swift in Sources */,
+				D1393E0D22348B72001D8B91 /* ChartViewController.swift in Sources */,
 				D13B1CC722371B520013B514 /* DateHelper.swift in Sources */,
 				D13B1CAC2236C3310013B514 /* FavoritesTableViewController.swift in Sources */,
 				D13B1CB52236E5580013B514 /* ChartSegmentedControlTableViewCell.swift in Sources */,
@@ -305,6 +361,7 @@
 				D1393DFD2234806F001D8B91 /* FredSearchSearchResults.swift in Sources */,
 				D1393DF622347490001D8B91 /* FredController.swift in Sources */,
 				D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */,
+				D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */,
 				D13B1CB02236D40C0013B514 /* ChartControlTableViewCell.swift in Sources */,
 				D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */,
 				D13B1CBE223700E10013B514 /* ChartSliderControlTableViewCell.swift in Sources */,
@@ -312,7 +369,12 @@
 				D1393DFF22348150001D8B91 /* FredSeriesS.swift in Sources */,
 				D1393E0F2234900A001D8B91 /* Observations.swift in Sources */,
 				D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */,
+				D1799FCA2239CAF700AD8D56 /* SCNViewController.swift in Sources */,
+				D13B1CCB223845710013B514 /* Date+Convenience.swift in Sources */,
 				D13B1CBA2236EC0C0013B514 /* ChartNormalControlTableViewCell.swift in Sources */,
+				D13B1CD2223870410013B514 /* UnitTypes.swift in Sources */,
+				D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */,
+				D1799FCF2239CBEA00AD8D56 /* ScrollChooserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,9 +432,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -431,9 +495,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -458,6 +524,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5U94G8XN2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -469,8 +537,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mettabits.Contacts-Swift-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mettabits.FredCharts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -480,6 +549,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5U94G8XN2;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -491,8 +562,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mettabits.Contacts-Swift-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mettabits.FredCharts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

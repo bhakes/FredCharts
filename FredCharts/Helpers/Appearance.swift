@@ -12,10 +12,10 @@ struct Appearance {
     
     // setup Nav Bar Appearance
     static func setupNavAppearance() {
-        UINavigationBar.appearance().tintColor = .lightAccentColor
+        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().barTintColor = .mainColor
-        UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.lightAccentColor]
-        UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.lightAccentColor]
+        UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.white]
 //        UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().isTranslucent = false
         
@@ -24,8 +24,8 @@ struct Appearance {
     // setup SegmentedControlAppearance
     static func setupSegmentedControlAppearance() {
         UISegmentedControl.appearance().tintColor = .mainColor
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightAccentColor], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightAccentColor], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.mainColor], for: .normal)
         
     }
     
@@ -38,7 +38,6 @@ extension UIColor {
     static let lightAccentColor = #colorLiteral(red: 0.6666666667, green: 0.7294117647, blue: 0.7921568627, alpha: 1)
     static let darkAccentColor2 = #colorLiteral(red: 0.3490196078, green: 0.4196078431, blue: 0.4901960784, alpha: 1)
     static let lightAccentColor2 = #colorLiteral(red: 0.5019607843, green: 0.5607843137, blue: 0.6235294118, alpha: 1)
-    
 
 }
 
