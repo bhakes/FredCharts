@@ -39,9 +39,7 @@
 		D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */; };
 		D13B1CD2223870410013B514 /* UnitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CD1223870410013B514 /* UnitTypes.swift */; };
 		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
-		D1799FCA2239CAF700AD8D56 /* SCNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC92239CAF700AD8D56 /* SCNViewController.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
-		D1799FCF2239CBEA00AD8D56 /* ScrollChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FCE2239CBEA00AD8D56 /* ScrollChooserView.swift */; };
 		D1FBDE0E2238B72A001E1DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -81,9 +79,7 @@
 		D13B1CD1223870410013B514 /* UnitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTypes.swift; sourceTree = "<group>"; };
 		D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FredCharts.entitlements; sourceTree = "<group>"; };
 		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
-		D1799FC92239CAF700AD8D56 /* SCNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
-		D1799FCE2239CBEA00AD8D56 /* ScrollChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollChooserView.swift; sourceTree = "<group>"; };
 		D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +115,6 @@
 		D1393DDB22346A10001D8B91 /* FredCharts */ = {
 			isa = PBXGroup;
 			children = (
-				D1799FC82239CA8400AD8D56 /* ARData */,
 				D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */,
 				D13B1CCC223849BF0013B514 /* Protocol */,
 				D13B1CA62235DC560013B514 /* Helpers */,
@@ -171,7 +166,6 @@
 				D13B1CAB2236C3310013B514 /* FavoritesTableViewController.swift */,
 				D1393E0C22348B72001D8B91 /* ChartViewController.swift */,
 				D1799FC62239C87A00AD8D56 /* TestARViewController.swift */,
-				D1799FC92239CAF700AD8D56 /* SCNViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -182,7 +176,6 @@
 				D13B1CB72236E55E0013B514 /* ChartControl */,
 				D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */,
 				D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */,
-				D1799FCE2239CBEA00AD8D56 /* ScrollChooserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,13 +224,6 @@
 				D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		D1799FC82239CA8400AD8D56 /* ARData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ARData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,12 +355,10 @@
 				D1393DFF22348150001D8B91 /* FredSeriesS.swift in Sources */,
 				D1393E0F2234900A001D8B91 /* Observations.swift in Sources */,
 				D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */,
-				D1799FCA2239CAF700AD8D56 /* SCNViewController.swift in Sources */,
 				D13B1CCB223845710013B514 /* Date+Convenience.swift in Sources */,
 				D13B1CBA2236EC0C0013B514 /* ChartNormalControlTableViewCell.swift in Sources */,
 				D13B1CD2223870410013B514 /* UnitTypes.swift in Sources */,
 				D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */,
-				D1799FCF2239CBEA00AD8D56 /* ScrollChooserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
