@@ -11,7 +11,9 @@ import SwiftCharts
 
 typealias GridPoint = (Double, Double)
 
-class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate, ChartSegementedControlDelegate {
+class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate, ChartSegementedControlDelegate, PickerControlDelegate {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             if let seriesObservations = self.seriesObservations {
                 
                 self.modelPoints = self.parseObseration(for: seriesObservations)
+                self.originalModelPoints = self.modelPoints
+                
                 DispatchQueue.main.async {
                     self.updateChart(with: self.modelPoints)
                     self.chartDetailsTableView.reloadData()
@@ -59,17 +63,17 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         registerTableViewCellNibs()
     }
     
-    func filterChartDates(by filterYears: Int){
+    private func filterChartDates(by filterYears: Int){
         
         var newModelPoints: [GridPoint] = []
         
         if (filterYears == 0) {
             let months = 6
-            newModelPoints = modelPoints.filter({
+            newModelPoints = originalModelPoints.filter({
                 Date.dateXMonthsAgo(numberOfMonthsAgo: months).timeIntervalSince1970 < $0.0
             })
         } else {
-            newModelPoints = modelPoints.filter({ (x, y) -> Bool in
+            newModelPoints = originalModelPoints.filter({ (x, y) -> Bool in
                 Date.dateXYearsAgo(numberOfYearsAgo: filterYears).timeIntervalSince1970 < x
             })
         }
@@ -77,6 +81,26 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         DispatchQueue.main.async {
             self.chart?.view.removeFromSuperview()
             self.updateChart(with: newModelPoints)
+            self.chartDetailsTableView.reloadData()
+        }
+        
+    }
+    
+    private func filterChartDates(){
+        
+        var newModelPoints: [GridPoint] = []
+        guard let startDate = startDate, let endDate = endDate else { return }
+        
+        newModelPoints = originalModelPoints.filter({ (arg) -> Bool in
+            
+            let (x, _) = arg
+            return (startDate.timeIntervalSince1970 <= x && x <= endDate.timeIntervalSince1970)
+        })
+        
+        DispatchQueue.main.async {
+            self.chart?.view.removeFromSuperview()
+            self.updateChart(with: newModelPoints)
+            self.chartDetailsTableView.reloadData()
         }
         
     }
@@ -90,6 +114,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     func updateChart(with modelPoints: [GridPoint]){
         
         guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
+        self.modelPoints = modelPoints
         chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
         guard let chart = chart else { fatalError("Could not produce chart") }
         chartContainerView.addSubview(chart.view)
@@ -100,6 +125,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     func parseObseration (for seriesObservations: Observations) ->[GridPoint]{
         
+        var tempModelPoints:[GridPoint] = []
         for observation in seriesObservations.observations {
             
             guard let value = Double(observation.value) else { continue }
@@ -107,10 +133,10 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             let date = DateHelper.makeDateFromString(with: observation.date)
             
             let gp = GridPoint( date.timeIntervalSince1970, value)
-            modelPoints.append(gp)
+            tempModelPoints.append(gp)
         }
         
-        return modelPoints
+        return tempModelPoints
         
     }
     
@@ -126,8 +152,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         guard let integer = integer else {
             DispatchQueue.main.async {
                 self.chart?.view.removeFromSuperview()
-                self.updateChart(with: self.modelPoints)
-                
+                self.updateChart(with: self.originalModelPoints)
+                self.chartDetailsTableView.reloadData()
             }
             return
         }
@@ -149,19 +175,19 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     // MARK: - TableView Data Source Delegate Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return /*4*/1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section{
         case 0:
             return 3
-        case 1:
-            return 1
-        case 2:
-            return 1
-        case 3:
-            return 7
+//        case 1:
+//            return 1
+//        case 2:
+//            return 1
+//        case 3:
+//            return 7
         default:
             return 1
         }
@@ -180,7 +206,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 
             case 1:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
-                
+                cell.tag = 1
                 cell.attributeTitleLabel.text = "Begin Date:"
                 
                 let beginDate = self.modelPoints.min {$0.0<$1.0}?.0
@@ -194,7 +220,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             
             case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
-                
+                cell.tag = 1
                 cell.attributeTitleLabel.text = "End Date:"
                 
                 let endDate = self.modelPoints.max {$0.0<$1.0}?.0
@@ -226,6 +252,22 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        guard let startDate = startDate, let endDate = endDate else { return }
+        if cell.tag == 1 {
+            
+            let controller = PickerViewController(nibName: "PickerViewController", bundle: nil)
+            controller.modalPresentationStyle = .overCurrentContext
+            controller.delegate = self
+            controller.startDate = startDate
+            controller.endDate = endDate
+            controller.startFlag = indexPath.row == 1 ? true : false
+            
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -239,6 +281,54 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         }
     }
 
+    // MARK: - TapGesture
+    
+    @IBAction func longPressed(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard gestureRecognizer.view != nil else { return }
+        
+        
+        if gestureRecognizer.state == .began {      // Move the view down and to the right when tapped.
+            let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
+                self.statsStackView.center.y -= 50
+                self.statsStackView.alpha = 0
+                self.trackerStatsView.alpha = 1
+                
+            })
+            animator.startAnimation()
+            
+        } else if gestureRecognizer.state == .ended{
+            let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
+                self.statsStackView.center.y += 50
+                self.statsStackView.alpha = 1
+                self.trackerStatsView.alpha = 0
+            })
+            animator.startAnimation()
+            
+        }
+    }
+    
+    // MARK: - PickerControlDelegateMethods
+    
+    func pickerStartDateSelected(with date: Date) {
+        startDate = date
+        filterChartDates()
+        chartDetailsTableView.reloadData()
+    }
+    
+    func pickerEndDateSelected(with date: Date) {
+        endDate = date
+        filterChartDates()
+        chartDetailsTableView.reloadData()
+    }
+    
+    // MARK: - IBActions
+    @IBAction func saveChart(_ sender: Any) {
+        guard let series = series else { return }
+        _ = FredChart(title: series.title, identifier: series.id)
+        
+    }
+    
+    
     
     // MARK: - Properties
     var seriesObservations: Observations?
@@ -257,11 +347,16 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                     units = "Units"
                 }
                 
+                //
+                
+                
                 let peakValue = self.modelPoints.max {$0.1<$1.1}?.1
                 let peakDate = self.modelPoints.max {$0.1<$1.1}?.0
                 
                 let lastValue = self.modelPoints.last?.1
                 let lastDate = self.modelPoints.last?.0
+                self.startDate = Date(timeIntervalSince1970: self.modelPoints.first!.0)
+                self.endDate = Date(timeIntervalSince1970: lastDate!)
                 
                 let formattedPeakValue = UnitDefinition.bestDefinition(for: units).format(peakValue!)
                 let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(lastValue!)
@@ -280,6 +375,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             }
         }
     }
+    
+    var originalModelPoints: [GridPoint] = []
     var fredController: FredController?
     @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var chartContainerView: UIView!
@@ -287,10 +384,14 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     @IBOutlet weak var headerContainer: UIView!
     @IBOutlet weak var idLabel: UILabel!
     
+    @IBOutlet weak var statsStackView: UIStackView!
+    @IBOutlet weak var trackerStatsView: UIView!
     @IBOutlet weak var lastLabel: UILabel!
     @IBOutlet weak var peakLabel: UILabel!
     @IBOutlet weak var lastDateLabel: UILabel!
     @IBOutlet weak var peakDateLabel: UILabel!
+    var startDate: Date?
+    var endDate: Date?
     
     let segmentedControlReuseID = "SegmentedControlCell"
     let normalControlReuseID = "NormalControlCell"

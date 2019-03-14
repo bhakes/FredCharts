@@ -38,8 +38,17 @@
 		D13B1CCE223849D50013B514 /* ChartSegementedControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */; };
 		D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */; };
 		D13B1CD2223870410013B514 /* UnitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CD1223870410013B514 /* UnitTypes.swift */; };
+		D151D563223AB403004E205E /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */; };
+		D151D566223AB5A0004E205E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D565223AB5A0004E205E /* CoreDataStack.swift */; };
+		D151D56E223AC2CE004E205E /* FredChart+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D56D223AC2CE004E205E /* FredChart+Encodable.swift */; };
+		D151D570223AC7DF004E205E /* FredChart+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D56F223AC7DF004E205E /* FredChart+Convenience.swift */; };
+		D151D576223ACB78004E205E /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */; };
+		D151D577223ACB78004E205E /* FavoritesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */; };
 		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
+		D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */; };
+		D1EDBA4A223A096400F8C3B2 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */; };
+		D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */; };
 		D1FBDE0E2238B72A001E1DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +87,17 @@
 		D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatterForCharts.swift; sourceTree = "<group>"; };
 		D13B1CD1223870410013B514 /* UnitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTypes.swift; sourceTree = "<group>"; };
 		D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FredCharts.entitlements; sourceTree = "<group>"; };
+		D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
+		D151D565223AB5A0004E205E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D151D56D223AC2CE004E205E /* FredChart+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FredChart+Encodable.swift"; sourceTree = "<group>"; };
+		D151D56F223AC7DF004E205E /* FredChart+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FredChart+Convenience.swift"; sourceTree = "<group>"; };
+		D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
+		D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
+		D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerControlDelegate.swift; sourceTree = "<group>"; };
 		D1FBDE0D2238B72A001E1DD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				D1393DFC2234806F001D8B91 /* FredSearchSearchResults.swift */,
+				D151D565223AB5A0004E205E /* CoreDataStack.swift */,
 				D1393DFE22348150001D8B91 /* FredSeriesS.swift */,
+				D151D56D223AC2CE004E205E /* FredChart+Encodable.swift */,
+				D151D56F223AC7DF004E205E /* FredChart+Convenience.swift */,
 				D1393E0E2234900A001D8B91 /* Observations.swift */,
 				D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */,
 			);
@@ -164,7 +185,9 @@
 			children = (
 				D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */,
 				D13B1CAB2236C3310013B514 /* FavoritesTableViewController.swift */,
+				D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */,
 				D1393E0C22348B72001D8B91 /* ChartViewController.swift */,
+				D1EDBA4B223A096800F8C3B2 /* PickerViewController */,
 				D1799FC62239C87A00AD8D56 /* TestARViewController.swift */,
 			);
 			path = ViewControllers;
@@ -173,6 +196,7 @@
 		D1393E0822348844001D8B91 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D151D571223ACB4C004E205E /* CollectionViewCell */,
 				D13B1CB72236E55E0013B514 /* ChartControl */,
 				D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */,
 				D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */,
@@ -222,8 +246,27 @@
 			isa = PBXGroup;
 			children = (
 				D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */,
+				D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D151D571223ACB4C004E205E /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */,
+				D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D1EDBA4B223A096800F8C3B2 /* PickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */,
+				D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */,
+			);
+			path = PickerViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +341,9 @@
 				D13B1CBB2236EC0C0013B514 /* ChartNormalControlTableViewCell.xib in Resources */,
 				D1393DE222346A10001D8B91 /* Main.storyboard in Resources */,
 				D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */,
+				D151D577223ACB78004E205E /* FavoritesCollectionViewCell.xib in Resources */,
 				D1FBDE0E2238B72A001E1DD2 /* Assets.xcassets in Resources */,
+				D1EDBA4A223A096400F8C3B2 /* PickerViewController.xib in Resources */,
 				D13B1CB62236E5580013B514 /* ChartSegmentedControlTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,22 +379,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D13B1CC5223718E60013B514 /* ChartController.swift in Sources */,
+				D151D570223AC7DF004E205E /* FredChart+Convenience.swift in Sources */,
 				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
+				D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */,
+				D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */,
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
+				D151D563223AB403004E205E /* FavoritesCollectionViewController.swift in Sources */,
 				D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */,
 				D13B1CCE223849D50013B514 /* ChartSegementedControlDelegate.swift in Sources */,
+				D151D56E223AC2CE004E205E /* FredChart+Encodable.swift in Sources */,
 				D1393E0D22348B72001D8B91 /* ChartViewController.swift in Sources */,
 				D13B1CC722371B520013B514 /* DateHelper.swift in Sources */,
 				D13B1CAC2236C3310013B514 /* FavoritesTableViewController.swift in Sources */,
 				D13B1CB52236E5580013B514 /* ChartSegmentedControlTableViewCell.swift in Sources */,
 				D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */,
 				D1393DFD2234806F001D8B91 /* FredSearchSearchResults.swift in Sources */,
+				D151D566223AB5A0004E205E /* CoreDataStack.swift in Sources */,
 				D1393DF622347490001D8B91 /* FredController.swift in Sources */,
 				D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */,
 				D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */,
 				D13B1CB02236D40C0013B514 /* ChartControlTableViewCell.swift in Sources */,
 				D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */,
+				D151D576223ACB78004E205E /* FavoritesCollectionViewCell.swift in Sources */,
 				D13B1CBE223700E10013B514 /* ChartSliderControlTableViewCell.swift in Sources */,
 				D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */,
 				D1393DFF22348150001D8B91 /* FredSeriesS.swift in Sources */,
