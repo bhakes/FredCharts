@@ -68,13 +68,15 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
         guard let destVC = segue.destination as? ChartViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError("Could not get IndexPath for selected row.") }
         
-        let seriesToSend = self.fredController.searchResults[indexPath.row]
+        let seriesToSend = FredSeriesS(fredSeriesSRepresentation: self.fredController.searchResults[indexPath.row])
         
         destVC.fredController = self.fredController
         destVC.series = seriesToSend
+        
     }
     
     // MARK: - IBActions

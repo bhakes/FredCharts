@@ -18,6 +18,11 @@ struct Appearance {
         UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.white]
 //        UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().layer.masksToBounds = false
+        UINavigationBar.appearance().layer.shadowColor = UIColor.black.cgColor
+        UINavigationBar.appearance().layer.shadowOpacity = 0.5
+        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 4.0)
+        UINavigationBar.appearance().layer.shadowRadius = 4
         
     }
     

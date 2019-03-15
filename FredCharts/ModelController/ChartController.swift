@@ -15,6 +15,7 @@ class ChartController {
     
     func updateChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart{
         
+        guard let units = series.units else { fatalError() }
         // Build Label Settings
         let labelSettingsYAxis = ChartLabelSettings(font: ExamplesDefaults.labelFont, fontColor: .white)
         let labelSettingsXAxis = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10) , fontColor: .white, rotation: CGFloat(0.0), rotationKeep: ChartLabelDrawerRotationKeep.top)
@@ -30,14 +31,14 @@ class ChartController {
         
         let valuesGenerator = ChartAxisGeneratorMultiplier(((lastModelValue ?? 1) - (firstModelValue ?? 0))/10)
         
-        let numberFormatter = NumberFormatter.getNumberFormatter(with: series.units)
+        let numberFormatter = NumberFormatter.getNumberFormatter(with: units)
         
         let labelsGenerator = ChartAxisLabelsGeneratorNumber(labelSettings: labelSettingsYAxis, formatter: numberFormatter)
         
 //        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettingsYAxis)}, addPaddingSegmentIfEdge: false)
 //
         
-        let yModel = ChartAxisModel(firstModelValue: firstModelValue ?? 0, lastModelValue: lastModelValue ?? 1, axisTitleLabel: ChartAxisLabel(text: series.units, settings: labelSettingsYAxis.defaultVertical()), axisValuesGenerator: valuesGenerator, labelsGenerator: labelsGenerator)
+        let yModel = ChartAxisModel(firstModelValue: firstModelValue ?? 0, lastModelValue: lastModelValue ?? 1, axisTitleLabel: ChartAxisLabel(text: units, settings: labelSettingsYAxis.defaultVertical()), axisValuesGenerator: valuesGenerator, labelsGenerator: labelsGenerator)
         
         // build xModels and yModels
         let xModel = ChartAxisModel(axisValues: xValues)

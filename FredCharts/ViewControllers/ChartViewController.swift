@@ -21,8 +21,9 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         setupViews()
         guard let fredController = fredController else { fatalError("FredController is empty")}
         guard let series = series else { fatalError("FredController is empty")}
+        guard let id = series.id else { fatalError("FredController is empty")}
         
-        fredController.getObservationsForFredSeries(with: series.id) { resultingObservations, error in
+        fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
             self.seriesObservations = resultingObservations
             if let seriesObservations = self.seriesObservations {
@@ -38,6 +39,11 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
 
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        CoreDataStack.shared.mainContext.reset()
     }
     
     // MARK: - Private Methods
@@ -288,6 +294,10 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         
         if gestureRecognizer.state == .began {      // Move the view down and to the right when tapped.
+            
+            
+            trackerLabel.text = "Actived"
+            
             let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
                 self.statsStackView.center.y -= 50
                 self.statsStackView.alpha = 0
@@ -297,6 +307,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             animator.startAnimation()
             
         } else if gestureRecognizer.state == .ended{
+            trackerLabel.text = "Test"
             let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
                 self.statsStackView.center.y += 50
                 self.statsStackView.alpha = 1
@@ -323,9 +334,14 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     // MARK: - IBActions
     @IBAction func saveChart(_ sender: Any) {
-        guard let series = series else { return }
-        _ = FredChart(title: series.title, identifier: series.id)
         
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            print("could not save to core data")
+        }
+        
+        performSegue(withIdentifier: "BackToFavorites", sender: self)
     }
     
     
@@ -335,6 +351,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     var chartController: ChartController = ChartController()
     fileprivate var chart: Chart?
     var series: FredSeriesS?
+    var seriesRepresentation: FredSeriesSRepresentation?
     
     var modelPoints: [GridPoint] = [] {
         didSet {
@@ -348,7 +365,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 }
                 
                 //
-                
                 
                 let peakValue = self.modelPoints.max {$0.1<$1.1}?.1
                 let peakDate = self.modelPoints.max {$0.1<$1.1}?.0
@@ -386,6 +402,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     @IBOutlet weak var statsStackView: UIStackView!
     @IBOutlet weak var trackerStatsView: UIView!
+    @IBOutlet weak var trackerLabel: UILabel!
     @IBOutlet weak var lastLabel: UILabel!
     @IBOutlet weak var peakLabel: UILabel!
     @IBOutlet weak var lastDateLabel: UILabel!

@@ -319,8 +319,7 @@
                     <navigationItem key="navigationItem" id="VkD-Zx-RuP">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="2Up-u1-Lv2">
                             <connections>
-                                <action selector="saveChart:" destination="OsK-xk-I2n" id="jwU-yw-RM2"/>
-                                <segue destination="OUj-eq-w4Q" kind="showDetail" id="OrN-TY-eQF"/>
+                                <action selector="saveChart:" destination="OsK-xk-I2n" id="cwo-j9-PMz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -335,7 +334,9 @@
                         <outlet property="peakLabel" destination="j5n-ht-dK8" id="pMy-q9-8zK"/>
                         <outlet property="seriesLabel" destination="LyS-QN-UZQ" id="eNL-AI-oXp"/>
                         <outlet property="statsStackView" destination="TTc-pD-T48" id="Nb5-Hc-ixd"/>
+                        <outlet property="trackerLabel" destination="zfL-D6-AmS" id="6vc-GA-F1n"/>
                         <outlet property="trackerStatsView" destination="pF7-Q7-9aq" id="MnN-Nn-vLJ"/>
+                        <segue destination="OUj-eq-w4Q" kind="show" identifier="BackToFavorites" id="Bqp-9D-67T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEB-h6-vrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -391,7 +392,7 @@
         <!--Fred Charts-->
         <scene sceneID="x36-r7-X9D">
             <objects>
-                <collectionViewController id="lq9-tZ-nwq" sceneMemberID="viewController">
+                <collectionViewController id="lq9-tZ-nwq" customClass="FavoritesCollectionViewController" customModule="FredCharts" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sf6-g5-ikg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,8 +411,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="OsK-xk-I2n" kind="show" id="4YM-m9-teF"/>
+                                    <segue destination="OsK-xk-I2n" kind="show" identifier="ViewChartSegue" id="ska-5H-vdq"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -423,7 +425,7 @@
                     <navigationItem key="navigationItem" title="Fred Charts" id="fa6-CG-3dC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zBe-Kr-GwG">
                             <connections>
-                                <segue destination="Pqg-9v-bdZ" kind="show" id="etr-02-sOw"/>
+                                <segue destination="Pqg-9v-bdZ" kind="show" identifier="SearchSegue" id="etr-02-sOw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -437,6 +439,6 @@
         <image name="usdzicon" width="426" height="422"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4YM-m9-teF"/>
+        <segue reference="ska-5H-vdq"/>
     </inferredMetricsTieBreakers>
 </document>

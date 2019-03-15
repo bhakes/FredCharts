@@ -9,10 +9,10 @@
 import Foundation
 
 // individual entry
-struct FredSearchSearchResults: Codable {
+struct FredSearchSearchResults: Decodable {
     let realtimeStart, realtimeEnd, orderBy, sortOrder: String
     let count, offset, limit: Int
-    let seriess: [FredSeriesS]
+    let seriess: [FredSeriesSRepresentation]
     
     enum CodingKeys: String, CodingKey {
         case realtimeStart = "realtime_start"

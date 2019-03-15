@@ -13,10 +13,10 @@ class FredController {
     // to be refactored later
     let baseURL = "https://api.stlouisfed.org/fred/series"
     let apiKey = "dad7ac3b0b09407f625fbab2f4c8548c"
-    var searchResults: [FredSeriesS] = []
+    var searchResults: [FredSeriesSRepresentation] = []
     
     // Add the completion last
-    func searchForFredSeries(with searchTerm: String, completion: @escaping ([FredSeriesS]?, Error?) -> Void) {
+    func searchForFredSeries(with searchTerm: String, completion: @escaping ([FredSeriesSRepresentation]?, Error?) -> Void) {
         
         // Establish the base url for our search
         guard let baseURL = URL(string: "\(baseURL)/search")
@@ -83,10 +83,6 @@ class FredController {
 
                 self.searchResults = results.seriess
                 
-                for result in self.searchResults{
-                    print(result.units)
-                }
-
                 // Send back the results to the completion handler
                 completion(results.seriess, nil)
                 
