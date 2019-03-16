@@ -41,11 +41,17 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
     }
 
     // MARK: UICollectionViewDataSource
-
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        if fetchedResultsController.sections?.count ?? 0 > 0 {
+            return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        } else {
+            return 0
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,7 +72,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        return section == 0 ? CGSize(width: collectionView.bounds.size.width, height: 10) : CGSize(width: collectionView.bounds.size.width, height: 0)
+        return CGSize(width: collectionView.bounds.size.width, height: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -112,44 +118,6 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
 //        blockOperation = BlockOperation()
 //    }
     
-    
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange sectionInfo: NSFetchedResultsSectionInfo,
-                    atSectionIndex sectionIndex: Int,
-                    for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            collectionView.insertSections(IndexSet(integer: sectionIndex))
-        case .delete:
-            collectionView.deleteSections(IndexSet(integer: sectionIndex))
-        default:
-            break
-        }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any,
-                    at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            guard let newIndexPath = newIndexPath else { return }
-            collectionView.insertItems(at: [newIndexPath])
-        case .update:
-            guard let indexPath = indexPath else { return }
-            collectionView.reloadItems(at: [indexPath])
-        case .move:
-            guard let oldIndexPath = indexPath,
-                let newIndexPath = newIndexPath else { return }
-            collectionView.deleteItems(at: [oldIndexPath])
-            collectionView.insertItems(at: [newIndexPath])
-        case .delete:
-            guard let indexPath = indexPath else { return }
-            collectionView.deleteItems(at: [indexPath])
-        }
-    }
     
     // MARK: - Tap gesture Recognizer
     @objc (handleLongPressWithGestureRecognizer:)
