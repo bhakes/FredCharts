@@ -131,25 +131,37 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         
         if let indexPath : IndexPath = (self.collectionView?.indexPathForItem(at: p)){
             //do whatever you need to do
-            print("Test")
-            let chartToDelete = fetchedResultsController.object(at: indexPath)
-            
-            let moc = CoreDataStack.shared.mainContext
-            moc.perform {
-                moc.delete(chartToDelete)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-            
+            displayAlertViewController(for: indexPath)
             
         }
         
     }
-    // MARK: - Navigation
     
-    
-    
+
+    // MARK: - Display Alert View Controller
+    func displayAlertViewController(for indexPath: IndexPath){
+        
+        let chartToDelete = self.fetchedResultsController.object(at: indexPath)
+        var chartId = ""
+        if chartToDelete.id != nil{
+            chartId = chartToDelete.id!
+        }
+        let alert = UIAlertController(title: "Are you sure you want to delete series \(chartId)?", message: "Press okay to remove it from the Library", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            if action.style == .destructive {
+                let chartToDelete = self.fetchedResultsController.object(at: indexPath)
+                let moc = CoreDataStack.shared.mainContext
+                moc.perform {
+                    moc.delete(chartToDelete)
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+            
+            }}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     // MARK: - Properties
     let favoritesCellReuseID = "FavoritesCell"
