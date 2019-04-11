@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */; };
+		D137E68C225F8C93009CA684 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1393DF222346F42001D8B91 /* SwiftCharts.framework */; };
 		D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DDC22346A10001D8B91 /* AppDelegate.swift */; };
 		D1393DE222346A10001D8B91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE022346A10001D8B91 /* Main.storyboard */; };
 		D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */; };
 		D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE822346A12001D8B91 /* LaunchScreen.storyboard */; };
-		D1393DF322346F42001D8B91 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1393DF222346F42001D8B91 /* SwiftCharts.framework */; };
 		D1393DF622347490001D8B91 /* FredController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DF522347490001D8B91 /* FredController.swift */; };
 		D1393DFD2234806F001D8B91 /* FredSearchSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DFC2234806F001D8B91 /* FredSearchSearchResults.swift */; };
 		D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */; };
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1393DF322346F42001D8B91 /* SwiftCharts.framework in Frameworks */,
+				D137E68C225F8C93009CA684 /* SwiftCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +299,7 @@
 				TargetAttributes = {
 					D1393DD822346A10001D8B91 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -572,7 +573,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mettabits.FredCharts2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -597,7 +598,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mettabits.FredCharts2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
