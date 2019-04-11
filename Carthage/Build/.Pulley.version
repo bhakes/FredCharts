@@ -8,11 +8,11 @@
   "tvOS" : [
 
   ],
-  "commitish" : "2.6.3",
+  "commitish" : "2.7.0",
   "iOS" : [
     {
       "name" : "Pulley",
-      "hash" : "969fe14e8c517a9d73e139c961d750c1cbd9dd7b507e8032145f318802f6a3b5"
+      "hash" : "1afb08aed481d0345bc115f0ce04c0a147ddc3789a5491445db10b1f46401c82"
     }
   ]
 }
