@@ -2,7 +2,7 @@ Fred Charts
 ====
 
 FredCharts is an iOS app that can search, graph, and save data from St. Louis Federal Reserve Bank's [FRED API web
-service](https://api.stlouisfed.org/docs/fred/). FredCharts is largely similar to the St. Louis's FED [existing iOS app](https://itunes.apple.com/us/app/fred-economic-data/id451715489?mt=8). 
+service](https://api.stlouisfed.org/docs/fred/). FredCharts is largely similar to the St. Louis FED's [existing iOS app](https://itunes.apple.com/us/app/fred-economic-data/id451715489?mt=8). 
 
 For more information on the FRED API Documentation:
 [http://api.stlouisfed.org/docs/fred/](https://api.stlouisfed.org/docs/fred/)
