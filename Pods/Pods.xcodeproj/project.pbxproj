@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,16 +41,16 @@
 		386148A2D7F0B28BD050838C26B9A5FC /* ARBarChartBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ARBarChartBar.swift; path = ARCharts/ARBarChartBar.swift; sourceTree = "<group>"; };
 		3B920EF6754B2D44FDBCF9B8995499D0 /* ARChartLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ARChartLabel.swift; path = ARCharts/ARChartLabel.swift; sourceTree = "<group>"; };
 		4A7FF9FC89444FC1DAB97C6FF106EC1A /* Pods-FredCharts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FredCharts-dummy.m"; sourceTree = "<group>"; };
-		4DC0D6283DC5C211D0AB6C18AC86157B /* Pods_FredCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FredCharts.framework; path = "Pods-FredCharts.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC0D6283DC5C211D0AB6C18AC86157B /* Pods_FredCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FredCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		563AF213A9E65ED982889F7D94702D66 /* Pods-FredCharts-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FredCharts-acknowledgements.markdown"; sourceTree = "<group>"; };
 		618C027DC18569EA399ECB99F4BF8B31 /* ARDataSeries.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ARDataSeries.swift; path = ARCharts/ARDataSeries.swift; sourceTree = "<group>"; };
 		7AB860376FF1073D9ECE6801027173E7 /* ARCharts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ARCharts.xcconfig; sourceTree = "<group>"; };
-		7FFA5136CDBCEBA070BA43A6EEC26A25 /* ARCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ARCharts.framework; path = ARCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FFA5136CDBCEBA070BA43A6EEC26A25 /* ARCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85356484988A64C00BADBF0BECCAF7E7 /* ARCharts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ARCharts-Info.plist"; sourceTree = "<group>"; };
 		8CADDD2F674F059BDE4E6C04A5BF712E /* ARCharts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ARCharts-dummy.m"; sourceTree = "<group>"; };
 		995C06C7769AE19B95B79C95AC364E0B /* Pods-FredCharts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FredCharts.release.xcconfig"; sourceTree = "<group>"; };
 		9CE0E3E002CD14F9C83D0EDE8BFDC56F /* Pods-FredCharts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FredCharts.modulemap"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AAF25E718194F16C9ADDD67197D74455 /* ARChartPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ARChartPresenter.swift; path = ARCharts/ARChartPresenter.swift; sourceTree = "<group>"; };
 		AD042E8EC097A793C1F196FCDE402E90 /* Pods-FredCharts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FredCharts.debug.xcconfig"; sourceTree = "<group>"; };
 		B1C0AC623DC4EE0E3F5B6715272D7C3D /* Pods-FredCharts-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FredCharts-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -146,7 +146,6 @@
 				CD3F37CD46B3D7AC79B88FA570F4E057 /* CABasicAnimation+Utilities.swift */,
 				293E24A09B50F8D81F8AF09DA7E2B0FE /* Support Files */,
 			);
-			name = ARCharts;
 			path = ARCharts;
 			sourceTree = "<group>";
 		};
@@ -260,6 +259,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -380,8 +380,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -469,11 +468,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-FredCharts/Pods-FredCharts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FredCharts/Pods-FredCharts.modulemap";
 				OTHER_LDFLAGS = "";
@@ -507,11 +502,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-FredCharts/Pods-FredCharts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FredCharts/Pods-FredCharts.modulemap";
 				OTHER_LDFLAGS = "";
@@ -546,11 +537,7 @@
 				INFOPLIST_FILE = "Target Support Files/ARCharts/ARCharts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ARCharts/ARCharts.modulemap";
 				PRODUCT_MODULE_NAME = ARCharts;
 				PRODUCT_NAME = ARCharts;
@@ -583,11 +570,7 @@
 				INFOPLIST_FILE = "Target Support Files/ARCharts/ARCharts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ARCharts/ARCharts.modulemap";
 				PRODUCT_MODULE_NAME = ARCharts;
 				PRODUCT_NAME = ARCharts;
