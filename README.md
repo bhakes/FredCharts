@@ -2,7 +2,7 @@ Fed Charts
 ====
 
 FedCharts is an iOS app that can search, graph, and save data from St. Louis Federal Reserve Bank's [FRED API web
-service](https://api.stlouisfed.org/docs/fred/).
+service](https://api.stlouisfed.org/docs/fred/). This product uses the FRED® API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.
 
 For more information on the FRED API Documentation:
 [http://api.stlouisfed.org/docs/fred/](https://api.stlouisfed.org/docs/fred/)
