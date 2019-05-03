@@ -61,7 +61,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         cell.titleLabel.text = series.title
         cell.idLabel.text = series.id
         cell.frequencyLabel.text = "Frequency: \(series.frequency!)"
-        
+        cell.lastObservationValueLabel.text = 
         cell.lastObservationDateLabel.text = "Last Updated: \(series.lastUpdated!.prefix(10))"
         cell.series = series
         // Configure the cell

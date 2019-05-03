@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OUj-eq-w4Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OUj-eq-w4Q">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -389,7 +389,7 @@
             </objects>
             <point key="canvasLocation" x="-2324" y="93"/>
         </scene>
-        <!--Fred Charts-->
+        <!--Fed Charts-->
         <scene sceneID="x36-r7-X9D">
             <objects>
                 <collectionViewController id="lq9-tZ-nwq" customClass="FavoritesCollectionViewController" customModule="FredCharts" customModuleProvider="target" sceneMemberID="viewController">
@@ -422,7 +422,7 @@
                             <outlet property="delegate" destination="lq9-tZ-nwq" id="iJL-Zy-B6d"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Fred Charts" id="fa6-CG-3dC">
+                    <navigationItem key="navigationItem" title="Fed Charts" id="fa6-CG-3dC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zBe-Kr-GwG">
                             <connections>
                                 <segue destination="Pqg-9v-bdZ" kind="show" identifier="SearchSegue" id="etr-02-sOw"/>
@@ -436,7 +436,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="usdzicon" width="426" height="422"/>
+        <image name="usdzicon" width="852" height="844"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ska-5H-vdq"/>

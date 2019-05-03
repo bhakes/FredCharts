@@ -12,7 +12,7 @@ class FredController {
     
     // to be refactored later
     let baseURL = "https://api.stlouisfed.org/fred/series"
-    let apiKey = "dad7ac3b0b09407f625fbab2f4c8548c"
+    let apiKey = Keys.apiKey
     var searchResults: [FredSeriesSRepresentation] = []
     
     // Add the completion last

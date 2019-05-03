@@ -45,6 +45,7 @@
 		D151D579223B07FD004E205E /* FredSeriesSRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */; };
 		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
+		D1BAEF0B227BEA9E00793346 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF0A227BEA9E00793346 /* Keys.swift */; };
 		D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */; };
 		D1EDBA4A223A096400F8C3B2 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */; };
 		D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */; };
@@ -93,6 +94,7 @@
 		D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesSRepresentation.swift; sourceTree = "<group>"; };
 		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
+		D1BAEF0A227BEA9E00793346 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
 		D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerControlDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D1393DFC2234806F001D8B91 /* FredSearchSearchResults.swift */,
+				D1BAEF0A227BEA9E00793346 /* Keys.swift */,
 				D151D565223AB5A0004E205E /* CoreDataStack.swift */,
 				D151D56D223AC2CE004E205E /* FredSeriesS+Encodable.swift */,
 				D151D56F223AC7DF004E205E /* FredSeriesS+Convenience.swift */,
@@ -380,6 +383,7 @@
 				D151D570223AC7DF004E205E /* FredSeriesS+Convenience.swift in Sources */,
 				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
+				D1BAEF0B227BEA9E00793346 /* Keys.swift in Sources */,
 				D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */,
 				D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */,
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
