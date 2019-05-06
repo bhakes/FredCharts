@@ -40,9 +40,11 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
-    @IBOutlet weak var lastObservationDateLabel: UILabel!
     @IBOutlet weak var lastObservationValueLabel: UILabel!
     @IBOutlet weak var previousObservationValueLabel: UILabel!
+    @IBOutlet weak var unitsLabel: UILabel!
+    @IBOutlet weak var lastDateLabel: UILabel!
+    @IBOutlet weak var prevDateLabel: UILabel!
     
     var series: FredSeriesS?
     

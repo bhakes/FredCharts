@@ -37,6 +37,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "FredCharts")
+        if let store = container.persistentStoreCoordinator.persistentStores.first {
+            let storeURL = container.persistentStoreCoordinator.url(for: store)
+            
+            do {
+                let options = [ NSInferMappingModelAutomaticallyOption : true,
+                                NSMigratePersistentStoresAutomaticallyOption : true]
+                
+                try container.persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+                                                                            configurationName: nil,
+                                                                            at: storeURL,
+                                                                            options: options)
+            } catch {
+                fatalError("Unable to Load Persistent Store")
+            }
+        }
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

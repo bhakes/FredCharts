@@ -27,10 +27,16 @@ extension FredSeriesS {
                      popularity: Int,
                      groupPopularity: Int,
                      notes: String?,
+                     lastObservationValue: Double? = nil,
+                     prevObservationValue: Double? = nil,
+                     lastObservationDate: Date? = nil,
+                     prevObservationDate: Date? = nil,
+                     lastObservationSyncDate: Date? = nil,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
     
         
         self.init(context:context)
+        
         self.title = title
         self.id = id
         self.realtimeStart = realtimeStart
@@ -47,6 +53,14 @@ extension FredSeriesS {
         self.popularity = Int16(popularity)
         self.groupPopularity = Int16(groupPopularity)
         self.notes = notes
+        
+        // Observation fetch request related entries
+        if let lastObservationValue = lastObservationValue {
+            self.lastObservationValue = lastObservationValue
+        }
+        if let prevObservationValue = prevObservationValue {
+            self.prevObservationValue = prevObservationValue
+        }
     
     }
     
@@ -64,11 +78,10 @@ extension FredSeriesS {
         let unitsShort = fredSeriesSRepresentation.unitsShort
         let seasonalAdjustment = fredSeriesSRepresentation.seasonalAdjustment
         let seasonalAdjustmentShort = fredSeriesSRepresentation.seasonalAdjustmentShort
-        let lastUpdated = fredSeriesSRepresentation.lastUpdated
         let popularity = fredSeriesSRepresentation.popularity
         let groupPopularity = fredSeriesSRepresentation.groupPopularity
         let notes = fredSeriesSRepresentation.notes
-        
+        let lastUpdated = fredSeriesSRepresentation.lastUpdated
         
         self.init(title: title, id : id, realtimeStart: realtimeStart, realtimeEnd: realtimeEnd, observationStart: observationStart, observationEnd: observationEnd, frequency: frequency, frequencyShort: frequencyShort, units: units, unitsShort: unitsShort, seasonalAdjustment: seasonalAdjustment, seasonalAdjustmentShort: seasonalAdjustmentShort, lastUpdated: lastUpdated, popularity: popularity, groupPopularity: groupPopularity, notes: notes)
     }
@@ -87,11 +100,10 @@ extension FredSeriesS {
         let unitsShort = fredSeriesSRepresentation.unitsShort
         let seasonalAdjustment = fredSeriesSRepresentation.seasonalAdjustment
         let seasonalAdjustmentShort = fredSeriesSRepresentation.seasonalAdjustmentShort
-        let lastUpdated = fredSeriesSRepresentation.lastUpdated
         let popularity = fredSeriesSRepresentation.popularity
         let groupPopularity = fredSeriesSRepresentation.groupPopularity
         let notes = fredSeriesSRepresentation.notes
-        
+        let lastUpdated = fredSeriesSRepresentation.lastUpdated
         
         self.init(title: title, id : id, realtimeStart: realtimeStart, realtimeEnd: realtimeEnd, observationStart: observationStart, observationEnd: observationEnd, frequency: frequency, frequencyShort: frequencyShort, units: units, unitsShort: unitsShort, seasonalAdjustment: seasonalAdjustment, seasonalAdjustmentShort: seasonalAdjustmentShort, lastUpdated: lastUpdated, popularity: popularity, groupPopularity: groupPopularity, notes: notes, context: context)
     }

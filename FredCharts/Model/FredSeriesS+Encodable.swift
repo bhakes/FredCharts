@@ -27,6 +27,13 @@ extension FredSeriesS : Encodable {
         case popularity
         case groupPopularity = "group_popularity"
         case notes
+        
+        // separate cases extracted from Observations fetch request
+        case lastObservationValue
+        case prevObservationValue
+        case lastObservationDate
+        case prevObservationDate
+        case lastObservationSyncDate
     }
 
     

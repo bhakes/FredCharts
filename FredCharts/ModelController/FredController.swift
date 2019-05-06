@@ -99,7 +99,7 @@ class FredController {
     }
     
     // Add the completion last
-    func getObservationsForFredSeries(with seriesID: String, completion: @escaping (Observations?, Error?) -> Void) {
+    func getObservationsForFredSeries(with seriesID: String, descendingSortOrder: Bool? = false, observationCount: Int? = nil, completion: @escaping (Observations?, Error?) -> Void) {
         
         // Establish the base url for our search
         guard let baseURL = URL(string: "\(baseURL)/observations")
@@ -117,9 +117,21 @@ class FredController {
         let searchQueryItem2 = URLQueryItem(name: "api_key", value: apiKey)
         let searchQueryItem3 = URLQueryItem(name: "file_type", value: "json")
         
-        
         // Add in the search term
         urlComponents.queryItems = [searchQueryItem1, searchQueryItem2, searchQueryItem3]
+        
+        if let observationCount = observationCount {
+            let searchQueryItem4 = URLQueryItem(name: "limit", value: "\(observationCount)")
+            urlComponents.queryItems?.append(searchQueryItem4)
+        }
+        
+        if let descendingSortOrder = descendingSortOrder {
+            if descendingSortOrder {
+                let searchQueryItem5 = URLQueryItem(name: "sort_order", value: "desc")
+                urlComponents.queryItems?.append(searchQueryItem5)
+            }
+            
+        }
         
         // Recompose all those individual components back into a fully
         // realized search URL

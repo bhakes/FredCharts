@@ -22,12 +22,13 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         // Register cell classes
         self.collectionView!.register(UINib(nibName: "FavoritesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: favoritesCellReuseID)
         // Do any additional setup after loading the view.
+        getDataUpdates()
+        
     }
     
     // reload the data when the new collection view re-appears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-    
         setupLongPress()
     }
     
@@ -39,6 +40,73 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         lpgr.delaysTouchesBegan = true
         self.collectionView?.addGestureRecognizer(lpgr)
     }
+    
+    // Private Methods
+    
+    private func getDataUpdates(forceUpdate: Bool = false){
+        
+        let operation1 = BlockOperation {
+            
+            let group = DispatchGroup()
+            let refreshThresholdDate = Date(timeIntervalSinceNow: -60 * 60 * 12)
+            
+            for series in self.fetchedResultsController.fetchedObjects ?? [] {
+               
+                group.enter()
+                // Only refresh if it's been more than 12 hours since the last sync
+                if let lastSyncDate = series.lastObservationSyncDate, lastSyncDate >= refreshThresholdDate, forceUpdate == false {
+                    group.leave()
+                    continue
+                }
+                
+                guard let id = series.id else { fatalError("Error: The series has no id!")}
+                
+                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { (observation, error) in
+                    
+                    series.lastObservationValue = Double(observation?.observations[0].value ?? "0.0")!
+                    series.prevObservationValue = Double(observation?.observations[1].value ?? "0.0")!
+                    
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    
+                    series.lastObservationDate = dateFormatter.date(from: (observation?.observations[0].date)!)
+                    
+                    series.prevObservationDate = dateFormatter.date(from: (observation?.observations[1].date)!)
+                    
+                    series.lastObservationSyncDate = Date(timeIntervalSinceNow: 0)
+                    print("Done with: \(id)")
+                    group.leave()
+                }
+            
+            }
+            
+            group.wait()
+            print("Done with all.")
+        
+        }
+        
+        let operation2 = BlockOperation {
+            do {
+                try CoreDataStack.shared.mainContext.save()
+            } catch {
+                print("Error saving managed object context.")
+            }
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        
+        operation2.addDependency(operation1)
+        
+        let fetchQueue = OperationQueue()
+        fetchQueue.addOperation(operation1)
+        fetchQueue.addOperation(operation2)
+        
+    }
+    
 
     // MARK: UICollectionViewDataSource
     
@@ -58,12 +126,48 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesCollectionViewCell else { fatalError("Could not dequeue cell as FavoritesCollectionViewCell") }
     
         let series = fetchedResultsController.object(at: indexPath)
+        
+        if let frequency = series.frequency {
+            cell.frequencyLabel.text = "Frequency: \(frequency)"
+        }
+        if let units = series.units {
+            cell.unitsLabel.text = "Units: \(units)"
+        }
+        
         cell.titleLabel.text = series.title
         cell.idLabel.text = series.id
-        cell.frequencyLabel.text = "Frequency: \(series.frequency!)"
-        cell.lastObservationValueLabel.text = 
-        cell.lastObservationDateLabel.text = "Last Updated: \(series.lastUpdated!.prefix(10))"
+        
+        var units = "Units"
+        if series.units != nil {
+            units = series.units!
+        }
+        
+        print(units)
+       
+        let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(series.lastObservationValue)
+        let formattedPrevValue = UnitDefinition.bestDefinition(for: units).format(series.prevObservationValue)
+
+        cell.lastObservationValueLabel.text = formattedLastValue
+        cell.previousObservationValueLabel.text = formattedPrevValue
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yy"
+        
+        if let lastObservationDate = series.lastObservationDate {
+            let lastUpdatedDateString = dateFormatter.string(from: lastObservationDate)
+            cell.lastDateLabel.text = "Last: \(lastUpdatedDateString)"
+        }
+        
+        if let prevObservationDate = series.prevObservationDate {
+            let prevUpdatedDateString = dateFormatter.string(from: prevObservationDate)
+            cell.prevDateLabel.text = "Prev: \(prevUpdatedDateString)"
+        }
+        
+        
         cell.series = series
+        
+        operationDict[indexPath] = series
+        
         // Configure the cell
     
         return cell
@@ -79,7 +183,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let kWhateverHeightYouWant = 100
-        return CGSize(width: collectionView.bounds.size.width - 16, height: CGFloat(kWhateverHeightYouWant))
+        return CGSize(width: collectionView.bounds.size.width - 12, height: CGFloat(kWhateverHeightYouWant))
     }
 
     // MARK: UICollectionViewDelegate
@@ -149,13 +253,14 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         let alert = UIAlertController(title: "Are you sure you want to delete series \(chartId)?", message: "Press okay to remove it from the Library", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
             if action.style == .destructive {
-                let chartToDelete = self.fetchedResultsController.object(at: indexPath)
-                let moc = CoreDataStack.shared.mainContext
-                moc.perform {
-                    moc.delete(chartToDelete)
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
+                self.fetchedResultsController.managedObjectContext.delete(chartToDelete)
+                do {
+                    try self.fetchedResultsController.managedObjectContext.save()
+                } catch {
+                    print("failure saving moc")
+                }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
                 }
             
             }}))
@@ -168,6 +273,8 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
     let fredController = FredController()
     private var blockOperation = BlockOperation()
     var results : [FredSeriesS] = []
+    var operationDict: [IndexPath: FredSeriesS] = [:]
+    
 //    let frc: NSFetchedResultsController<FetchRequestResult>
 //    weak var collectionView: UICollectionView?
 //    weak var delegate: FRCCollectionViewDelegate?

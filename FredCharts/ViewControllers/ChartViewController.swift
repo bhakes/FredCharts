@@ -20,8 +20,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         setupViews()
         guard let fredController = fredController else { fatalError("FredController is empty")}
-        guard let series = series else { fatalError("FredController is empty")}
-        guard let id = series.id else { fatalError("FredController is empty")}
+        guard let series = series else { return }
+        guard let id = series.id else { return }
         
         fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
@@ -78,6 +78,12 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             newModelPoints = originalModelPoints.filter({
                 Date.dateXMonthsAgo(numberOfMonthsAgo: months).timeIntervalSince1970 < $0.0
             })
+            if newModelPoints.count == 0 {
+                newModelPoints = originalModelPoints.filter({
+                    
+                    endDate?.dateXMonthsAgo(numberOfMonthsAgo: months).timeIntervalSince1970 ?? 0 < $0.0
+                })
+            }
         } else {
             newModelPoints = originalModelPoints.filter({ (x, y) -> Bool in
                 Date.dateXYearsAgo(numberOfYearsAgo: filterYears).timeIntervalSince1970 < x
@@ -207,7 +213,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             case 0:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: segmentedControlReuseID, for: indexPath) as? ChartSegmentedControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
                 cell.delegate = self
-                
+                cell.selectionStyle = .none
                 return cell
                 
             case 1:
@@ -240,7 +246,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 
             default:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
-               
+                
                 return cell
             }
         case 1:

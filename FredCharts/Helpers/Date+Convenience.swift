@@ -65,4 +65,21 @@ extension Date {
         let dateXYearsAgo = Date.from(year: yearNumber, month: monthNumber, day: dayNumber)
         return dateXYearsAgo
     }
+    
+    func dateXMonthsAgo(numberOfMonthsAgo: Int) -> Date{
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "YYYY"
+        let year = dateformatter.string(from: self)
+        dateformatter.dateFormat = "MM"
+        let month = dateformatter.string(from: self)
+        dateformatter.dateFormat = "dd"
+        let day = dateformatter.string(from: self)
+        
+        let yearNumber = Int(year)!
+        let monthNumber = Int(month)! - numberOfMonthsAgo
+        let dayNumber = Int(day)!
+        let dateXYearsAgo = Date.from(year: yearNumber, month: monthNumber, day: dayNumber)
+        return dateXYearsAgo
+    }
 }

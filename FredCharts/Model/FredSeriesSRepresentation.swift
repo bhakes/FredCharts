@@ -51,8 +51,7 @@ struct FredSeriesSRepresentation: Decodable {
 
 func ==(lhs: FredSeriesSRepresentation, rhs: FredSeriesS) -> Bool {
     return rhs.id == lhs.id &&
-        rhs.title == lhs.title &&
-        rhs.lastUpdated == lhs.lastUpdated
+        rhs.title == lhs.title
 }
 
 func ==(lhs: FredSeriesS, rhs: FredSeriesSRepresentation) -> Bool {

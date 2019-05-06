@@ -46,6 +46,8 @@
 		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
 		D1BAEF0D227BECF900793346 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF0C227BECF900793346 /* Keys.swift */; };
+		D1BAEF11227BFC5300793346 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF10227BFC5300793346 /* ConcurrentOperation.swift */; };
+		D1BAEF13227BFE8E00793346 /* FetchRecentDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF12227BFE8E00793346 /* FetchRecentDataOperation.swift */; };
 		D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */; };
 		D1EDBA4A223A096400F8C3B2 /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */; };
 		D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */; };
@@ -95,6 +97,9 @@
 		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
 		D1BAEF0C227BECF900793346 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 2.xcdatamodel"; sourceTree = "<group>"; };
+		D1BAEF10227BFC5300793346 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		D1BAEF12227BFE8E00793346 /* FetchRecentDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRecentDataOperation.swift; sourceTree = "<group>"; };
 		D1EDBA47223A096400F8C3B2 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		D1EDBA48223A096400F8C3B2 /* PickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
 		D1EDBA4C223A0ACD00F8C3B2 /* PickerControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerControlDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +141,7 @@
 				D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */,
 				D13B1CCC223849BF0013B514 /* Protocol */,
 				D13B1CA62235DC560013B514 /* Helpers */,
+				D1BAEF0F227BFC1600793346 /* Operation */,
 				D1393E0B22348AE1001D8B91 /* ModelController */,
 				D1393E0822348844001D8B91 /* Views */,
 				D1393E072234883D001D8B91 /* ViewControllers */,
@@ -258,6 +264,15 @@
 				D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D1BAEF0F227BFC1600793346 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				D1BAEF10227BFC5300793346 /* ConcurrentOperation.swift */,
+				D1BAEF12227BFE8E00793346 /* FetchRecentDataOperation.swift */,
+			);
+			path = Operation;
 			sourceTree = "<group>";
 		};
 		D1EDBA4B223A096800F8C3B2 /* PickerViewController */ = {
@@ -384,6 +399,7 @@
 				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
 				D1BAEF0D227BECF900793346 /* Keys.swift in Sources */,
+				D1BAEF13227BFE8E00793346 /* FetchRecentDataOperation.swift in Sources */,
 				D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */,
 				D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */,
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
@@ -403,6 +419,7 @@
 				D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */,
 				D13B1CB02236D40C0013B514 /* ChartControlTableViewCell.swift in Sources */,
 				D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */,
+				D1BAEF11227BFC5300793346 /* ConcurrentOperation.swift in Sources */,
 				D151D576223ACB78004E205E /* FavoritesCollectionViewCell.swift in Sources */,
 				D13B1CBE223700E10013B514 /* ChartSliderControlTableViewCell.swift in Sources */,
 				D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */,
@@ -634,9 +651,10 @@
 		D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */,
 				D1393DE422346A10001D8B91 /* FredCharts.xcdatamodel */,
 			);
-			currentVersion = D1393DE422346A10001D8B91 /* FredCharts.xcdatamodel */;
+			currentVersion = D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */;
 			path = FredCharts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

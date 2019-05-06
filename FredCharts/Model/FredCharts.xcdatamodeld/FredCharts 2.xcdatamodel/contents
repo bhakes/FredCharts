@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FredSeriesS" representedClassName="FredSeriesS" syncable="YES" codeGenerationType="class">
+        <attribute name="frequency" attributeType="String" syncable="YES"/>
+        <attribute name="frequencyShort" attributeType="String" syncable="YES"/>
+        <attribute name="groupPopularity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="lastObservationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastObservationSyncDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastObservationValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastUpdated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="observationEnd" attributeType="String" syncable="YES"/>
+        <attribute name="observationStart" attributeType="String" syncable="YES"/>
+        <attribute name="popularity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="prevObservationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="prevObservationValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="realtimeEnd" attributeType="String" syncable="YES"/>
+        <attribute name="realtimeStart" attributeType="String" syncable="YES"/>
+        <attribute name="seasonalAdjustment" attributeType="String" syncable="YES"/>
+        <attribute name="seasonalAdjustmentShort" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="units" attributeType="String" syncable="YES"/>
+        <attribute name="unitsShort" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FredSeriesS" positionX="-63" positionY="-18" width="128" height="360"/>
+    </elements>
+</model>
