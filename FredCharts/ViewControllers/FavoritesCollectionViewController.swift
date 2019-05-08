@@ -63,9 +63,21 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
                 
                 self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { (observation, error) in
                     
-                    series.lastObservationValue = Double(observation?.observations[0].value ?? "0.0")!
-                    series.prevObservationValue = Double(observation?.observations[1].value ?? "0.0")!
+                    if let lastValue = observation?.observations[0].value {
+                        if let doubleLastValue = Double(lastValue){
+                        series.lastObservationValue = doubleLastValue
+                        }
+                    } else {
+                        series.lastObservationValue = 0.0
+                    }
                     
+                    if let prevValue = observation?.observations[1].value {
+                        if let doublePrevValue = Double(prevValue){
+                            series.prevObservationValue = doublePrevValue
+                        }
+                    } else {
+                        series.prevObservationValue = 0.0
+                    }
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
