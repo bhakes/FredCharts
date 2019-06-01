@@ -25,6 +25,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
+            print(resultingObservations?.count)
             self.seriesObservations = resultingObservations
             if let seriesObservations = self.seriesObservations {
                 
@@ -126,7 +127,18 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     func updateChart(with modelPoints: [GridPoint]){
         
         guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
-        self.modelPoints = modelPoints
+        
+        self.modelPoints = []
+        switch modelPoints.count {
+        
+        case 0..<400:
+            self.modelPoints = modelPoints
+        default:
+            for i in stride(from: 0, to: modelPoints.count - 3, by: 4) {
+                 self.modelPoints += modelPoints[i..<i+3]
+            }
+        }
+        print(self.modelPoints.count)
         chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
         guard let chart = chart else { fatalError("Could not produce chart") }
         chartContainerView.addSubview(chart.view)
@@ -327,7 +339,16 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     // MARK: - PickerControlDelegateMethods
     
     func pickerStartDateSelected(with date: Date) {
-        startDate = date
+        guard let endDate = endDate else { return }
+        
+        /* if the user uses the picker to try pass a start date that's
+        greater than the end date, return the startDate as the endDate minus a week.
+        */
+        if date >= endDate {
+            startDate = endDate - 1 // return a different date
+        } else {
+            startDate = date
+        }
         filterChartDates()
         chartDetailsTableView.reloadData()
     }
