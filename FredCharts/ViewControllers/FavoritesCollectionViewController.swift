@@ -280,6 +280,10 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         self.present(alert, animated: true, completion: nil)
     }
     
+    @objc func editTapped(sender: UIBarButtonItem) {
+        
+    }
+    
     // MARK: - Properties
     let favoritesCellReuseID = "FavoritesCell"
     let fredController = FredController()
@@ -307,5 +311,6 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         return frc
         
     }()
+    
 
 }
