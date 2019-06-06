@@ -216,6 +216,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
             let indexPath : IndexPath = iPath![0]
             destVC.fredController = self.fredController
             destVC.series = fetchedResultsController.object(at: indexPath)
+            destVC.chartAlreadySaved = true
             
         } else if segue.identifier == "SearchSegue" {
             guard let destVC = segue.destination as? SearchResultsTableViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }

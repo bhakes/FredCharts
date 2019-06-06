@@ -265,36 +265,15 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhO-g5-ZON">
-                                        <rect key="frame" x="323" y="112" width="40" height="40"/>
-                                        <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="e9a-Nb-Nah"/>
-                                            <constraint firstAttribute="height" constant="40" id="jlf-4e-kSR"/>
-                                            <constraint firstAttribute="width" constant="40" id="xl6-ja-chq"/>
-                                            <constraint firstAttribute="width" constant="40" id="yOs-64-hwg"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="usdzicon">
-                                            <color key="titleColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="3FY-Pc-HR4" kind="popoverPresentation" popoverAnchorView="QhO-g5-ZON" id="Yw0-ep-Bpd">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="TTc-pD-T48" firstAttribute="top" secondItem="iqw-NN-owB" secondAttribute="bottom" constant="2" id="5ED-pS-e9k"/>
                                     <constraint firstAttribute="bottom" secondItem="pF7-Q7-9aq" secondAttribute="bottom" constant="10" id="6gw-Nw-sGw"/>
                                     <constraint firstAttribute="height" constant="160" id="K0V-Yh-ZF3"/>
-                                    <constraint firstAttribute="trailing" secondItem="QhO-g5-ZON" secondAttribute="trailing" constant="12" id="Q2Y-8J-h1f"/>
                                     <constraint firstItem="TTc-pD-T48" firstAttribute="centerX" secondItem="uh5-lN-Y3H" secondAttribute="centerX" id="VhG-1D-T6z"/>
                                     <constraint firstItem="iqw-NN-owB" firstAttribute="leading" secondItem="uh5-lN-Y3H" secondAttribute="leading" constant="8" id="WSK-wr-C0u"/>
                                     <constraint firstAttribute="trailing" secondItem="iqw-NN-owB" secondAttribute="trailing" constant="8" id="grP-1x-6k5"/>
-                                    <constraint firstAttribute="bottom" secondItem="QhO-g5-ZON" secondAttribute="bottom" constant="8" id="nw5-hQ-ozH"/>
                                     <constraint firstItem="pF7-Q7-9aq" firstAttribute="centerX" secondItem="uh5-lN-Y3H" secondAttribute="centerX" id="rFP-XH-3Pd"/>
                                     <constraint firstItem="iqw-NN-owB" firstAttribute="top" secondItem="uh5-lN-Y3H" secondAttribute="top" constant="8" id="xU8-jf-Nnj"/>
                                 </constraints>
@@ -436,9 +415,6 @@
             <point key="canvasLocation" x="-1310" y="92"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="usdzicon" width="852" height="844"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ska-5H-vdq"/>
     </inferredMetricsTieBreakers>

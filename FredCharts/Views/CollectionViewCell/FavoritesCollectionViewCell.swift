@@ -14,10 +14,11 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         updateViews()
+        
     }
     
     // MARK: - Private Methods
-    func updateViews(){
+    private func updateViews(){
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
         self.contentView.layer.cornerRadius = 10
@@ -35,8 +36,8 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.contentView.layer.cornerRadius).cgPath
     }
     
-    // MARK: - Properties
     
+    // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
@@ -45,6 +46,10 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var unitsLabel: UILabel!
     @IBOutlet weak var lastDateLabel: UILabel!
     @IBOutlet weak var prevDateLabel: UILabel!
+    
+    // MARK: - Properties
+    var deleteLabel1: UILabel!
+    var deleteLabel2: UILabel!
     
     var series: FredSeriesS?
     

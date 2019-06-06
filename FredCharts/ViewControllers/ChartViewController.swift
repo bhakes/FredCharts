@@ -68,6 +68,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         idLabel.textColor = .white
         
         registerTableViewCellNibs()
+        checkIfChartAlreadySaved()
     }
     
     private func filterChartDates(by filterYears: Int){
@@ -97,6 +98,13 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             self.chartDetailsTableView.reloadData()
         }
         
+    }
+    
+    private func checkIfChartAlreadySaved(){
+        if chartAlreadySaved {
+            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
     
     private func filterChartDates(){
@@ -440,4 +448,5 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     let segmentedControlReuseID = "SegmentedControlCell"
     let normalControlReuseID = "NormalControlCell"
     let sliderControlReuseID = "SliderControlCell"
+    var chartAlreadySaved: Bool = false
 }
