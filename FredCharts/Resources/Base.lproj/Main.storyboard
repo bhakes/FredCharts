@@ -122,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vc-kf-Nbr">
-                                <rect key="frame" x="0.0" y="224" width="375" height="243"/>
+                                <rect key="frame" x="0.0" y="157" width="375" height="310"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -147,10 +147,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-lN-Y3H">
-                                <rect key="frame" x="0.0" y="64" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="93"/>
                                 <subviews>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pF7-Q7-9aq">
-                                        <rect key="frame" x="162.5" y="100" width="50" height="50"/>
+                                        <rect key="frame" x="162.5" y="33" width="50" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfL-D6-AmS">
                                                 <rect key="frame" x="9" y="15" width="32.5" height="20.5"/>
@@ -168,19 +168,10 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iqw-NN-owB">
-                                        <rect key="frame" x="8" y="8" width="359" height="76.5"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="14.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyS-QN-UZQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="pFi-Rf-sVr"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="FTp-eZ-wPo">
-                                                <rect key="frame" x="0.0" y="62" width="359" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="14.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Id:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkD-Lx-1vX">
                                                         <rect key="frame" x="0.0" y="0.0" width="14.5" height="14.5"/>
@@ -199,7 +190,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TTc-pD-T48">
-                                        <rect key="frame" x="82.5" y="86.5" width="210" height="137"/>
+                                        <rect key="frame" x="82.5" y="24.5" width="210" height="137"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-3d-scF">
                                                 <rect key="frame" x="0.0" y="0.0" width="88" height="137"/>
@@ -270,7 +261,7 @@
                                 <constraints>
                                     <constraint firstItem="TTc-pD-T48" firstAttribute="top" secondItem="iqw-NN-owB" secondAttribute="bottom" constant="2" id="5ED-pS-e9k"/>
                                     <constraint firstAttribute="bottom" secondItem="pF7-Q7-9aq" secondAttribute="bottom" constant="10" id="6gw-Nw-sGw"/>
-                                    <constraint firstAttribute="height" constant="160" id="K0V-Yh-ZF3"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="PnM-5m-WJO"/>
                                     <constraint firstItem="TTc-pD-T48" firstAttribute="centerX" secondItem="uh5-lN-Y3H" secondAttribute="centerX" id="VhG-1D-T6z"/>
                                     <constraint firstItem="iqw-NN-owB" firstAttribute="leading" secondItem="uh5-lN-Y3H" secondAttribute="leading" constant="8" id="WSK-wr-C0u"/>
                                     <constraint firstAttribute="trailing" secondItem="iqw-NN-owB" secondAttribute="trailing" constant="8" id="grP-1x-6k5"/>
@@ -284,6 +275,7 @@
                             <constraint firstItem="exk-jg-Fsu" firstAttribute="trailing" secondItem="1vc-kf-Nbr" secondAttribute="trailing" id="1dR-95-Nwg"/>
                             <constraint firstItem="Oo3-Pz-6Ct" firstAttribute="leading" secondItem="exk-jg-Fsu" secondAttribute="leading" id="43z-gC-fhl"/>
                             <constraint firstItem="Oo3-Pz-6Ct" firstAttribute="trailing" secondItem="exk-jg-Fsu" secondAttribute="trailing" id="EQM-pa-G5o"/>
+                            <constraint firstItem="uh5-lN-Y3H" firstAttribute="height" secondItem="1vc-kf-Nbr" secondAttribute="height" multiplier="0.3" priority="999" id="Ese-yM-gJf"/>
                             <constraint firstItem="exk-jg-Fsu" firstAttribute="trailing" secondItem="uh5-lN-Y3H" secondAttribute="trailing" id="IVc-ma-OY5"/>
                             <constraint firstItem="uh5-lN-Y3H" firstAttribute="leading" secondItem="exk-jg-Fsu" secondAttribute="leading" id="OVm-lk-s2M"/>
                             <constraint firstItem="Oo3-Pz-6Ct" firstAttribute="top" secondItem="1vc-kf-Nbr" secondAttribute="bottom" id="SPD-RV-BQu"/>
@@ -311,11 +303,9 @@
                         <outlet property="lastLabel" destination="8kp-5W-0qM" id="Nqh-o1-v9T"/>
                         <outlet property="peakDateLabel" destination="K8V-2W-oZ1" id="cu8-c2-Xch"/>
                         <outlet property="peakLabel" destination="j5n-ht-dK8" id="pMy-q9-8zK"/>
-                        <outlet property="seriesLabel" destination="LyS-QN-UZQ" id="eNL-AI-oXp"/>
                         <outlet property="statsStackView" destination="TTc-pD-T48" id="Nb5-Hc-ixd"/>
                         <outlet property="trackerLabel" destination="zfL-D6-AmS" id="6vc-GA-F1n"/>
                         <outlet property="trackerStatsView" destination="pF7-Q7-9aq" id="MnN-Nn-vLJ"/>
-                        <segue destination="OUj-eq-w4Q" kind="show" identifier="BackToFavorites" id="Bqp-9D-67T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEB-h6-vrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,7 +315,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2570" y="2013"/>
+            <point key="canvasLocation" x="-2716" y="2010"/>
         </scene>
         <!--TestAR View Controller-->
         <scene sceneID="3yZ-7W-5Uw">
@@ -361,58 +351,51 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="lq9-tZ-nwq" kind="relationship" relationship="rootViewController" id="sm1-v0-DW9"/>
+                        <segue destination="2Xq-Zn-pky" kind="relationship" relationship="rootViewController" id="A4b-qb-Bnu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUy-Hd-peE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2324" y="93"/>
         </scene>
-        <!--Fed Charts-->
-        <scene sceneID="x36-r7-X9D">
+        <!--Favorites Table View Controller-->
+        <scene sceneID="t2N-NQ-wEh">
             <objects>
-                <collectionViewController id="lq9-tZ-nwq" customClass="FavoritesCollectionViewController" customModule="FredCharts" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sf6-g5-ikg">
+                <tableViewController id="2Xq-Zn-pky" customClass="FavoritesTableViewController" customModule="FredCharts" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8cm-uS-9Wp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3w3-Cv-fxM">
-                            <size key="itemSize" width="160" height="160"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoritesCell" id="kuL-Gg-6w6">
-                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoritesCellReuseID" rowHeight="60" id="kzF-u3-9lT">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzF-u3-9lT" id="LB2-FR-d7K">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                                <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
-                                    <segue destination="OsK-xk-I2n" kind="show" identifier="ViewChartSegue" id="ska-5H-vdq"/>
+                                    <segue destination="OsK-xk-I2n" kind="show" identifier="ViewChartSegue" id="m3h-aC-Csd"/>
                                 </connections>
-                            </collectionViewCell>
-                        </cells>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="lq9-tZ-nwq" id="0UF-w8-v39"/>
-                            <outlet property="delegate" destination="lq9-tZ-nwq" id="iJL-Zy-B6d"/>
+                            <outlet property="dataSource" destination="2Xq-Zn-pky" id="NhG-P1-lmz"/>
+                            <outlet property="delegate" destination="2Xq-Zn-pky" id="SZH-oD-2Vc"/>
                         </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Fed Charts" id="fa6-CG-3dC">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="z7Z-OB-Pjd"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zBe-Kr-GwG">
+                    </tableView>
+                    <navigationItem key="navigationItem" id="YLy-g0-f3X">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="HH7-rS-2ZL">
                             <connections>
-                                <segue destination="Pqg-9v-bdZ" kind="show" identifier="SearchSegue" id="etr-02-sOw"/>
+                                <segue destination="Pqg-9v-bdZ" kind="show" identifier="SearchSegue" id="hwn-Sq-XT2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FEc-mf-Rjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCn-pI-EKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1310" y="92"/>
+            <point key="canvasLocation" x="-1319" y="92"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

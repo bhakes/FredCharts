@@ -1,44 +1,37 @@
 //
-//  FavoritesCollectionViewController.swift
+//  FavoritesTableViewController.swift
 //  FredCharts
 //
-//  Created by Benjamin Hakes on 3/14/19.
+//  Created by Benjamin Hakes on 6/11/19.
 //  Copyright © 2019 Benjamin Hakes. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-private let reuseIdentifier = "Cell"
+class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-class FavoritesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate{
-
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(UINib(nibName: "FavoritesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: favoritesCellReuseID)
-        // Do any additional setup after loading the view.
+        self.tableView!.register(UINib(nibName: "FavoritesTableViewCell", bundle: nil), forCellReuseIdentifier: favoritesCellReuseID)
+        tableView.tableFooterView = UIView()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "FedCharts"
         getDataUpdates()
-        
     }
-    
+
     // reload the data when the new collection view re-appears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupLongPress()
+        self.title = "FedCharts"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        adjustLargeTitleSize()
     }
     
-    // Private Methods
-    private func setupLongPress(){
-        let lpgr : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(FavoritesCollectionViewController.handleLongPress(gestureRecognizer:)))
-        lpgr.minimumPressDuration = 0.5
-        lpgr.delegate = self
-        lpgr.delaysTouchesBegan = true
-        self.collectionView?.addGestureRecognizer(lpgr)
-    }
-    
-    // Private Methods
+    // MARK: - Private Methods
     
     private func getDataUpdates(forceUpdate: Bool = false){
         
@@ -48,7 +41,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
             let refreshThresholdDate = Date(timeIntervalSinceNow: -60 * 60 * 12)
             
             for series in self.fetchedResultsController.fetchedObjects ?? [] {
-               
+                
                 group.enter()
                 // Only refresh if it's been more than 12 hours since the last sync
                 if let lastSyncDate = series.lastObservationSyncDate, lastSyncDate >= refreshThresholdDate, forceUpdate == false {
@@ -62,7 +55,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
                     
                     if let lastValue = observation?.observations[0].value {
                         if let doubleLastValue = Double(lastValue){
-                        series.lastObservationValue = doubleLastValue
+                            series.lastObservationValue = doubleLastValue
                         }
                     } else {
                         series.lastObservationValue = 0.0
@@ -87,12 +80,12 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
                     print("Done with: \(id)")
                     group.leave()
                 }
-            
+                
             }
             
             group.wait()
             print("Done with all.")
-        
+            
         }
         
         let operation2 = BlockOperation {
@@ -103,7 +96,7 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
             }
             
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.tableView.reloadData()
             }
         }
         
@@ -116,14 +109,17 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         
     }
     
-
-    // MARK: UICollectionViewDataSource
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    
+    
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         if fetchedResultsController.sections?.count ?? 0 > 0 {
             return fetchedResultsController.sections?[section].numberOfObjects ?? 0
         } else {
@@ -131,9 +127,10 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         }
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesCollectionViewCell else { fatalError("Could not dequeue cell as FavoritesCollectionViewCell") }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesTableViewCell else { fatalError("Could not dequeue cell as FavoritesTableViewCell") }
+        
         let series = fetchedResultsController.object(at: indexPath)
         
         if let frequency = series.frequency {
@@ -152,10 +149,10 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         }
         
         print(units)
-       
+        
         let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(series.lastObservationValue)
         let formattedPrevValue = UnitDefinition.bestDefinition(for: units).format(series.prevObservationValue)
-
+        
         cell.lastObservationValueLabel.text = formattedLastValue
         cell.previousObservationValueLabel.text = formattedPrevValue
         
@@ -178,39 +175,24 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         operationDict[indexPath] = series
         
         // Configure the cell
-    
+        
         return cell
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        return CGSize(width: collectionView.bounds.size.width, height: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let kWhateverHeightYouWant = 100
-        return CGSize(width: collectionView.bounds.size.width - 12, height: CGFloat(kWhateverHeightYouWant))
-    }
-
-    // MARK: UICollectionViewDelegate
-    
-    
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesCollectionViewCell else { fatalError("Could not dequeue cell as FavoritesCollectionViewCell") }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesTableViewCell else { fatalError("Could not dequeue cell as FavoritesTableViewCell") }
         
         performSegue(withIdentifier: "ViewChartSegue", sender: cell)
     }
+
     
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         if segue.identifier == "ViewChartSegue" {
             guard let destVC = segue.destination as? ChartViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
-            let iPath = self.collectionView.indexPathsForSelectedItems
-            let indexPath : IndexPath = iPath![0]
+            guard let indexPath = self.tableView.indexPathForSelectedRow else { fatalError("Could not get indexPath for selected item.") }
             destVC.fredController = self.fredController
             destVC.series = fetchedResultsController.object(at: indexPath)
             destVC.chartAlreadySaved = true
@@ -222,36 +204,10 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         
     }
     
-    // MARK: - NSFetchedResultsControllerDelegate
-    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         blockOperation = BlockOperation()
     }
     
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        blockOperation = BlockOperation()
-//    }
-    
-    
-    // MARK: - Tap gesture Recognizer
-    @objc (handleLongPressWithGestureRecognizer:)
-    func handleLongPress(gestureRecognizer : UILongPressGestureRecognizer){
-        
-        if (gestureRecognizer.state != UIGestureRecognizer.State.ended){
-            return
-        }
-        
-        let p = gestureRecognizer.location(in: self.collectionView)
-        
-        if let indexPath : IndexPath = (self.collectionView?.indexPathForItem(at: p)){
-            //do whatever you need to do
-            displayAlertViewController(for: indexPath)
-            
-        }
-        
-    }
-    
-
     // MARK: - Display Alert View Controller
     func displayAlertViewController(for indexPath: IndexPath){
         
@@ -270,9 +226,9 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
                     print("failure saving moc")
                 }
                 DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                    self.tableView.reloadData()
                 }
-            
+                
             }}))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -280,6 +236,28 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
     
     @objc func editTapped(sender: UIBarButtonItem) {
         
+    }
+    
+    // MARK: - Editing Style
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let chartToDelete = self.fetchedResultsController.object(at: indexPath)
+            self.fetchedResultsController.managedObjectContext.delete(chartToDelete)
+            do {
+                try self.fetchedResultsController.managedObjectContext.save()
+            } catch {
+                print("failure saving moc")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }
     }
     
     // MARK: - Properties
@@ -305,6 +283,5 @@ class FavoritesCollectionViewController: UICollectionViewController, UICollectio
         return frc
         
     }()
-    
 
 }

@@ -19,6 +19,10 @@
 		D1393E0A22348862001D8B91 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */; };
 		D1393E0D22348B72001D8B91 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0C22348B72001D8B91 /* ChartViewController.swift */; };
 		D1393E0F2234900A001D8B91 /* Observations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393E0E2234900A001D8B91 /* Observations.swift */; };
+		D139ABC222B0A3670091D057 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */; };
+		D139ABC622B0A3D50091D057 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139ABC422B0A3D50091D057 /* FavoritesTableViewCell.swift */; };
+		D139ABC722B0A3D50091D057 /* FavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D139ABC522B0A3D50091D057 /* FavoritesTableViewCell.xib */; };
+		D139ABC922B0B3D10091D057 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139ABC822B0B3D10091D057 /* ViewController+Extension.swift */; };
 		D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */; };
 		D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */; };
 		D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */; };
@@ -69,6 +73,10 @@
 		D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		D1393E0C22348B72001D8B91 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		D1393E0E2234900A001D8B91 /* Observations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observations.swift; sourceTree = "<group>"; };
+		D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		D139ABC422B0A3D50091D057 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		D139ABC522B0A3D50091D057 /* FavoritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableViewCell.xib; sourceTree = "<group>"; };
+		D139ABC822B0B3D10091D057 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
 		D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerExampleViewController.swift; sourceTree = "<group>"; };
 		D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailsTableView.swift; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 			children = (
 				D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */,
 				D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */,
+				D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */,
 				D1393E0C22348B72001D8B91 /* ChartViewController.swift */,
 				D1EDBA4B223A096800F8C3B2 /* PickerViewController */,
 				D1799FC62239C87A00AD8D56 /* TestARViewController.swift */,
@@ -202,6 +211,7 @@
 		D1393E0822348844001D8B91 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D139ABC322B0A3B80091D057 /* TableViewCell */,
 				D151D571223ACB4C004E205E /* CollectionViewCell */,
 				D13B1CB72236E55E0013B514 /* ChartControl */,
 				D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */,
@@ -219,6 +229,15 @@
 			path = ModelController;
 			sourceTree = "<group>";
 		};
+		D139ABC322B0A3B80091D057 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D139ABC422B0A3D50091D057 /* FavoritesTableViewCell.swift */,
+				D139ABC522B0A3D50091D057 /* FavoritesTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		D13B1CA62235DC560013B514 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +249,7 @@
 				D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */,
 				D13B1CD1223870410013B514 /* UnitTypes.swift */,
 				D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */,
+				D139ABC822B0B3D10091D057 /* ViewController+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -355,6 +375,7 @@
 				D13B1CBF223700E10013B514 /* ChartSliderControlTableViewCell.xib in Resources */,
 				D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */,
 				D13B1CBB2236EC0C0013B514 /* ChartNormalControlTableViewCell.xib in Resources */,
+				D139ABC722B0A3D50091D057 /* FavoritesTableViewCell.xib in Resources */,
 				D1393DE222346A10001D8B91 /* Main.storyboard in Resources */,
 				D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */,
 				D151D577223ACB78004E205E /* FavoritesCollectionViewCell.xib in Resources */,
@@ -397,9 +418,11 @@
 				D13B1CC5223718E60013B514 /* ChartController.swift in Sources */,
 				D151D570223AC7DF004E205E /* FredSeriesS+Convenience.swift in Sources */,
 				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
+				D139ABC222B0A3670091D057 /* FavoritesTableViewController.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
 				D1BAEF0D227BECF900793346 /* Keys.swift in Sources */,
 				D1BAEF13227BFE8E00793346 /* FetchRecentDataOperation.swift in Sources */,
+				D139ABC622B0A3D50091D057 /* FavoritesTableViewCell.swift in Sources */,
 				D1EDBA49223A096400F8C3B2 /* PickerViewController.swift in Sources */,
 				D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */,
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
@@ -422,6 +445,7 @@
 				D1BAEF11227BFC5300793346 /* ConcurrentOperation.swift in Sources */,
 				D151D576223ACB78004E205E /* FavoritesCollectionViewCell.swift in Sources */,
 				D13B1CBE223700E10013B514 /* ChartSliderControlTableViewCell.swift in Sources */,
+				D139ABC922B0B3D10091D057 /* ViewController+Extension.swift in Sources */,
 				D1393E0322348420001D8B91 /* SearchResultsTableViewController.swift in Sources */,
 				D1393E0F2234900A001D8B91 /* Observations.swift in Sources */,
 				D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */,

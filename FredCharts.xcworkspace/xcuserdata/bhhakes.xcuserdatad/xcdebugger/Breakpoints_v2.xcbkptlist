@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/FavoritesCollectionViewController.swift"
-            timestampString = "581482704.162014"
+            timestampString = "582007618.130048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -33,6 +33,54 @@
             endingLineNumber = "26"
             landmarkName = "init(title:id:realtimeStart:realtimeEnd:observationStart:observationEnd:frequency:frequencyShort:units:unitsShort:seasonalAdjustment:seasonalAdjustmentShort:lastUpdated:popularity:groupPopularity:notes:lastObservationValue:prevObservationValue:lastObservationDate:prevObservationDate:lastObservationSyncDate:context:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FredCharts/ViewControllers/FavoritesTableViewController.swift"
+            timestampString = "582007618.131004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getDataUpdates(forceUpdate:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in FredCharts.FavoritesTableViewController.(getDataUpdates in _6454E84B289E56796DCA36ED71B710DF)(forceUpdate: Swift.Bool) -&gt; ()"
+                  moduleName = "FredCharts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ViewControllers/FavoritesTableViewController.swift"
+                  timestampString = "582007618.353603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "1842">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;FredCharts.Observations&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in FredCharts.FavoritesTableViewController.(getDataUpdates in _6454E84B289E56796DCA36ED71B710DF)(forceUpdate: Swift.Bool) -&gt; ()"
+                  moduleName = "FredCharts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ViewControllers/FavoritesTableViewController.swift"
+                  timestampString = "582007618.357336"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "361">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

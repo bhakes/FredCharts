@@ -22,6 +22,9 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         guard let fredController = fredController else { fatalError("FredController is empty")}
         guard let series = series else { return }
         guard let id = series.id else { return }
+        self.title = series.title
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        adjustLargeTitleSize()
         
         fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
@@ -55,10 +58,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
         headerContainer.backgroundColor = .mainColor
-        seriesLabel.textColor = .white
-        seriesLabel.text = series?.title
-        seriesLabel.adjustsFontSizeToFitWidth = true
-        seriesLabel.minimumScaleFactor = 0.7
         peakLabel.adjustsFontSizeToFitWidth = true
         peakLabel.minimumScaleFactor = 0.5
         lastLabel.adjustsFontSizeToFitWidth = true
@@ -376,7 +375,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             print("could not save to core data")
         }
         
-        performSegue(withIdentifier: "BackToFavorites", sender: self)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     
@@ -429,7 +428,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     var originalModelPoints: [GridPoint] = []
     var fredController: FredController?
-    @IBOutlet weak var seriesLabel: UILabel!
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
     @IBOutlet weak var headerContainer: UIView!
