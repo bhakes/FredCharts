@@ -22,9 +22,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         guard let fredController = fredController else { fatalError("FredController is empty")}
         guard let series = series else { return }
         guard let id = series.id else { return }
-        self.title = series.title
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        adjustLargeTitleSize()
+
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         
         fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
@@ -45,6 +44,10 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         CoreDataStack.shared.mainContext.reset()
@@ -58,6 +61,14 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
         headerContainer.backgroundColor = .mainColor
+        
+        // title label
+        titleLabel.text = series?.title
+        titleLabel.font = .boldSystemFont(ofSize: 32)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.4
+        titleLabel.textColor = .white
+        
         peakLabel.adjustsFontSizeToFitWidth = true
         peakLabel.minimumScaleFactor = 0.5
         lastLabel.adjustsFontSizeToFitWidth = true
@@ -433,6 +444,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     @IBOutlet weak var headerContainer: UIView!
     @IBOutlet weak var idLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statsStackView: UIStackView!
     @IBOutlet weak var trackerStatsView: UIView!
     @IBOutlet weak var trackerLabel: UILabel!

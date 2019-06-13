@@ -23,9 +23,6 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     
     func setupViews(){
         self.tableView.tableFooterView = UIView()
-        searchFilterButton.setTitleColor(.white, for: .normal)
-        searchFilterButton.backgroundColor = .mainColor
-        searchFilterButton.layer.borderWidth = 0.0
         navigationController?.navigationBar.layer.borderWidth = 0.0
         searchBar.barTintColor = .mainColor
         searchBar.layer.borderWidth = 0.0
@@ -87,6 +84,5 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     // MARK: - Properties
     var fredController: FredController = FredController()
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var searchFilterButton: UIButton!
     
 }

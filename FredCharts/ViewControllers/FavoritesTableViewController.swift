@@ -208,6 +208,11 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         blockOperation = BlockOperation()
     }
     
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    
     // MARK: - Display Alert View Controller
     func displayAlertViewController(for indexPath: IndexPath){
         

@@ -16,7 +16,6 @@ struct Appearance {
         UINavigationBar.appearance().barTintColor = .mainColor
         UINavigationBar.appearance().largeTitleTextAttributes = [ .foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [ .foregroundColor: UIColor.white]
-//        UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().layer.masksToBounds = false
         UINavigationBar.appearance().layer.shadowColor = UIColor.black.cgColor
