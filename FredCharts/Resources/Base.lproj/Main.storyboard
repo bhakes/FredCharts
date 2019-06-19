@@ -25,12 +25,16 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-vw-ZTq">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEb-Za-VhQ">
+                                        <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Try &quot;LIBOR&quot; or &quot;Inflation&quot;" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEb-Za-VhQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="barTintColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <scopeButtonTitles>
+                                                <string>Title</string>
+                                                <string>Title</string>
+                                            </scopeButtonTitles>
                                         </searchBar>
                                     </subviews>
                                 </stackView>
@@ -81,7 +85,7 @@
                                 <connections>
                                     <outlet property="detailLabel" destination="za9-JR-Edm" id="fi2-uC-D5j"/>
                                     <outlet property="titleLabel" destination="Q6I-t5-3g3" id="BDy-ZL-zJ4"/>
-                                    <segue destination="OsK-xk-I2n" kind="show" id="Bhk-Qt-ztx"/>
+                                    <segue destination="OsK-xk-I2n" kind="show" identifier="PreviewSegue" id="Bhk-Qt-ztx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

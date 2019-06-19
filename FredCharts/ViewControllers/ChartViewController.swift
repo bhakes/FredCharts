@@ -8,10 +8,11 @@
 
 import UIKit
 import SwiftCharts
+import CoreData
 
 typealias GridPoint = (Double, Double)
 
-class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate, ChartSegementedControlDelegate, PickerControlDelegate {
+class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
     
     
 
@@ -20,10 +21,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         setupViews()
         guard let fredController = fredController else { fatalError("FredController is empty")}
-        guard let series = series else { return }
-        guard let id = series.id else { return }
-
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        guard let id = chartAlreadySaved ? series?.id : seriesRepresentation?.id else { return }
         
         fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
@@ -44,15 +43,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        CoreDataStack.shared.mainContext.reset()
-    }
-    
     // MARK: - Private Methods
     
     private func setupViews(){
@@ -63,7 +53,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         headerContainer.backgroundColor = .mainColor
         
         // title label
-        titleLabel.text = series?.title
+        titleLabel.text = chartAlreadySaved ? series?.title : seriesRepresentation?.title
         titleLabel.font = .boldSystemFont(ofSize: 32)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.4
@@ -74,7 +64,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         lastLabel.adjustsFontSizeToFitWidth = true
         lastLabel.minimumScaleFactor = 0.5
         chartContainerView.backgroundColor = .mainColor
-        idLabel.text = series?.id
+        idLabel.text = chartAlreadySaved ? series?.id : seriesRepresentation?.id
         idLabel.textColor = .white
         
         registerTableViewCellNibs()
@@ -144,8 +134,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     func updateChart(with modelPoints: [GridPoint]){
         
-        guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
-        
         self.modelPoints = []
         switch modelPoints.count {
         
@@ -157,7 +145,14 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             }
         }
         print(self.modelPoints.count)
-        chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
+        if chartAlreadySaved {
+            guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
+            chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
+        } else {
+            guard let seriesRep = seriesRepresentation else { fatalError("Could not produce chart b/c there is no series present") }
+            chart = chartController.updateChart(with: modelPoints, for: seriesRep, in: chartContainerView)
+        }
+        
         guard let chart = chart else { fatalError("Could not produce chart") }
         chartContainerView.addSubview(chart.view)
         
@@ -180,27 +175,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         return tempModelPoints
         
-    }
-    
-    // MARK: - ChartSegementedControlDelegate
-    func segmentedControlDidChange(with integer: Int?) {
-        
-        // catch if the data is old and
-        // cannot be filtered by the segmented control0
-        let lastDate = self.modelPoints.last?.0
-        if lastDate! < (Date.dateXMonthsAgo(numberOfMonthsAgo: 6).timeIntervalSince1970), (lastDate! < (Date.dateXYearsAgo(numberOfYearsAgo: integer ?? 0).timeIntervalSince1970) && integer ?? 0 > 0) {
-            return
-        }
-        guard let integer = integer else {
-            DispatchQueue.main.async {
-                self.chart?.view.removeFromSuperview()
-                self.updateChart(with: self.originalModelPoints)
-                self.chartDetailsTableView.reloadData()
-            }
-            return
-        }
-        
-        filterChartDates(by: integer)
     }
     
 
@@ -380,6 +354,10 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     // MARK: - IBActions
     @IBAction func saveChart(_ sender: Any) {
         
+        guard let seriesRep = seriesRepresentation else {
+            return
+        }
+        _ = FredSeriesS(fredSeriesSRepresentation: seriesRep)
         do {
             try CoreDataStack.shared.mainContext.save()
         } catch {
@@ -439,6 +417,8 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     var originalModelPoints: [GridPoint] = []
     var fredController: FredController?
+    var backgroundMOC: NSManagedObjectContext?
+
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
     @IBOutlet weak var headerContainer: UIView!
@@ -459,4 +439,33 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     let normalControlReuseID = "NormalControlCell"
     let sliderControlReuseID = "SliderControlCell"
     var chartAlreadySaved: Bool = false
+}
+
+extension ChartViewController: ChartSegementedControlDelegate {
+    
+    // MARK: - ChartSegementedControlDelegate
+    func segmentedControlDidChange(with integer: Int?) {
+        
+        // catch if the data is old and
+        // cannot be filtered by the segmented control0
+        let lastDate = self.modelPoints.last?.0
+        if lastDate! < (Date.dateXMonthsAgo(numberOfMonthsAgo: 6).timeIntervalSince1970), (lastDate! < (Date.dateXYearsAgo(numberOfYearsAgo: integer ?? 0).timeIntervalSince1970) && integer ?? 0 > 0) {
+            return
+        }
+        guard let integer = integer else {
+            DispatchQueue.main.async {
+                self.chart?.view.removeFromSuperview()
+                self.updateChart(with: self.originalModelPoints)
+                self.chartDetailsTableView.reloadData()
+            }
+            return
+        }
+        
+        filterChartDates(by: integer)
+    }
+}
+
+
+extension ChartViewController: PickerControlDelegate {
+    
 }

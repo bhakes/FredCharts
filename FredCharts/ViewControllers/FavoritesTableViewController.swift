@@ -25,10 +25,12 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     // reload the data when the new collection view re-appears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.title = "FedCharts"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        adjustLargeTitleSize()
-        getDataUpdates()
+        if !initialLoad {
+            getDataUpdates()
+        } else {
+            initialLoad = false
+        }
+        
     }
     
     // MARK: - Private Methods
@@ -77,14 +79,14 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                     series.prevObservationDate = dateFormatter.date(from: (observation?.observations[1].date)!)
                     
                     series.lastObservationSyncDate = Date(timeIntervalSinceNow: 0)
-                    print("Done with: \(id)")
+                    
                     group.leave()
                 }
                 
             }
             
             group.wait()
-            print("Done with all.")
+            
             
         }
         
@@ -346,14 +348,13 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
-
-    
     // MARK: - Properties
     let favoritesCellReuseID = "FavoritesCell"
     let fredController = FredController()
     private var blockOperation = BlockOperation()
     var results : [FredSeriesS] = []
     var operationDict: [IndexPath: FredSeriesS] = [:]
+    private var initialLoad: Bool = true
     
     lazy var fetchedResultsController: NSFetchedResultsController<FredSeriesS> = {
         
