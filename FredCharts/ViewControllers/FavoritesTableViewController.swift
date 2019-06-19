@@ -30,6 +30,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         } else {
             initialLoad = false
         }
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     

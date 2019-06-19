@@ -18,7 +18,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         guard let fredController = fredController else { fatalError("FredController is empty")}
         
@@ -26,23 +25,24 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
             
-            print(resultingObservations?.count)
             self.seriesObservations = resultingObservations
             if let seriesObservations = self.seriesObservations {
                 
                 self.modelPoints = self.parseObseration(for: seriesObservations)
                 self.originalModelPoints = self.modelPoints
                 
-                DispatchQueue.main.async {
-                    self.updateChart(with: self.modelPoints)
-                    self.chartDetailsTableView.reloadData()
-                }
+                self.filterChartDates(by: 0)
+
             }
 
         }
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
     // MARK: - Private Methods
     
     private func setupViews(){
