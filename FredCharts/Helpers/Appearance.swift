@@ -22,6 +22,7 @@ struct Appearance {
         UINavigationBar.appearance().layer.shadowOpacity = 0.5
         UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 4.0)
         UINavigationBar.appearance().layer.shadowRadius = 4
+        UINavigationBar.appearance().prefersLargeTitles = true
         
     }
     

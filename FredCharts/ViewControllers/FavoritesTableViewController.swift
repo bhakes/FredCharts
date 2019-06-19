@@ -19,7 +19,6 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         self.tableView!.register(UINib(nibName: "FavoritesTableViewCell", bundle: nil), forCellReuseIdentifier: favoritesCellReuseID)
         tableView.tableFooterView = UIView()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "FedCharts"
         getDataUpdates()
     }
 
@@ -29,6 +28,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         self.title = "FedCharts"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         adjustLargeTitleSize()
+        getDataUpdates()
     }
     
     // MARK: - Private Methods
@@ -49,7 +49,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                     continue
                 }
                 
-                guard let id = series.id else { fatalError("Error: The series has no id!")}
+                guard let id = series.id else { return }
                 
                 self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { (observation, error) in
                     
@@ -184,7 +184,39 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         performSegue(withIdentifier: "ViewChartSegue", sender: cell)
     }
-
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard var seriesList = fetchedResultsController.fetchedObjects else { return }
+        fetchedResultsController.delegate  = nil
+        let seriesToMove = seriesList[sourceIndexPath.row]
+        seriesList.remove(at: sourceIndexPath.row)
+        seriesList.insert(seriesToMove, at: destinationIndexPath.row)
+        
+        for (i, series) in seriesList.enumerated() {
+            series.setValue(i, forKey: "position")
+        }
+        
+        do
+        {
+           try CoreDataStack.shared.mainContext.save()
+            
+        } catch{
+            print("Difficulty saving main context")
+            fetchedResultsController.delegate = self
+            return
+        }
+        fetchedResultsController.delegate = self
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    @IBAction func editing(sender: UIBarButtonItem) {
+        
+        isEditing = !isEditing
+        
+    }
     
     // MARK: - Navigation
 
@@ -205,6 +237,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
         blockOperation = BlockOperation()
     }
     
@@ -239,10 +272,22 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         self.present(alert, animated: true, completion: nil)
     }
     
-    @objc func editTapped(sender: UIBarButtonItem) {
+    @IBAction func editTapped(sender: UIBarButtonItem) {
+        
+        isEditing = !isEditing
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped(sender:)))
+        self.navigationItem.leftBarButtonItem = doneBarButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         
     }
     
+    @objc func doneTapped(sender: UIBarButtonItem) {
+        
+        isEditing = !isEditing
+        let editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
+        self.navigationItem.leftBarButtonItem = editBarButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+    }
     // MARK: - Editing Style
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -258,12 +303,50 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
             } catch {
                 print("failure saving moc")
             }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
             
         }
     }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .update:
+            guard let indexPath = indexPath else { return }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        case .move:
+            guard let oldIndexPath = indexPath,
+                let newIndexPath = newIndexPath else { return }
+            tableView.deleteRows(at: [oldIndexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        @unknown default:
+            fatalError("Unhandled Exception")
+        }
+    }
+    
+
     
     // MARK: - Properties
     let favoritesCellReuseID = "FavoritesCell"
@@ -277,10 +360,10 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         let fetchRequest: NSFetchRequest<FredSeriesS> = FredSeriesS.fetchRequest()
         
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "realtimeStart", ascending: true)
+            NSSortDescriptor(key: "position", ascending: true)
         ]
         let moc = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "frequency", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         
         frc.delegate = self
         try? frc.performFetch()

@@ -32,6 +32,7 @@ extension FredSeriesS {
                      lastObservationDate: Date? = nil,
                      prevObservationDate: Date? = nil,
                      lastObservationSyncDate: Date? = nil,
+                     position: Int? = nil,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
     
         

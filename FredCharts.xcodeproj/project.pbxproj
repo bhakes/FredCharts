@@ -104,6 +104,7 @@
 		D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesSRepresentation.swift; sourceTree = "<group>"; };
 		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
+		D1A2C6DC22B995CC00E8EDBB /* FredCharts 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 3.xcdatamodel"; sourceTree = "<group>"; };
 		D1BAEF0C227BECF900793346 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 2.xcdatamodel"; sourceTree = "<group>"; };
 		D1BAEF10227BFC5300793346 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
@@ -675,10 +676,11 @@
 		D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D1A2C6DC22B995CC00E8EDBB /* FredCharts 3.xcdatamodel */,
 				D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */,
 				D1393DE422346A10001D8B91 /* FredCharts.xcdatamodel */,
 			);
-			currentVersion = D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */;
+			currentVersion = D1A2C6DC22B995CC00E8EDBB /* FredCharts 3.xcdatamodel */;
 			path = FredCharts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

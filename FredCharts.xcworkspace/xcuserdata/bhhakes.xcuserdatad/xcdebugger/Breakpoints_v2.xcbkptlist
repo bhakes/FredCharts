@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/Model/FredSeriesS+Convenience.swift"
-            timestampString = "578846846.876506"
+            timestampString = "582599683.101455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "init(title:id:realtimeStart:realtimeEnd:observationStart:observationEnd:frequency:frequencyShort:units:unitsShort:seasonalAdjustment:seasonalAdjustmentShort:lastUpdated:popularity:groupPopularity:notes:lastObservationValue:prevObservationValue:lastObservationDate:prevObservationDate:lastObservationSyncDate:context:)"
+            landmarkName = "init(title:id:realtimeStart:realtimeEnd:observationStart:observationEnd:frequency:frequencyShort:units:unitsShort:seasonalAdjustment:seasonalAdjustmentShort:lastUpdated:popularity:groupPopularity:notes:lastObservationValue:prevObservationValue:lastObservationDate:prevObservationDate:lastObservationSyncDate:position:context:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
