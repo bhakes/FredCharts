@@ -202,7 +202,6 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         do
         {
-//           fetchedResultsController.delegate = self
             try CoreDataStack.shared.mainContext.save()
             
         } catch{
