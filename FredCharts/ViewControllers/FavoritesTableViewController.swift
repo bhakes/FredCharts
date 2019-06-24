@@ -189,26 +189,26 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+       
         guard var seriesList = fetchedResultsController.fetchedObjects else { return }
-        fetchedResultsController.delegate  = nil
         let seriesToMove = seriesList[sourceIndexPath.row]
         seriesList.remove(at: sourceIndexPath.row)
         seriesList.insert(seriesToMove, at: destinationIndexPath.row)
         
         for (i, series) in seriesList.enumerated() {
+            print("\(i) \(series.title)")
             series.setValue(i, forKey: "position")
         }
         
         do
         {
-           try CoreDataStack.shared.mainContext.save()
+//           fetchedResultsController.delegate = self
+            try CoreDataStack.shared.mainContext.save()
             
         } catch{
             print("Difficulty saving main context")
-            fetchedResultsController.delegate = self
             return
         }
-        fetchedResultsController.delegate = self
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -246,33 +246,6 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-    }
-    
-    
-    // MARK: - Display Alert View Controller
-    func displayAlertViewController(for indexPath: IndexPath){
-        
-        let chartToDelete = self.fetchedResultsController.object(at: indexPath)
-        var chartId = ""
-        if chartToDelete.id != nil{
-            chartId = chartToDelete.id!
-        }
-        let alert = UIAlertController(title: "Are you sure you want to delete series \(chartId)?", message: "Press okay to remove it from the Library", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
-            if action.style == .destructive {
-                self.fetchedResultsController.managedObjectContext.delete(chartToDelete)
-                do {
-                    try self.fetchedResultsController.managedObjectContext.save()
-                } catch {
-                    print("failure saving moc")
-                }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            }}))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func editTapped(sender: UIBarButtonItem) {
@@ -324,30 +297,24 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         }
     }
     
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any,
-                    at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            guard let newIndexPath = newIndexPath else { return }
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        case .update:
-            guard let indexPath = indexPath else { return }
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        case .move:
-            guard let oldIndexPath = indexPath,
-                let newIndexPath = newIndexPath else { return }
-            tableView.deleteRows(at: [oldIndexPath], with: .automatic)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        case .delete:
-            guard let indexPath = indexPath else { return }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        @unknown default:
-            fatalError("Unhandled Exception")
+                        didChange anObject: Any,
+                        at indexPath: IndexPath?,
+                        for type: NSFetchedResultsChangeType,
+                        newIndexPath: IndexPath?) {
+            print("\(anObject) \(type.rawValue) \(indexPath) \(newIndexPath)")
+            switch type {
+            case .insert:
+                guard let newIndexPath = newIndexPath else { return }
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            case .delete:
+                guard let indexPath = indexPath else { return }
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            default:
+                break
+            }
         }
-    }
     
     // MARK: - Properties
     let favoritesCellReuseID = "FavoritesCell"

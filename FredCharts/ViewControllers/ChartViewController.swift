@@ -12,10 +12,8 @@ import CoreData
 
 typealias GridPoint = (Double, Double)
 
-class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewDelegate {
+class ChartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -32,9 +30,9 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 self.originalModelPoints = self.modelPoints
                 
                 self.filterChartDates(by: 0)
-
+                
             }
-
+            
         }
         
     }
@@ -91,7 +89,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 Date.dateXYearsAgo(numberOfYearsAgo: filterYears).timeIntervalSince1970 < x
             })
         }
-
+        
         DispatchQueue.main.async {
             self.chart?.view.removeFromSuperview()
             self.updateChart(with: newModelPoints)
@@ -111,7 +109,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         var newModelPoints: [GridPoint] = []
         guard let startDate = startDate, let endDate = endDate else { return }
-        
         newModelPoints = originalModelPoints.filter({ (arg) -> Bool in
             
             let (x, _) = arg
@@ -136,12 +133,12 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
         self.modelPoints = []
         switch modelPoints.count {
-        
+            
         case 0..<400:
             self.modelPoints = modelPoints
         default:
             for i in stride(from: 0, to: modelPoints.count - 3, by: 4) {
-                 self.modelPoints += modelPoints[i..<i+3]
+                self.modelPoints += modelPoints[i..<i+3]
             }
         }
         print(self.modelPoints.count)
@@ -177,16 +174,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - TableView Data Source Delegate Methods
     
@@ -198,12 +185,12 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         switch section{
         case 0:
             return 3
-//        case 1:
-//            return 1
-//        case 2:
-//            return 1
-//        case 3:
-//            return 7
+            //        case 1:
+            //            return 1
+            //        case 2:
+            //            return 1
+            //        case 3:
+        //            return 7
         default:
             return 1
         }
@@ -233,7 +220,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 
                 cell.attributeValueLabel.text = "\(dateStr)"
                 return cell
-            
+                
             case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
                 cell.tag = 1
@@ -296,7 +283,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
             return "Edit Series: \(String(describing: series!.title))"
         }
     }
-
+    
     // MARK: - TapGesture
     
     @IBAction func longPressed(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -328,28 +315,6 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
         }
     }
     
-    // MARK: - PickerControlDelegateMethods
-    
-    func pickerStartDateSelected(with date: Date) {
-        guard let endDate = endDate else { return }
-        
-        /* if the user uses the picker to try pass a start date that's
-        greater than the end date, return the startDate as the endDate minus a week.
-        */
-        if date >= endDate {
-            startDate = endDate - 1 // return a different date
-        } else {
-            startDate = date
-        }
-        filterChartDates()
-        chartDetailsTableView.reloadData()
-    }
-    
-    func pickerEndDateSelected(with date: Date) {
-        endDate = date
-        filterChartDates()
-        chartDetailsTableView.reloadData()
-    }
     
     // MARK: - IBActions
     @IBAction func saveChart(_ sender: Any) {
@@ -378,6 +343,12 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     
     var modelPoints: [GridPoint] = [] {
         didSet {
+            
+            
+            if isInitialUpdate {
+                isInitialUpdate = false
+                return
+            }
             DispatchQueue.main.async {
                 
                 var units: String
@@ -410,7 +381,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
                 
                 self.peakDateLabel.text = "\(dateStr)"
                 self.lastDateLabel.text = "\(dateStr2)"
-
+                
             }
         }
     }
@@ -418,7 +389,7 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     var originalModelPoints: [GridPoint] = []
     var fredController: FredController?
     var backgroundMOC: NSManagedObjectContext?
-
+    
     @IBOutlet weak var chartContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
     @IBOutlet weak var headerContainer: UIView!
@@ -434,12 +405,13 @@ class ChartViewController: UIViewController, UITableViewDataSource ,UITableViewD
     @IBOutlet weak var peakDateLabel: UILabel!
     var startDate: Date?
     var endDate: Date?
-    
+    var isInitialUpdate: Bool = true
     let segmentedControlReuseID = "SegmentedControlCell"
     let normalControlReuseID = "NormalControlCell"
     let sliderControlReuseID = "SliderControlCell"
     var chartAlreadySaved: Bool = false
 }
+
 
 extension ChartViewController: ChartSegementedControlDelegate {
     
@@ -468,4 +440,26 @@ extension ChartViewController: ChartSegementedControlDelegate {
 
 extension ChartViewController: PickerControlDelegate {
     
+    // MARK: - PickerControlDelegateMethods
+    
+    func pickerStartDateSelected(with date: Date) {
+        guard let endDate = endDate else { return }
+        
+        /* if the user uses the picker to try pass a start date that's
+         greater than the end date, return the startDate as the endDate minus a week.
+         */
+        if date >= endDate {
+            startDate = endDate - 1 // return a different date
+        } else {
+            startDate = date
+        }
+        filterChartDates()
+        chartDetailsTableView.reloadData()
+    }
+    
+    func pickerEndDateSelected(with date: Date) {
+        endDate = date
+        filterChartDates()
+        chartDetailsTableView.reloadData()
+    }
 }

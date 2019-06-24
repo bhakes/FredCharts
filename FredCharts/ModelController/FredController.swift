@@ -36,7 +36,7 @@ class FredController {
         
         
         // Add in the search term
-         urlComponents.queryItems = [searchQueryItem1, searchQueryItem2, searchQueryItem3]
+        urlComponents.queryItems = [searchQueryItem1, searchQueryItem2, searchQueryItem3]
         
         // Recompose all those individual components back into a fully
         // realized search URL
@@ -80,7 +80,7 @@ class FredController {
                 let jsonDecoder = JSONDecoder()
                 
                 let results = try jsonDecoder.decode(FredSearchSearchResults.self, from: data)
-
+                
                 self.searchResults = results.seriess
                 
                 // Send back the results to the completion handler
