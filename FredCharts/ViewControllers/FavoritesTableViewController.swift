@@ -151,8 +151,6 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
             units = series.units!
         }
         
-        print(units)
-        
         let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(series.lastObservationValue)
         let formattedPrevValue = UnitDefinition.bestDefinition(for: units).format(series.prevObservationValue)
         
@@ -196,7 +194,6 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         seriesList.insert(seriesToMove, at: destinationIndexPath.row)
         
         for (i, series) in seriesList.enumerated() {
-            print("\(i) \(series.title)")
             series.setValue(i, forKey: "position")
         }
         
@@ -302,7 +299,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                         at indexPath: IndexPath?,
                         for type: NSFetchedResultsChangeType,
                         newIndexPath: IndexPath?) {
-            print("\(anObject) \(type.rawValue) \(indexPath) \(newIndexPath)")
+        
             switch type {
             case .insert:
                 guard let newIndexPath = newIndexPath else { return }
