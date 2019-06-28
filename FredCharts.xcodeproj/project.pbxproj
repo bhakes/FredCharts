@@ -48,6 +48,7 @@
 		D151D579223B07FD004E205E /* FredSeriesSRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */; };
 		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
+		D17B449322C66B2D006C5C4B /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17B449222C66B2D006C5C4B /* ProgressHUD.swift */; };
 		D1BAEF0D227BECF900793346 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF0C227BECF900793346 /* Keys.swift */; };
 		D1BAEF11227BFC5300793346 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF10227BFC5300793346 /* ConcurrentOperation.swift */; };
 		D1BAEF13227BFE8E00793346 /* FetchRecentDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF12227BFE8E00793346 /* FetchRecentDataOperation.swift */; };
@@ -102,6 +103,7 @@
 		D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesSRepresentation.swift; sourceTree = "<group>"; };
 		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
+		D17B449222C66B2D006C5C4B /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		D1A2C6DC22B995CC00E8EDBB /* FredCharts 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 3.xcdatamodel"; sourceTree = "<group>"; };
 		D1BAEF0C227BECF900793346 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		D1BAEF0E227BF82700793346 /* FredCharts 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				D13B1CB72236E55E0013B514 /* ChartControl */,
 				D1393E0922348862001D8B91 /* SearchResultTableViewCell.swift */,
 				D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */,
+				D17B449222C66B2D006C5C4B /* ProgressHUD.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			files = (
 				D13B1CC5223718E60013B514 /* ChartController.swift in Sources */,
 				D151D570223AC7DF004E205E /* FredSeriesS+Convenience.swift in Sources */,
+				D17B449322C66B2D006C5C4B /* ProgressHUD.swift in Sources */,
 				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
 				D139ABC222B0A3670091D057 /* FavoritesTableViewController.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,

@@ -17,6 +17,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupProgressHUD()
         guard let fredController = fredController else { fatalError("FredController is empty")}
         
         guard let id = chartAlreadySaved ? series?.id : seriesRepresentation?.id else { return }
@@ -40,6 +41,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     // MARK: - Private Methods
     
@@ -69,6 +71,12 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         checkIfChartAlreadySaved()
     }
     
+    private func setupProgressHUD(){
+        let progressHUD = ProgressHUD(text: "Loading Chart")
+        self.progressHUD = progressHUD
+        self.chartSubContainerView.addSubview(progressHUD)
+    }
+    
     private func filterChartDates(by filterYears: Int){
         
         var newModelPoints: [GridPoint] = []
@@ -92,6 +100,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         DispatchQueue.main.async {
             self.chart?.view.removeFromSuperview()
+            self.progressHUD?.removeFromSuperview()
             self.updateChart(with: newModelPoints)
             self.chartDetailsTableView.reloadData()
         }
@@ -144,14 +153,14 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         print(self.modelPoints.count)
         if chartAlreadySaved {
             guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
-            chart = chartController.updateChart(with: modelPoints, for: series, in: chartContainerView)
+            chart = chartController.updateChart(with: modelPoints, for: series, in: chartSubContainerView)
         } else {
             guard let seriesRep = seriesRepresentation else { fatalError("Could not produce chart b/c there is no series present") }
-            chart = chartController.updateChart(with: modelPoints, for: seriesRep, in: chartContainerView)
+            chart = chartController.updateChart(with: modelPoints, for: seriesRep, in: chartSubContainerView)
         }
         
         guard let chart = chart else { fatalError("Could not produce chart") }
-        chartContainerView.addSubview(chart.view)
+        chartSubContainerView.addSubview(chart.view)
         
     }
     
@@ -340,7 +349,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     fileprivate var chart: Chart?
     var series: FredSeriesS?
     var seriesRepresentation: FredSeriesSRepresentation?
-    
+    var progressHUD: ProgressHUD?
     var modelPoints: [GridPoint] = [] {
         didSet {
             
@@ -391,10 +400,10 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     var backgroundMOC: NSManagedObjectContext?
     
     @IBOutlet weak var chartContainerView: UIView!
+    @IBOutlet weak var chartSubContainerView: UIView!
     @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
     @IBOutlet weak var headerContainer: UIView!
     @IBOutlet weak var idLabel: UILabel!
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statsStackView: UIStackView!
     @IBOutlet weak var trackerStatsView: UIView!
