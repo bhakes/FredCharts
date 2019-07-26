@@ -44,5 +44,5 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    var delegate: ChartSegementedControlDelegate?
+    weak var delegate: ChartSegementedControlDelegate?
 }

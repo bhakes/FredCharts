@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PickerControlDelegate {
+protocol PickerControlDelegate: AnyObject {
     func pickerStartDateSelected(with date: Date)
     
     func pickerEndDateSelected(with date: Date)

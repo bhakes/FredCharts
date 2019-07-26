@@ -48,9 +48,9 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         
         guard let searchText = searchBar.text else { return }
         
-        fredController.searchForFredSeries(with: searchText){_,_ in
+        fredController.searchForFredSeries(with: searchText){ [weak self] _,_ in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
         

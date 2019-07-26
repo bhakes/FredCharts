@@ -19,13 +19,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" translatesAutoresizingMaskIntoConstraints="NO" id="zCo-T0-H38">
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="3" translatesAutoresizingMaskIntoConstraints="NO" id="zCo-T0-H38">
                         <rect key="frame" x="40" y="8" width="240" height="29"/>
                         <segments>
                             <segment title="All"/>
                             <segment title="10Y"/>
                             <segment title="5Y"/>
-                            <segment title="1Y"/>
+                            <segment title="1Y" enabled="NO"/>
                             <segment title="6M"/>
                         </segments>
                         <connections>

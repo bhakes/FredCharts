@@ -64,7 +64,7 @@ class PickerViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var delegate: PickerControlDelegate?
+    weak var delegate: PickerControlDelegate?
     var startFlag: Bool = true
     var startDate: Date?
     var endDate: Date?

@@ -108,7 +108,7 @@ class ChartController {
     }
     
     
-    func updateChart(with modelPoints: [GridPoint], for seriesRep: FredSeriesSRepresentation, in viewToPlaceChart: UIView) -> Chart{
+    func updateChart(with modelPoints: [GridPoint], for seriesRep: FredSeriesSRepresentation, in viewToPlaceChart: UIView) -> Chart {
         
         let units = seriesRep.units
         // Build Label Settings
@@ -202,7 +202,7 @@ class ChartController {
         
     }
     
-    func getDateFormatter(with date: Date) -> String{
+    func getDateFormatter(with date: Date) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/YY"

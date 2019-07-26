@@ -27,10 +27,10 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.seriesObservations = resultingObservations
             if let seriesObservations = self.seriesObservations {
                 
-                self.modelPoints = self.parseObseration(for: seriesObservations)
-                self.originalModelPoints = self.modelPoints
+                let newModelPoints = self.parseObseration(for: seriesObservations)
+                self.originalModelPoints = newModelPoints
                 
-                self.filterChartDates(by: 0)
+                self.filterChartDates(by: 1)
                 
             }
             
@@ -71,6 +71,19 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         checkIfChartAlreadySaved()
     }
     
+    private func registerTableViewCellNibs(){
+        chartDetailsTableView.register(UINib(nibName: "ChartSegmentedControlTableViewCell", bundle: nil), forCellReuseIdentifier: segmentedControlReuseID)
+        chartDetailsTableView.register(UINib(nibName: "ChartNormalControlTableViewCell", bundle: nil), forCellReuseIdentifier: normalControlReuseID)
+        chartDetailsTableView.register(UINib(nibName: "ChartSliderControlTableViewCell", bundle: nil), forCellReuseIdentifier: sliderControlReuseID)
+    }
+    
+    private func checkIfChartAlreadySaved(){
+        if chartAlreadySaved {
+            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
     private func setupProgressHUD(){
         let progressHUD = ProgressHUD(text: "Loading Chart")
         self.progressHUD = progressHUD
@@ -107,12 +120,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    private func checkIfChartAlreadySaved(){
-        if chartAlreadySaved {
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItem?.isEnabled = false
-        }
-    }
+    
     
     private func filterChartDates(){
         
@@ -126,37 +134,60 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         DispatchQueue.main.async {
             self.chart?.view.removeFromSuperview()
+            self.progressHUD?.removeFromSuperview()
             self.updateChart(with: newModelPoints)
             self.chartDetailsTableView.reloadData()
         }
         
     }
     
-    private func registerTableViewCellNibs(){
-        chartDetailsTableView.register(UINib(nibName: "ChartSegmentedControlTableViewCell", bundle: nil), forCellReuseIdentifier: segmentedControlReuseID)
-        chartDetailsTableView.register(UINib(nibName: "ChartNormalControlTableViewCell", bundle: nil), forCellReuseIdentifier: normalControlReuseID)
-        chartDetailsTableView.register(UINib(nibName: "ChartSliderControlTableViewCell", bundle: nil), forCellReuseIdentifier: sliderControlReuseID)
+    
+    
+    private func updateDatesAndLables(modelPoints: [GridPoint]) {
+
+        var units: String
+        if self.series?.units != nil {
+            units = (self.series?.units)!
+        } else {
+            units = "Units"
+        }
+        let dateF = DateFormatter()
+        dateF.dateFormat = "M/YY"
+        let peakValue = modelPoints.max {$0.1<$1.1}?.1
+        let peakDate = modelPoints.max {$0.1<$1.1}?.0
+        let lastValue = modelPoints.last?.1
+        let lastDate = modelPoints.last?.0
+        
+        self.startDate = Date(timeIntervalSince1970: modelPoints.first!.0)
+        self.endDate = Date(timeIntervalSince1970: lastDate!)
+        
+        let formattedPeakValue = UnitDefinition.bestDefinition(for: units).format(peakValue!)
+        let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(lastValue!)
+        let dateStr = dateF.string(from: Date(timeIntervalSince1970: peakDate ?? 0))
+        
+        let dateStr2 = dateF.string(from: Date(timeIntervalSince1970: lastDate ?? 0))
+        
+        DispatchQueue.main.async {
+            self.peakLabel.text = formattedPeakValue
+            self.lastLabel.text = formattedLastValue
+            
+            self.peakDateLabel.text = "\(dateStr)"
+            self.lastDateLabel.text = "\(dateStr2)"
+        }
+        
     }
     
     func updateChart(with modelPoints: [GridPoint]){
         
-        self.modelPoints = []
-        switch modelPoints.count {
-            
-        case 0..<400:
-            self.modelPoints = modelPoints
-        default:
-            for i in stride(from: 0, to: modelPoints.count - 3, by: 4) {
-                self.modelPoints += modelPoints[i..<i+3]
-            }
-        }
-        print(self.modelPoints.count)
+        self.modelPoints = modelPoints
+        updateDatesAndLables(modelPoints: modelPoints)
+
         if chartAlreadySaved {
             guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
-            chart = chartController.updateChart(with: modelPoints, for: series, in: chartSubContainerView)
+            chart = chartController?.updateChart(with: modelPoints, for: series, in: chartSubContainerView)
         } else {
             guard let seriesRep = seriesRepresentation else { fatalError("Could not produce chart b/c there is no series present") }
-            chart = chartController.updateChart(with: modelPoints, for: seriesRep, in: chartSubContainerView)
+            chart = chartController?.updateChart(with: modelPoints, for: seriesRep, in: chartSubContainerView)
         }
         
         guard let chart = chart else { fatalError("Could not produce chart") }
@@ -345,55 +376,12 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: - Properties
     var seriesObservations: Observations?
-    var chartController: ChartController = ChartController()
+    var chartController: ChartController? = ChartController()
     fileprivate var chart: Chart?
     var series: FredSeriesS?
     var seriesRepresentation: FredSeriesSRepresentation?
     var progressHUD: ProgressHUD?
-    var modelPoints: [GridPoint] = [] {
-        didSet {
-            
-            
-            if isInitialUpdate {
-                isInitialUpdate = false
-                return
-            }
-            DispatchQueue.main.async {
-                
-                var units: String
-                if self.series?.units != nil {
-                    units = (self.series?.units)!
-                } else {
-                    units = "Units"
-                }
-                
-                //
-                
-                let peakValue = self.modelPoints.max {$0.1<$1.1}?.1
-                let peakDate = self.modelPoints.max {$0.1<$1.1}?.0
-                
-                let lastValue = self.modelPoints.last?.1
-                let lastDate = self.modelPoints.last?.0
-                self.startDate = Date(timeIntervalSince1970: self.modelPoints.first!.0)
-                self.endDate = Date(timeIntervalSince1970: lastDate!)
-                
-                let formattedPeakValue = UnitDefinition.bestDefinition(for: units).format(peakValue!)
-                let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(lastValue!)
-                
-                self.peakLabel.text = formattedPeakValue
-                self.lastLabel.text = formattedLastValue
-                let dateF = DateFormatter()
-                dateF.dateFormat = "M/YY"
-                let dateStr = dateF.string(from: Date(timeIntervalSince1970: peakDate ?? 0))
-                
-                let dateStr2 = dateF.string(from: Date(timeIntervalSince1970: lastDate ?? 0))
-                
-                self.peakDateLabel.text = "\(dateStr)"
-                self.lastDateLabel.text = "\(dateStr2)"
-                
-            }
-        }
-    }
+    var modelPoints: [GridPoint] = []
     
     var originalModelPoints: [GridPoint] = []
     var fredController: FredController?
@@ -427,6 +415,10 @@ extension ChartViewController: ChartSegementedControlDelegate {
     // MARK: - ChartSegementedControlDelegate
     func segmentedControlDidChange(with integer: Int?) {
         
+        if let progressHUD = self.progressHUD {
+            self.chartSubContainerView.addSubview(progressHUD)
+        }
+        
         // catch if the data is old and
         // cannot be filtered by the segmented control0
         let lastDate = self.modelPoints.last?.0
@@ -436,6 +428,7 @@ extension ChartViewController: ChartSegementedControlDelegate {
         guard let integer = integer else {
             DispatchQueue.main.async {
                 self.chart?.view.removeFromSuperview()
+                
                 self.updateChart(with: self.originalModelPoints)
                 self.chartDetailsTableView.reloadData()
             }

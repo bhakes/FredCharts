@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol ChartSegementedControlDelegate {
+protocol ChartSegementedControlDelegate: AnyObject {
     func segmentedControlDidChange(with integer: Int?)
 }
