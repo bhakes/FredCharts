@@ -7,7 +7,6 @@
 //  Copyright (c) 2015 ivanschuetz. All rights reserved.
 //
 import UIKit
-import SwiftCharts
 
 class Env {
     
@@ -97,7 +96,7 @@ struct ExamplesDefaults {
     }
     
     static func fontWithSize(_ size: CGFloat) -> UIFont {
-        return UIFont(name: "Helvetica", size: size) ?? UIFont.systemFont(ofSize: size)
+        return UIFont(name: "Helvetica", size: size) ?? autoreleasepool { UIFont.systemFont(ofSize: size) }
     }
     
     static var guidelinesWidth: CGFloat {

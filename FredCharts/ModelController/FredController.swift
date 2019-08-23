@@ -167,6 +167,7 @@ class FredController {
             // Convert the data to JSON
             do {
                 // Declare, customize, use the decoder
+                
                 let jsonDecoder = JSONDecoder()
                 
                 let results = try jsonDecoder.decode(Observations.self, from: data)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftCharts
 import CoreData
 
 typealias GridPoint = (Double, Double)
@@ -22,7 +21,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         guard let id = chartAlreadySaved ? series?.id : seriesRepresentation?.id else { return }
         
-        fredController.getObservationsForFredSeries(with: id) { resultingObservations, error in
+        fredController.getObservationsForFredSeries(with: id) { [unowned self] resultingObservations, error in
             
             self.seriesObservations = resultingObservations
             if let seriesObservations = self.seriesObservations {
@@ -42,6 +41,16 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            // Your code...
+            print("I'm going to disappear")
+        }
+        
     }
     // MARK: - Private Methods
     
@@ -112,10 +121,14 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         DispatchQueue.main.async {
-            self.chart?.view.removeFromSuperview()
-            self.progressHUD?.removeFromSuperview()
-            self.updateChart(with: newModelPoints)
-            self.chartDetailsTableView.reloadData()
+            autoreleasepool{
+                self.chart?.view.removeFromSuperview()
+                self.progressHUD?.removeFromSuperview()
+                print("Updating the chart!")
+                self.updateChart(with: newModelPoints)
+                self.chartDetailsTableView.reloadData()
+            }
+            
         }
         
     }
@@ -125,18 +138,21 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     private func filterChartDates(){
         
         var newModelPoints: [GridPoint] = []
-        guard let startDate = startDate, let endDate = endDate else { return }
-        newModelPoints = originalModelPoints.filter({ (arg) -> Bool in
+//        guard let startDate = startDate, let endDate = endDate else { return }
+        newModelPoints = originalModelPoints /*.filter({ (arg) -> Bool in
             
             let (x, _) = arg
             return (startDate.timeIntervalSince1970 <= x && x <= endDate.timeIntervalSince1970)
-        })
+        })*/
         
         DispatchQueue.main.async {
-            self.chart?.view.removeFromSuperview()
-            self.progressHUD?.removeFromSuperview()
-            self.updateChart(with: newModelPoints)
-            self.chartDetailsTableView.reloadData()
+            autoreleasepool{
+                self.chart?.view.removeFromSuperview()
+                self.progressHUD?.removeFromSuperview()
+                print("Updating the chart!")
+                self.updateChart(with: newModelPoints)
+                self.chartDetailsTableView.reloadData()
+            }
         }
         
     }
@@ -376,7 +392,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: - Properties
     var seriesObservations: Observations?
-    var chartController: ChartController? = ChartController()
+    var chartController: ChartController?
     fileprivate var chart: Chart?
     var series: FredSeriesS?
     var seriesRepresentation: FredSeriesSRepresentation?
@@ -421,20 +437,16 @@ extension ChartViewController: ChartSegementedControlDelegate {
         
         // catch if the data is old and
         // cannot be filtered by the segmented control0
-        let lastDate = self.modelPoints.last?.0
-        if lastDate! < (Date.dateXMonthsAgo(numberOfMonthsAgo: 6).timeIntervalSince1970), (lastDate! < (Date.dateXYearsAgo(numberOfYearsAgo: integer ?? 0).timeIntervalSince1970) && integer ?? 0 > 0) {
+//        let lastDate = self.modelPoints.last?.0
+        if let lastDate = self.modelPoints.last?.0, lastDate < (Date.dateXMonthsAgo(numberOfMonthsAgo: 6).timeIntervalSince1970), (lastDate < (Date.dateXYearsAgo(numberOfYearsAgo: integer ?? 0).timeIntervalSince1970) && integer ?? 0 > 0) {
             return
         }
         guard let integer = integer else {
-            DispatchQueue.main.async {
-                self.chart?.view.removeFromSuperview()
-                
-                self.updateChart(with: self.originalModelPoints)
-                self.chartDetailsTableView.reloadData()
-            }
+            print("Filtering Dates for all dates")
+            filterChartDates()
             return
         }
-        
+        print("Filtering Dates by \(integer)")
         filterChartDates(by: integer)
     }
 }

@@ -70,6 +70,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
             let seriesRepresentation = self.fredController.searchResults[indexPath.row]
             destVC.fredController = self.fredController
             destVC.seriesRepresentation = seriesRepresentation
+            destVC.chartController = ChartController()
         }
         
         

@@ -54,7 +54,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                 
                 guard let id = series.id else { return }
                 
-                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { [weak self] (observation, error) in
+                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { [unowned self] (observation, error) in
                     
                     if let lastValue = observation?.observations[0].value {
                         if let doubleLastValue = Double(lastValue){
@@ -181,9 +181,13 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesTableViewCell else { fatalError("Could not dequeue cell as FavoritesTableViewCell") }
+        autoreleasepool {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesTableViewCell else { fatalError("Could not dequeue cell as FavoritesTableViewCell") }
+            performSegue(withIdentifier: "ViewChartSegue", sender: cell)
+        }
+       
         
-        performSegue(withIdentifier: "ViewChartSegue", sender: cell)
+        
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -227,6 +231,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
             destVC.fredController = self.fredController
             destVC.series = fetchedResultsController.object(at: indexPath)
             destVC.chartAlreadySaved = true
+            destVC.chartController = ChartController()
             
         } else if segue.identifier == "SearchSegue" {
             guard let destVC = segue.destination as? SearchResultsTableViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }

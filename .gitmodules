@@ -1,0 +1,3 @@
+[submodule "FredCharts/SwiftCharts"]
+	path = FredCharts/SwiftCharts
+	url = https://github.com/i-schuetz/SwiftCharts

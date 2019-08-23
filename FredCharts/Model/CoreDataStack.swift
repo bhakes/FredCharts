@@ -18,7 +18,7 @@ class CoreDataStack {
     
     lazy var container: NSPersistentContainer = { () -> NSPersistentContainer in
         let container = NSPersistentContainer(name: "FredCharts")
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        container.loadPersistentStores(completionHandler: { [weak self](_, error) in
             if let error = error {
                 fatalError("Failed to load persistent stores: \(error)")
             }

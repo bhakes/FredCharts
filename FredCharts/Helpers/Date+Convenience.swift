@@ -19,7 +19,11 @@ extension Date {
         dateComponents.month = month
         dateComponents.day = day
         
-        let date = gregorianCalendar.date(from: dateComponents)!
+        var date: Date = Date()
+        autoreleasepool {
+            date = gregorianCalendar.date(from: dateComponents)!
+        }
+        
         return date
     }
     

@@ -24,7 +24,11 @@ class DateHelper {
         
         // Create date from components
         let userCalendar = Calendar.current // user calendar
-        let dateValue = userCalendar.date(from: dateComponents)
+        var dateValue: Date?
+        autoreleasepool {
+            dateValue = userCalendar.date(from: dateComponents)
+        }
+        
         guard let date = dateValue else { fatalError("error convering date") }
         return date
         

@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import SwiftCharts
-
+import UIKit
 
 
 class ChartController {
     
-    func updateChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart{
+    func updateChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart {
         
         guard let units = series.units else { fatalError() }
         // Build Label Settings
         let labelSettingsYAxis = ChartLabelSettings(font: ExamplesDefaults.labelFont, fontColor: .white)
-        let labelSettingsXAxis = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10) , fontColor: .white, rotation: CGFloat(0.0), rotationKeep: ChartLabelDrawerRotationKeep.top)
+        let labelSettingsXAxis = ChartLabelSettings(font: autoreleasepool{ UIFont.systemFont(ofSize: 10) }, fontColor: .white, rotation: CGFloat(0.0), rotationKeep: ChartLabelDrawerRotationKeep.top)
         
         // build chartpoints
         let chartPoints = modelPoints.map{ChartPoint(x: ChartAxisValueDouble($0.0, labelSettings: labelSettingsXAxis), y: ChartAxisValueDouble($0.1))}
@@ -68,7 +67,7 @@ class ChartController {
         
         var currentPositionLabels: [UILabel] = []
         
-        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.mainColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {chartPointsWithScreenLoc in
+        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.mainColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {[weak self] chartPointsWithScreenLoc in
             
             currentPositionLabels.forEach{$0.removeFromSuperview()}
             
@@ -77,21 +76,24 @@ class ChartController {
                 let label = UILabel()
                 let date = Date(timeIntervalSince1970: chartPointWithScreenLoc.chartPoint.x.scalar)
                 
-                label.text = "\(self.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
-                label.sizeToFit()
-                label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
-                label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
-                label.textColor = UIColor.mainColor
+                if let s = self {
+                    label.text = "\(s.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
+                    label.sizeToFit()
+                    label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
+                    label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
+                    label.textColor = UIColor.mainColor
+                    
+                    currentPositionLabels.append(label)
+                    viewToPlaceChart.addSubview(label)
+                }
                 
-                currentPositionLabels.append(label)
-                viewToPlaceChart.addSubview(label)
             }
         }
         
         //        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
         //        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
-        let chart = Chart(
+        let chart = autoreleasepool{ Chart(
             frame: chartFrame,
             innerFrame: innerFrame,
             settings: chartSettings,
@@ -102,7 +104,7 @@ class ChartController {
                 chartPointsLineLayer,
                 chartPointsTrackerLayer
             ]
-        )
+        ) }
         return chart
 
     }
@@ -113,7 +115,7 @@ class ChartController {
         let units = seriesRep.units
         // Build Label Settings
         let labelSettingsYAxis = ChartLabelSettings(font: ExamplesDefaults.labelFont, fontColor: .white)
-        let labelSettingsXAxis = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10) , fontColor: .white, rotation: CGFloat(0.0), rotationKeep: ChartLabelDrawerRotationKeep.top)
+        let labelSettingsXAxis = ChartLabelSettings(font: autoreleasepool {UIFont.systemFont(ofSize: 10)} , fontColor: .white, rotation: CGFloat(0.0), rotationKeep: ChartLabelDrawerRotationKeep.top)
         
         // build chartpoints
         let chartPoints = modelPoints.map{ChartPoint(x: ChartAxisValueDouble($0.0, labelSettings: labelSettingsXAxis), y: ChartAxisValueDouble($0.1))}
@@ -186,7 +188,7 @@ class ChartController {
         //        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
         //        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
-        let chart = Chart(
+        let chart = autoreleasepool{  Chart(
             frame: chartFrame,
             innerFrame: innerFrame,
             settings: chartSettings,
@@ -197,7 +199,7 @@ class ChartController {
                 chartPointsLineLayer,
                 chartPointsTrackerLayer
             ]
-        )
+            ) }
         return chart
         
     }
