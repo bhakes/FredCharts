@@ -191,7 +191,6 @@
 		D151D576223ACB78004E205E /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */; };
 		D151D577223ACB78004E205E /* FavoritesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */; };
 		D151D579223B07FD004E205E /* FredSeriesSRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */; };
-		D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1799FC62239C87A00AD8D56 /* TestARViewController.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
 		D17B449322C66B2D006C5C4B /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17B449222C66B2D006C5C4B /* ProgressHUD.swift */; };
 		D1BAEF0D227BECF900793346 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF0C227BECF900793346 /* Keys.swift */; };
@@ -407,7 +406,6 @@
 		D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCollectionViewCell.xib; sourceTree = "<group>"; };
 		D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesSRepresentation.swift; sourceTree = "<group>"; };
-		D1799FC62239C87A00AD8D56 /* TestARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestARViewController.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
 		D17B449222C66B2D006C5C4B /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		D1A2C6DC22B995CC00E8EDBB /* FredCharts 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -500,7 +498,6 @@
 				D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */,
 				D1393E0C22348B72001D8B91 /* ChartViewController.swift */,
 				D1EDBA4B223A096800F8C3B2 /* PickerViewController */,
-				D1799FC62239C87A00AD8D56 /* TestARViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1143,7 +1140,6 @@
 				D13A9F5122EB58DC00844AA5 /* ChartAxisLabelsGeneratorBase.swift in Sources */,
 				D13A9F2822EB58DC00844AA5 /* ChartAxisValueString.swift in Sources */,
 				D13A9F5E22EB58DC00844AA5 /* Pannable.swift in Sources */,
-				D1799FC72239C87B00AD8D56 /* TestARViewController.swift in Sources */,
 				D13A9F4A22EB58DC00844AA5 /* ChartAxisValuesGeneratorNice.swift in Sources */,
 				D13A9F2922EB58DC00844AA5 /* ChartAxisValue.swift in Sources */,
 			);

@@ -329,31 +329,6 @@
             </objects>
             <point key="canvasLocation" x="-2716" y="2010"/>
         </scene>
-        <!--TestAR View Controller-->
-        <scene sceneID="3yZ-7W-5Uw">
-            <objects>
-                <viewController id="3FY-Pc-HR4" customClass="TestARViewController" customModule="FredCharts" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wlQ-3W-nwe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="526-HU-NHa">
-                                <rect key="frame" x="170" y="114" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissButtonClicked:" destination="3FY-Pc-HR4" eventType="touchUpInside" id="VfP-CT-qRo"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="vj0-JY-KrR"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RbG-S3-Vac" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-972" y="2104"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="BKW-Ja-iYq">
             <objects>
@@ -416,6 +391,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bhk-Qt-ztx"/>
+        <segue reference="m3h-aC-Csd"/>
     </inferredMetricsTieBreakers>
 </document>
