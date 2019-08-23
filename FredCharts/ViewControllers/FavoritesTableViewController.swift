@@ -54,7 +54,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                 
                 guard let id = series.id else { return }
                 
-                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { [unowned self] (observation, error) in
+                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { (observation, error) in
                     
                     if let lastValue = observation?.observations[0].value {
                         if let doubleLastValue = Double(lastValue){

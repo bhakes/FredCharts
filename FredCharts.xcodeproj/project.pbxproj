@@ -185,7 +185,6 @@
 		D13B1CCE223849D50013B514 /* ChartSegementedControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCD223849D50013B514 /* ChartSegementedControlDelegate.swift */; };
 		D13B1CD022386F0E0013B514 /* StringFormatterForCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */; };
 		D13B1CD2223870410013B514 /* UnitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CD1223870410013B514 /* UnitTypes.swift */; };
-		D151D563223AB403004E205E /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */; };
 		D151D566223AB5A0004E205E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D565223AB5A0004E205E /* CoreDataStack.swift */; };
 		D151D56E223AC2CE004E205E /* FredSeriesS+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D56D223AC2CE004E205E /* FredSeriesS+Encodable.swift */; };
 		D151D570223AC7DF004E205E /* FredSeriesS+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D56F223AC7DF004E205E /* FredSeriesS+Convenience.swift */; };
@@ -402,7 +401,6 @@
 		D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatterForCharts.swift; sourceTree = "<group>"; };
 		D13B1CD1223870410013B514 /* UnitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTypes.swift; sourceTree = "<group>"; };
 		D1434E0C22398A4A00CFEDD0 /* FredCharts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FredCharts.entitlements; sourceTree = "<group>"; };
-		D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
 		D151D565223AB5A0004E205E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D151D56D223AC2CE004E205E /* FredSeriesS+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FredSeriesS+Encodable.swift"; sourceTree = "<group>"; };
 		D151D56F223AC7DF004E205E /* FredSeriesS+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FredSeriesS+Convenience.swift"; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				D1393E0222348420001D8B91 /* SearchResultsTableViewController.swift */,
-				D151D562223AB403004E205E /* FavoritesCollectionViewController.swift */,
 				D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */,
 				D1393E0C22348B72001D8B91 /* ChartViewController.swift */,
 				D1EDBA4B223A096800F8C3B2 /* PickerViewController */,
@@ -1054,7 +1051,6 @@
 				D13B1CC12237017B0013B514 /* Appearance.swift in Sources */,
 				D13A9F7922EB58DC00844AA5 /* CatmullPathGenerator.swift in Sources */,
 				D13A9F4922EB58DC00844AA5 /* ChartAxisValuesGeneratorFixed.swift in Sources */,
-				D151D563223AB403004E205E /* FavoritesCollectionViewController.swift in Sources */,
 				D13A9F3C22EB58DC00844AA5 /* ChartAxisValueStaticGenerator.swift in Sources */,
 				D13A9F3022EB58DC00844AA5 /* ChartTimeUtils.swift in Sources */,
 				D13A9F2A22EB58DC00844AA5 /* ChartAxisValueDoubleScreenLoc.swift in Sources */,
