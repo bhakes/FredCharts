@@ -10,10 +10,39 @@ import Foundation
 
 class FredController {
     
-    // to be refactored later
-    let baseURL = "https://api.stlouisfed.org/fred/series"
-    let apiKey = Keys.apiKey
-    var searchResults: [FredSeriesSRepresentation] = []
+    // MARK: - Initializers
+    init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
+    
+    /*
+     Generic apiRequest
+     */
+    private func apiRequest<T: Codable>(from urlRequest: URLRequest,
+                                        completion: @escaping (T?, Error?) -> Void) {
+        session.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError(domain: "com.lambdaSchool.ErrorDomain", code: -1, userInfo: nil))
+                return
+            }
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                let decodedObject = try jsonDecoder.decode(T.self, from: data)
+                completion(decodedObject, nil)
+            } catch {
+                print("Error:\(error)")
+                completion(nil, error)
+            }
+            }.resume()
+    }
+    
+    
     
     // Add the completion last
     func searchForFredSeries(with searchTerm: String, completion: @escaping ([FredSeriesSRepresentation]?, Error?) -> Void) {
@@ -186,4 +215,68 @@ class FredController {
         // "Newly-initialized tasks begin in a suspended state, so you need to call this method to start the task."
         dataTask.resume()
     }
+    
+    
+    // MARK: - Properties
+    
+    // to be refactored later
+    let session: URLSession!
+    let baseURL = "https://api.stlouisfed.org/fred/series"
+    let apiKey = Keys.apiKey
+    var searchResults: [FredSeriesSRepresentation] = []
+}
+
+extension FredController {
+    
+    // URLRequest Creation
+    func createRequest(for apiCallType: APICallType, with searchTerm: String? = nil,_ completion: @escaping ([FredSeriesSRepresentation]?, Error?) -> Void) -> URLRequest? {
+        
+        switch apiCallType {
+            
+        // GET questions
+        case .GETFredSeriesSearch:
+            
+            // Establish the base url for our search
+            guard let baseURL = URL(string: "\(baseURL)/search")
+                else {
+                    fatalError("Unable to construct baseURL")
+            }
+            guard let searchTerm = searchTerm else {
+                NSLog("No search term was present.")
+                return nil
+            }
+            
+            // Decompose it into its components
+            guard var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+                fatalError("Unable to resolve baseURL to components")
+            }
+            
+            // Create the query item using `search` and the search term
+            let searchQueryItem1 = URLQueryItem(name: "search_text", value: searchTerm)
+            let searchQueryItem2 = URLQueryItem(name: "api_key", value: apiKey)
+            let searchQueryItem3 = URLQueryItem(name: "file_type", value: "json")
+            
+            
+            // Add in the search term
+            urlComponents.queryItems = [searchQueryItem1, searchQueryItem2, searchQueryItem3]
+            
+            // Recompose all those individual components back into a fully
+            // realized search URL
+            guard let searchURL = urlComponents.url else {
+                NSLog("Error constructing search URL for \(searchTerm)")
+                completion(nil, NSError())
+                return nil
+            }
+            
+            // Create a GET request
+            var request = URLRequest(url: searchURL)
+            request.httpMethod = "GET" // basically "READ"
+            
+            return request
+            
+        }
+        
+    }
+    
+    
 }

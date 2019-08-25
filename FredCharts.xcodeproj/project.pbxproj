@@ -21,33 +21,6 @@
 		D139ABC222B0A3670091D057 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */; };
 		D139ABC622B0A3D50091D057 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139ABC422B0A3D50091D057 /* FavoritesTableViewCell.swift */; };
 		D139ABC722B0A3D50091D057 /* FavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D139ABC522B0A3D50091D057 /* FavoritesTableViewCell.xib */; };
-		D13A9EE022EB58DC00844AA5 /* IMG_0023.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF022EB58DB00844AA5 /* IMG_0023.jpeg */; };
-		D13A9EE222EB58DC00844AA5 /* layers.png in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF222EB58DB00844AA5 /* layers.png */; };
-		D13A9EE322EB58DC00844AA5 /* IMG_1334.PNG in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF322EB58DB00844AA5 /* IMG_1334.PNG */; };
-		D13A9EE422EB58DC00844AA5 /* IMG_1330.PNG in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF422EB58DB00844AA5 /* IMG_1330.PNG */; };
-		D13A9EE522EB58DC00844AA5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF522EB58DB00844AA5 /* index.html */; };
-		D13A9EE722EB58DC00844AA5 /* IMG_1332.PNG in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF722EB58DB00844AA5 /* IMG_1332.PNG */; };
-		D13A9EE922EB58DC00844AA5 /* IMG_0029.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DF922EB58DB00844AA5 /* IMG_0029.jpeg */; };
-		D13A9EEA22EB58DC00844AA5 /* IMG_0101.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DFA22EB58DB00844AA5 /* IMG_0101.jpeg */; };
-		D13A9EEB22EB58DC00844AA5 /* IMG_0033.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DFB22EB58DB00844AA5 /* IMG_0033.jpeg */; };
-		D13A9EEE22EB58DC00844AA5 /* IMG_0039.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9DFF22EB58DB00844AA5 /* IMG_0039.jpeg */; };
-		D13A9EEF22EB58DC00844AA5 /* IMG_0038.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0022EB58DB00844AA5 /* IMG_0038.jpeg */; };
-		D13A9EF022EB58DC00844AA5 /* IMG_0022.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0122EB58DB00844AA5 /* IMG_0022.jpeg */; };
-		D13A9EF122EB58DC00844AA5 /* IMG_0034.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0222EB58DB00844AA5 /* IMG_0034.jpeg */; };
-		D13A9EF522EB58DC00844AA5 /* IMG_0024.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0622EB58DB00844AA5 /* IMG_0024.jpeg */; };
-		D13A9EF622EB58DC00844AA5 /* IMG_0028.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0722EB58DB00844AA5 /* IMG_0028.jpeg */; };
-		D13A9EF722EB58DC00844AA5 /* IMG_0027.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0822EB58DB00844AA5 /* IMG_0027.jpeg */; };
-		D13A9EF822EB58DC00844AA5 /* IMG_0031.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0922EB58DB00844AA5 /* IMG_0031.jpeg */; };
-		D13A9EF922EB58DC00844AA5 /* IMG_0026.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0A22EB58DB00844AA5 /* IMG_0026.jpeg */; };
-		D13A9EFA22EB58DC00844AA5 /* IMG_0102.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0B22EB58DB00844AA5 /* IMG_0102.jpeg */; };
-		D13A9EFE22EB58DC00844AA5 /* IMG_0025.png in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E0F22EB58DB00844AA5 /* IMG_0025.png */; };
-		D13A9F0222EB58DC00844AA5 /* IMG_0037.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1322EB58DB00844AA5 /* IMG_0037.jpeg */; };
-		D13A9F0322EB58DC00844AA5 /* multi-chart-touch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1422EB58DB00844AA5 /* multi-chart-touch.jpg */; };
-		D13A9F0422EB58DC00844AA5 /* IMG_0040.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1522EB58DB00844AA5 /* IMG_0040.jpeg */; };
-		D13A9F0522EB58DC00844AA5 /* IMG_1328.PNG in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1622EB58DB00844AA5 /* IMG_1328.PNG */; };
-		D13A9F0622EB58DC00844AA5 /* IMG_0041.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1722EB58DB00844AA5 /* IMG_0041.jpeg */; };
-		D13A9F0722EB58DC00844AA5 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1822EB58DB00844AA5 /* LICENSE */; };
-		D13A9F0822EB58DC00844AA5 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E1922EB58DB00844AA5 /* CHANGELOG.md */; };
 		D13A9F0922EB58DC00844AA5 /* ChartCoordsSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A9E1B22EB58DB00844AA5 /* ChartCoordsSpace.swift */; };
 		D13A9F0A22EB58DC00844AA5 /* Array_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A9E1C22EB58DB00844AA5 /* Array_String.swift */; };
 		D13A9F0B22EB58DC00844AA5 /* ChartAxisValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A9E1D22EB58DB00844AA5 /* ChartAxisValueArray.swift */; };
@@ -164,10 +137,6 @@
 		D13A9F7B22EB58DC00844AA5 /* ChartViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A9E9822EB58DB00844AA5 /* ChartViewAnimator.swift */; };
 		D13A9F7C22EB58DC00844AA5 /* ChartPointEllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A9E9922EB58DB00844AA5 /* ChartPointEllipseView.swift */; };
 		D13A9F7D22EB58DC00844AA5 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13A9E9A22EB58DB00844AA5 /* Optional.swift */; };
-		D13A9F7E22EB58DC00844AA5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E9B22EB58DB00844AA5 /* README.md */; };
-		D13A9F7F22EB58DC00844AA5 /* SwiftCharts.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E9C22EB58DB00844AA5 /* SwiftCharts.podspec */; };
-		D13A9F8022EB58DC00844AA5 /* Issue_template.md in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E9D22EB58DB00844AA5 /* Issue_template.md */; };
-		D13A9F8122EB58DC00844AA5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D13A9E9E22EB58DB00844AA5 /* .gitignore */; };
 		D13B1CA82235DC700013B514 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */; };
 		D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */; };
 		D13B1CAE2236D0AA0013B514 /* ChartDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */; };
@@ -191,6 +160,11 @@
 		D151D576223ACB78004E205E /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */; };
 		D151D577223ACB78004E205E /* FavoritesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */; };
 		D151D579223B07FD004E205E /* FredSeriesSRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */; };
+		D15E240E231318F5007ECB02 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E240D231318F5007ECB02 /* UIView+Constraints.swift */; };
+		D15E24102313191A007ECB02 /* UIViewController+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E240F2313191A007ECB02 /* UIViewController+Container.swift */; };
+		D15E241223131944007ECB02 /* UILabel+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E241123131944007ECB02 /* UILabel+Custom.swift */; };
+		D15E241423131C9D007ECB02 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E241323131C9D007ECB02 /* UIColor+Custom.swift */; };
+		D15E241723131E8E007ECB02 /* APICallType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E241623131E8E007ECB02 /* APICallType.swift */; };
 		D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */ = {isa = PBXBuildFile; fileRef = D1799FCC2239CB7A00AD8D56 /* testValues.json */; };
 		D17B449322C66B2D006C5C4B /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17B449222C66B2D006C5C4B /* ProgressHUD.swift */; };
 		D1BAEF0D227BECF900793346 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAEF0C227BECF900793346 /* Keys.swift */; };
@@ -219,47 +193,6 @@
 		D139ABC122B0A3670091D057 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		D139ABC422B0A3D50091D057 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		D139ABC522B0A3D50091D057 /* FavoritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableViewCell.xib; sourceTree = "<group>"; };
-		D13A9DF022EB58DB00844AA5 /* IMG_0023.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0023.jpeg; sourceTree = "<group>"; };
-		D13A9DF122EB58DB00844AA5 /* IMG_0039.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0039.jpeg; sourceTree = "<group>"; };
-		D13A9DF222EB58DB00844AA5 /* layers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = layers.png; sourceTree = "<group>"; };
-		D13A9DF322EB58DB00844AA5 /* IMG_1334.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1334.PNG; sourceTree = "<group>"; };
-		D13A9DF422EB58DB00844AA5 /* IMG_1330.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1330.PNG; sourceTree = "<group>"; };
-		D13A9DF522EB58DB00844AA5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		D13A9DF622EB58DB00844AA5 /* IMG_0022.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0022.jpeg; sourceTree = "<group>"; };
-		D13A9DF722EB58DB00844AA5 /* IMG_1332.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1332.PNG; sourceTree = "<group>"; };
-		D13A9DF822EB58DB00844AA5 /* IMG_0034.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0034.jpeg; sourceTree = "<group>"; };
-		D13A9DF922EB58DB00844AA5 /* IMG_0029.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0029.jpeg; sourceTree = "<group>"; };
-		D13A9DFA22EB58DB00844AA5 /* IMG_0101.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0101.jpeg; sourceTree = "<group>"; };
-		D13A9DFB22EB58DB00844AA5 /* IMG_0033.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0033.jpeg; sourceTree = "<group>"; };
-		D13A9DFC22EB58DB00844AA5 /* IMG_0024.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0024.jpeg; sourceTree = "<group>"; };
-		D13A9DFE22EB58DB00844AA5 /* IMG_0023.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0023.jpeg; sourceTree = "<group>"; };
-		D13A9DFF22EB58DB00844AA5 /* IMG_0039.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0039.jpeg; sourceTree = "<group>"; };
-		D13A9E0022EB58DB00844AA5 /* IMG_0038.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0038.jpeg; sourceTree = "<group>"; };
-		D13A9E0122EB58DB00844AA5 /* IMG_0022.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0022.jpeg; sourceTree = "<group>"; };
-		D13A9E0222EB58DB00844AA5 /* IMG_0034.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0034.jpeg; sourceTree = "<group>"; };
-		D13A9E0322EB58DB00844AA5 /* IMG_0029.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0029.jpeg; sourceTree = "<group>"; };
-		D13A9E0422EB58DB00844AA5 /* IMG_0101.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0101.jpeg; sourceTree = "<group>"; };
-		D13A9E0522EB58DB00844AA5 /* IMG_0033.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0033.jpeg; sourceTree = "<group>"; };
-		D13A9E0622EB58DB00844AA5 /* IMG_0024.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0024.jpeg; sourceTree = "<group>"; };
-		D13A9E0722EB58DB00844AA5 /* IMG_0028.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0028.jpeg; sourceTree = "<group>"; };
-		D13A9E0822EB58DB00844AA5 /* IMG_0027.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0027.jpeg; sourceTree = "<group>"; };
-		D13A9E0922EB58DB00844AA5 /* IMG_0031.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0031.jpeg; sourceTree = "<group>"; };
-		D13A9E0A22EB58DB00844AA5 /* IMG_0026.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0026.jpeg; sourceTree = "<group>"; };
-		D13A9E0B22EB58DB00844AA5 /* IMG_0102.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0102.jpeg; sourceTree = "<group>"; };
-		D13A9E0C22EB58DB00844AA5 /* IMG_0037.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0037.jpeg; sourceTree = "<group>"; };
-		D13A9E0D22EB58DB00844AA5 /* IMG_0040.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0040.jpeg; sourceTree = "<group>"; };
-		D13A9E0E22EB58DB00844AA5 /* IMG_0041.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0041.jpeg; sourceTree = "<group>"; };
-		D13A9E0F22EB58DB00844AA5 /* IMG_0025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0025.png; sourceTree = "<group>"; };
-		D13A9E1022EB58DB00844AA5 /* IMG_0027.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0027.jpeg; sourceTree = "<group>"; };
-		D13A9E1122EB58DB00844AA5 /* IMG_0026.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0026.jpeg; sourceTree = "<group>"; };
-		D13A9E1222EB58DB00844AA5 /* IMG_0102.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0102.jpeg; sourceTree = "<group>"; };
-		D13A9E1322EB58DB00844AA5 /* IMG_0037.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0037.jpeg; sourceTree = "<group>"; };
-		D13A9E1422EB58DB00844AA5 /* multi-chart-touch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "multi-chart-touch.jpg"; sourceTree = "<group>"; };
-		D13A9E1522EB58DB00844AA5 /* IMG_0040.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0040.jpeg; sourceTree = "<group>"; };
-		D13A9E1622EB58DB00844AA5 /* IMG_1328.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_1328.PNG; sourceTree = "<group>"; };
-		D13A9E1722EB58DB00844AA5 /* IMG_0041.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0041.jpeg; sourceTree = "<group>"; };
-		D13A9E1822EB58DB00844AA5 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		D13A9E1922EB58DB00844AA5 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		D13A9E1B22EB58DB00844AA5 /* ChartCoordsSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCoordsSpace.swift; sourceTree = "<group>"; };
 		D13A9E1C22EB58DB00844AA5 /* Array_String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array_String.swift; sourceTree = "<group>"; };
 		D13A9E1D22EB58DB00844AA5 /* ChartAxisValueArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAxisValueArray.swift; sourceTree = "<group>"; };
@@ -378,10 +311,6 @@
 		D13A9E9822EB58DB00844AA5 /* ChartViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewAnimator.swift; sourceTree = "<group>"; };
 		D13A9E9922EB58DB00844AA5 /* ChartPointEllipseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPointEllipseView.swift; sourceTree = "<group>"; };
 		D13A9E9A22EB58DB00844AA5 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
-		D13A9E9B22EB58DB00844AA5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D13A9E9C22EB58DB00844AA5 /* SwiftCharts.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftCharts.podspec; sourceTree = "<group>"; };
-		D13A9E9D22EB58DB00844AA5 /* Issue_template.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Issue_template.md; sourceTree = "<group>"; };
-		D13A9E9E22EB58DB00844AA5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D13B1CA72235DC700013B514 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
 		D13B1CA92235DF630013B514 /* TrackerExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerExampleViewController.swift; sourceTree = "<group>"; };
 		D13B1CAD2236D0AA0013B514 /* ChartDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailsTableView.swift; sourceTree = "<group>"; };
@@ -406,6 +335,11 @@
 		D151D574223ACB78004E205E /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCollectionViewCell.xib; sourceTree = "<group>"; };
 		D151D578223B07FD004E205E /* FredSeriesSRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FredSeriesSRepresentation.swift; sourceTree = "<group>"; };
+		D15E240D231318F5007ECB02 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		D15E240F2313191A007ECB02 /* UIViewController+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Container.swift"; sourceTree = "<group>"; };
+		D15E241123131944007ECB02 /* UILabel+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Custom.swift"; sourceTree = "<group>"; };
+		D15E241323131C9D007ECB02 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
+		D15E241623131E8E007ECB02 /* APICallType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallType.swift; sourceTree = "<group>"; };
 		D1799FCC2239CB7A00AD8D56 /* testValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testValues.json; sourceTree = "<group>"; };
 		D17B449222C66B2D006C5C4B /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		D1A2C6DC22B995CC00E8EDBB /* FredCharts 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FredCharts 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -430,6 +364,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D12DAF3923104359008F676C /* UI Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D15E240D231318F5007ECB02 /* UIView+Constraints.swift */,
+				D15E240F2313191A007ECB02 /* UIViewController+Container.swift */,
+				D15E241123131944007ECB02 /* UILabel+Custom.swift */,
+				D15E241323131C9D007ECB02 /* UIColor+Custom.swift */,
+			);
+			path = "UI Helpers";
+			sourceTree = "<group>";
+		};
 		D1393DD022346A10001D8B91 = {
 			isa = PBXGroup;
 			children = (
@@ -536,70 +481,9 @@
 		D13A9DEE22EB58DB00844AA5 /* SwiftCharts */ = {
 			isa = PBXGroup;
 			children = (
-				D13A9DEF22EB58DB00844AA5 /* Screenshots */,
-				D13A9E1822EB58DB00844AA5 /* LICENSE */,
-				D13A9E1922EB58DB00844AA5 /* CHANGELOG.md */,
 				D13A9E1A22EB58DB00844AA5 /* SwiftCharts */,
-				D13A9E9B22EB58DB00844AA5 /* README.md */,
-				D13A9E9C22EB58DB00844AA5 /* SwiftCharts.podspec */,
-				D13A9E9D22EB58DB00844AA5 /* Issue_template.md */,
-				D13A9E9E22EB58DB00844AA5 /* .gitignore */,
 			);
 			path = SwiftCharts;
-			sourceTree = "<group>";
-		};
-		D13A9DEF22EB58DB00844AA5 /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				D13A9DF022EB58DB00844AA5 /* IMG_0023.jpeg */,
-				D13A9DF122EB58DB00844AA5 /* IMG_0039.jpeg */,
-				D13A9DF222EB58DB00844AA5 /* layers.png */,
-				D13A9DF322EB58DB00844AA5 /* IMG_1334.PNG */,
-				D13A9DF422EB58DB00844AA5 /* IMG_1330.PNG */,
-				D13A9DF522EB58DB00844AA5 /* index.html */,
-				D13A9DF622EB58DB00844AA5 /* IMG_0022.jpeg */,
-				D13A9DF722EB58DB00844AA5 /* IMG_1332.PNG */,
-				D13A9DF822EB58DB00844AA5 /* IMG_0034.jpeg */,
-				D13A9DF922EB58DB00844AA5 /* IMG_0029.jpeg */,
-				D13A9DFA22EB58DB00844AA5 /* IMG_0101.jpeg */,
-				D13A9DFB22EB58DB00844AA5 /* IMG_0033.jpeg */,
-				D13A9DFC22EB58DB00844AA5 /* IMG_0024.jpeg */,
-				D13A9DFD22EB58DB00844AA5 /* small */,
-				D13A9E1022EB58DB00844AA5 /* IMG_0027.jpeg */,
-				D13A9E1122EB58DB00844AA5 /* IMG_0026.jpeg */,
-				D13A9E1222EB58DB00844AA5 /* IMG_0102.jpeg */,
-				D13A9E1322EB58DB00844AA5 /* IMG_0037.jpeg */,
-				D13A9E1422EB58DB00844AA5 /* multi-chart-touch.jpg */,
-				D13A9E1522EB58DB00844AA5 /* IMG_0040.jpeg */,
-				D13A9E1622EB58DB00844AA5 /* IMG_1328.PNG */,
-				D13A9E1722EB58DB00844AA5 /* IMG_0041.jpeg */,
-			);
-			path = Screenshots;
-			sourceTree = "<group>";
-		};
-		D13A9DFD22EB58DB00844AA5 /* small */ = {
-			isa = PBXGroup;
-			children = (
-				D13A9DFE22EB58DB00844AA5 /* IMG_0023.jpeg */,
-				D13A9DFF22EB58DB00844AA5 /* IMG_0039.jpeg */,
-				D13A9E0022EB58DB00844AA5 /* IMG_0038.jpeg */,
-				D13A9E0122EB58DB00844AA5 /* IMG_0022.jpeg */,
-				D13A9E0222EB58DB00844AA5 /* IMG_0034.jpeg */,
-				D13A9E0322EB58DB00844AA5 /* IMG_0029.jpeg */,
-				D13A9E0422EB58DB00844AA5 /* IMG_0101.jpeg */,
-				D13A9E0522EB58DB00844AA5 /* IMG_0033.jpeg */,
-				D13A9E0622EB58DB00844AA5 /* IMG_0024.jpeg */,
-				D13A9E0722EB58DB00844AA5 /* IMG_0028.jpeg */,
-				D13A9E0822EB58DB00844AA5 /* IMG_0027.jpeg */,
-				D13A9E0922EB58DB00844AA5 /* IMG_0031.jpeg */,
-				D13A9E0A22EB58DB00844AA5 /* IMG_0026.jpeg */,
-				D13A9E0B22EB58DB00844AA5 /* IMG_0102.jpeg */,
-				D13A9E0C22EB58DB00844AA5 /* IMG_0037.jpeg */,
-				D13A9E0D22EB58DB00844AA5 /* IMG_0040.jpeg */,
-				D13A9E0E22EB58DB00844AA5 /* IMG_0041.jpeg */,
-				D13A9E0F22EB58DB00844AA5 /* IMG_0025.png */,
-			);
-			path = small;
 			sourceTree = "<group>";
 		};
 		D13A9E1A22EB58DB00844AA5 /* SwiftCharts */ = {
@@ -818,6 +702,8 @@
 				D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */,
 				D13B1CD1223870410013B514 /* UnitTypes.swift */,
 				D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */,
+				D15E241523131E6F007ECB02 /* APICallType */,
+				D12DAF3923104359008F676C /* UI Helpers */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -852,6 +738,14 @@
 				D151D575223ACB78004E205E /* FavoritesCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D15E241523131E6F007ECB02 /* APICallType */ = {
+			isa = PBXGroup;
+			children = (
+				D15E241623131E8E007ECB02 /* APICallType.swift */,
+			);
+			path = APICallType;
 			sourceTree = "<group>";
 		};
 		D1BAEF0F227BFC1600793346 /* Operation */ = {
@@ -939,47 +833,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D13A9EF722EB58DC00844AA5 /* IMG_0027.jpeg in Resources */,
-				D13A9EE922EB58DC00844AA5 /* IMG_0029.jpeg in Resources */,
-				D13A9F0622EB58DC00844AA5 /* IMG_0041.jpeg in Resources */,
-				D13A9EE022EB58DC00844AA5 /* IMG_0023.jpeg in Resources */,
 				D13B1CBF223700E10013B514 /* ChartSliderControlTableViewCell.xib in Resources */,
-				D13A9EF522EB58DC00844AA5 /* IMG_0024.jpeg in Resources */,
-				D13A9EF822EB58DC00844AA5 /* IMG_0031.jpeg in Resources */,
 				D1393DEA22346A12001D8B91 /* LaunchScreen.storyboard in Resources */,
-				D13A9F8122EB58DC00844AA5 /* .gitignore in Resources */,
 				D13B1CBB2236EC0C0013B514 /* ChartNormalControlTableViewCell.xib in Resources */,
-				D13A9EEE22EB58DC00844AA5 /* IMG_0039.jpeg in Resources */,
-				D13A9F7E22EB58DC00844AA5 /* README.md in Resources */,
-				D13A9EFA22EB58DC00844AA5 /* IMG_0102.jpeg in Resources */,
-				D13A9F0822EB58DC00844AA5 /* CHANGELOG.md in Resources */,
 				D139ABC722B0A3D50091D057 /* FavoritesTableViewCell.xib in Resources */,
-				D13A9F0422EB58DC00844AA5 /* IMG_0040.jpeg in Resources */,
-				D13A9EEA22EB58DC00844AA5 /* IMG_0101.jpeg in Resources */,
-				D13A9EE522EB58DC00844AA5 /* index.html in Resources */,
 				D1393DE222346A10001D8B91 /* Main.storyboard in Resources */,
 				D1799FCD2239CB7A00AD8D56 /* testValues.json in Resources */,
 				D151D577223ACB78004E205E /* FavoritesCollectionViewCell.xib in Resources */,
 				D1FBDE0E2238B72A001E1DD2 /* Assets.xcassets in Resources */,
-				D13A9EE722EB58DC00844AA5 /* IMG_1332.PNG in Resources */,
-				D13A9EEF22EB58DC00844AA5 /* IMG_0038.jpeg in Resources */,
-				D13A9F0522EB58DC00844AA5 /* IMG_1328.PNG in Resources */,
-				D13A9EF622EB58DC00844AA5 /* IMG_0028.jpeg in Resources */,
-				D13A9EF922EB58DC00844AA5 /* IMG_0026.jpeg in Resources */,
-				D13A9EE322EB58DC00844AA5 /* IMG_1334.PNG in Resources */,
-				D13A9F7F22EB58DC00844AA5 /* SwiftCharts.podspec in Resources */,
 				D1EDBA4A223A096400F8C3B2 /* PickerViewController.xib in Resources */,
-				D13A9F0222EB58DC00844AA5 /* IMG_0037.jpeg in Resources */,
-				D13A9F0722EB58DC00844AA5 /* LICENSE in Resources */,
 				D13B1CB62236E5580013B514 /* ChartSegmentedControlTableViewCell.xib in Resources */,
-				D13A9F0322EB58DC00844AA5 /* multi-chart-touch.jpg in Resources */,
-				D13A9EF122EB58DC00844AA5 /* IMG_0034.jpeg in Resources */,
-				D13A9EF022EB58DC00844AA5 /* IMG_0022.jpeg in Resources */,
-				D13A9EE422EB58DC00844AA5 /* IMG_1330.PNG in Resources */,
-				D13A9EE222EB58DC00844AA5 /* layers.png in Resources */,
-				D13A9F8022EB58DC00844AA5 /* Issue_template.md in Resources */,
-				D13A9EEB22EB58DC00844AA5 /* IMG_0033.jpeg in Resources */,
-				D13A9EFE22EB58DC00844AA5 /* IMG_0025.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1007,6 +870,7 @@
 				D13A9F1122EB58DC00844AA5 /* ChartPointsLineTrackerLayer.swift in Sources */,
 				D13A9F2222EB58DC00844AA5 /* UIColor.swift in Sources */,
 				D13A9F1022EB58DC00844AA5 /* ChartGuideLinesLayer.swift in Sources */,
+				D15E24102313191A007ECB02 /* UIViewController+Container.swift in Sources */,
 				D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */,
 				D13A9F0B22EB58DC00844AA5 /* ChartAxisValueArray.swift in Sources */,
 				D13A9F2322EB58DC00844AA5 /* Zoomable.swift in Sources */,
@@ -1021,6 +885,7 @@
 				D13A9F2622EB58DC00844AA5 /* ChartAxisValueFloatScreenLoc.swift in Sources */,
 				D13B1CAA2235DF630013B514 /* TrackerExampleViewController.swift in Sources */,
 				D13A9F2022EB58DC00844AA5 /* ChartPointsTouchHighlightLayer.swift in Sources */,
+				D15E240E231318F5007ECB02 /* UIView+Constraints.swift in Sources */,
 				D13A9F4C22EB58DC00844AA5 /* ChartAxisValuesGenerator.swift in Sources */,
 				D1BAEF0D227BECF900793346 /* Keys.swift in Sources */,
 				D1BAEF13227BFE8E00793346 /* FetchRecentDataOperation.swift in Sources */,
@@ -1039,6 +904,7 @@
 				D13A9F1F22EB58DC00844AA5 /* ChartPointsBubbleLayer.swift in Sources */,
 				D13A9F6C22EB58DC00844AA5 /* ChartViewGrowAnimator.swift in Sources */,
 				D13A9F7222EB58DC00844AA5 /* ChartPointTextCircleView.swift in Sources */,
+				D15E241223131944007ECB02 /* UILabel+Custom.swift in Sources */,
 				D1EDBA4D223A0ACD00F8C3B2 /* PickerControlDelegate.swift in Sources */,
 				D13A9F1A22EB58DC00844AA5 /* ChartPointsAreaLayer.swift in Sources */,
 				D13A9F7A22EB58DC00844AA5 /* ChartPointViewBarGreyOut.swift in Sources */,
@@ -1065,6 +931,7 @@
 				D13A9F7622EB58DC00844AA5 /* ChartViewAnimators.swift in Sources */,
 				D13A9F0C22EB58DC00844AA5 /* ChartBarsLayer.swift in Sources */,
 				D13A9F5D22EB58DC00844AA5 /* ChartViewsConflictSolver.swift in Sources */,
+				D15E241723131E8E007ECB02 /* APICallType.swift in Sources */,
 				D13A9F5022EB58DC00844AA5 /* ChartAxisX.swift in Sources */,
 				D13A9F6222EB58DC00844AA5 /* CGRect.swift in Sources */,
 				D13A9F6022EB58DC00844AA5 /* LineChart.swift in Sources */,
@@ -1097,6 +964,7 @@
 				D13A9F6A22EB58DC00844AA5 /* ChartAreasView.swift in Sources */,
 				D13A9F7522EB58DC00844AA5 /* ChartCandleStickView.swift in Sources */,
 				D13A9F4F22EB58DC00844AA5 /* ChartAxisLayerDefault.swift in Sources */,
+				D15E241423131C9D007ECB02 /* UIColor+Custom.swift in Sources */,
 				D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */,
 				D13A9F7C22EB58DC00844AA5 /* ChartPointEllipseView.swift in Sources */,
 				D13A9F3F22EB58DC00844AA5 /* ChartAxisValuesGeneratorDate.swift in Sources */,
