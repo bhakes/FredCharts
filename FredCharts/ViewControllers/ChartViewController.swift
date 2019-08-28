@@ -378,7 +378,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         guard let seriesRep = seriesRepresentation else {
             return
         }
-        _ = FredSeriesS(fredSeriesSRepresentation: seriesRep)
+        FredSeriesS(fredSeriesSRepresentation: seriesRep)
         do {
             try CoreDataStack.shared.save()
         } catch {
