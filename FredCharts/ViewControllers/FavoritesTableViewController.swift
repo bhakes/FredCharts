@@ -44,6 +44,9 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         // Create and Assign Edit Button to Left Bar Button Item
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
         
+        // Create and Assign the Search Bar Button to the Right Bar Button Item
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(sender:)))
+        
     }
     
     private func getDataUpdates(forceUpdate: Bool = false){
@@ -122,11 +125,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
     }
     
-    
-    
-    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
@@ -228,6 +227,14 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     @objc func editing(sender: UIBarButtonItem) {
         
         isEditing = !isEditing
+        
+    }
+    
+    @objc func searchButtonTapped(sender: UIBarButtonItem) {
+        
+        let searchResultsTableVC = SearchResultsTableViewController()
+        searchResultsTableVC.fredController = fredController
+        present(searchResultsTableVC, animated: true, completion: nil)
         
     }
     
