@@ -93,7 +93,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         let operation2 = BlockOperation {
             do {
-                try CoreDataStack.shared.mainContext.save()
+                try CoreDataStack.shared.save()
             } catch {
                 print("Error saving managed object context.")
             }
@@ -203,7 +203,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         do
         {
-            try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.save()
             
         } catch{
             print("Difficulty saving main context")

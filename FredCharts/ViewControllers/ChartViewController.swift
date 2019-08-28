@@ -380,7 +380,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         _ = FredSeriesS(fredSeriesSRepresentation: seriesRep)
         do {
-            try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.save()
         } catch {
             print("could not save to core data")
         }
