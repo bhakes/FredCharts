@@ -82,8 +82,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="detailLabel" destination="za9-JR-Edm" id="fi2-uC-D5j"/>
-                                    <outlet property="titleLabel" destination="Q6I-t5-3g3" id="BDy-ZL-zJ4"/>
                                     <segue destination="OsK-xk-I2n" kind="show" identifier="PreviewSegue" id="Bhk-Qt-ztx"/>
                                 </connections>
                             </tableViewCell>
@@ -94,9 +92,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" largeTitleDisplayMode="always" id="fYn-cB-eaB"/>
-                    <connections>
-                        <outlet property="searchBar" destination="yEb-Za-VhQ" id="mio-Bb-2Pu"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLv-R0-JsZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

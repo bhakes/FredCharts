@@ -38,14 +38,25 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     
     private func updateViews() {
         
-        tableView.tableFooterView = UIView()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        // View Background Color
+        self.view.backgroundColor = .mainColor
+        
+        // Add a simple footerView
+        let footerView = UIView()
+        footerView.backgroundColor = .mainColor
+        tableView.tableFooterView = footerView
         
         // Create and Assign Edit Button to Left Bar Button Item
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
         
         // Create and Assign the Search Bar Button to the Right Bar Button Item
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(sender:)))
+        
+        // setup title
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.sizeToFit()
+        navigationItem.title = "FedCharts"
         
     }
     
@@ -234,7 +245,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         let searchResultsTableVC = SearchResultsTableViewController()
         searchResultsTableVC.fredController = fredController
-        present(searchResultsTableVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(searchResultsTableVC, animated: true)
         
     }
     
