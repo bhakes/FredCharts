@@ -17,8 +17,8 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
 
         // Register cell classes
         self.tableView!.register(UINib(nibName: "FavoritesTableViewCell", bundle: nil), forCellReuseIdentifier: favoritesCellReuseID)
-        tableView.tableFooterView = UIView()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        updateViews()
         getDataUpdates()
     }
 
@@ -35,6 +35,16 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     // MARK: - Private Methods
+    
+    private func updateViews() {
+        
+        tableView.tableFooterView = UIView()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // Create and Assign Edit Button to Left Bar Button Item
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
+        
+    }
     
     private func getDataUpdates(forceUpdate: Bool = false){
         
@@ -215,7 +225,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         return true
     }
     
-    @IBAction func editing(sender: UIBarButtonItem) {
+    @objc func editing(sender: UIBarButtonItem) {
         
         isEditing = !isEditing
         
@@ -249,7 +259,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         tableView.endUpdates()
     }
     
-    @IBAction func editTapped(sender: UIBarButtonItem) {
+    @objc func editTapped(sender: UIBarButtonItem) {
         
         isEditing = !isEditing
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped(sender:)))
@@ -265,6 +275,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         self.navigationItem.leftBarButtonItem = editBarButton
         self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
+    
     // MARK: - Editing Style
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
