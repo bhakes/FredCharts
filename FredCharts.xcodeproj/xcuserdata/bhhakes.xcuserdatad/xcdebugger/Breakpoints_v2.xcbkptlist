@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588796876.552452"
+            timestampString = "588802878.047812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588796876.552847"
+            timestampString = "588802878.048227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "588796876.552937"
+            timestampString = "588802878.048349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "391"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "588796876.5540349"
+            timestampString = "588802878.04877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "389"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/SearchResultsTableViewController.swift"
-            timestampString = "588796876.554893"
+            timestampString = "588802878.048933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/SwiftCharts/SwiftCharts/Chart.swift"
-            timestampString = "588796876.55542"
+            timestampString = "588802878.049233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "348"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/SwiftCharts/SwiftCharts/Chart.swift"
-            timestampString = "588796876.555795"
+            timestampString = "588802878.050078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/SwiftCharts/SwiftCharts/Chart.swift"
-            timestampString = "588796876.5559191"
+            timestampString = "588802878.050576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "354"
@@ -298,12 +298,12 @@
                   moduleName = "FredCharts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/SwiftCharts/SwiftCharts/Views/ChartPointTextCircleView.swift"
-                  timestampString = "588796876.826197"
+                  timestampString = "588802878.254359"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "14">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -313,30 +313,14 @@
                   moduleName = "FredCharts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/SwiftCharts/SwiftCharts/Views/ChartPointTextCircleView.swift"
-                  timestampString = "588796876.82867"
+                  timestampString = "588802878.255941"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "105">
+                  offsetFromSymbolStart = "84">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588796876.556073"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "createChart(with:for:in:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

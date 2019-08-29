@@ -61,39 +61,43 @@ class ChartController {
         // Chart Points Line Layer
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel], useView: false)
         
-        
         let thumbSettings = ChartPointsLineTrackerLayerThumbSettings(thumbSize: Env.iPad ? 24 : 12, thumbBorderWidth: Env.iPad ? 8 : 4)
         let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
         
         var currentPositionLabels: [UILabel] = []
+        var currentPositionRings: [Ring] = []
         
         let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: .white, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {[weak self] chartPointsWithScreenLoc in
             
             currentPositionLabels.forEach{$0.removeFromSuperview()}
+            currentPositionRings.forEach{$0.removeFromSuperview()}
             
             for (index, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
                 
                 let label = UILabel()
+                let ring = Ring(frame: CGRect(x: chartPointWithScreenLoc.screenLoc.x - 8, y: chartPointWithScreenLoc.screenLoc.y - 8, width: 16, height: 16))
                 let date = Date(timeIntervalSince1970: chartPointWithScreenLoc.chartPoint.x.scalar)
                 
                 if let s = self {
                     label.text = "\(s.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
                     label.sizeToFit()
-                    label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
+                    label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x - label.frame.width / 2 - 12, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2 - 12)
                     label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
                     label.textColor = UIColor.mainColor
                     label.layer.cornerRadius = 4
                     label.layer.masksToBounds = true
                     
                     currentPositionLabels.append(label)
+                    currentPositionRings.append(ring)
+                    viewToPlaceChart.addSubview(ring)
                     viewToPlaceChart.addSubview(label)
                 }
                 
             }
         }
         
-        //        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
-        //        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
+//        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
+//        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
         let chart = autoreleasepool{ Chart(
             frame: chartFrame,
@@ -102,7 +106,7 @@ class ChartController {
             layers: [
                 xAxisLayer,
                 yAxisLayer,
-                //                guidelinesLayer,
+//                guidelinesLayer,
                 chartPointsLineLayer,
                 chartPointsTrackerLayer
             ]
@@ -164,30 +168,35 @@ class ChartController {
         let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
         
         var currentPositionLabels: [UILabel] = []
+        var currentPositionRings: [Ring] = []
         
-        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.mainColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {chartPointsWithScreenLoc in
+        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: .white, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {chartPointsWithScreenLoc in
             
             currentPositionLabels.forEach{$0.removeFromSuperview()}
+            currentPositionRings.forEach{$0.removeFromSuperview()}
             
             for (index, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
                 
                 let label = UILabel()
+                let ring = Ring(frame: CGRect(x: chartPointWithScreenLoc.screenLoc.x - 8, y: chartPointWithScreenLoc.screenLoc.y - 8, width: 16, height: 16))
                 let date = Date(timeIntervalSince1970: chartPointWithScreenLoc.chartPoint.x.scalar)
                 
                 label.text = "\(self.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
                 label.sizeToFit()
-                label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
+                label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x - label.frame.width / 2 - 12, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2 - 12)
                 label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
                 label.textColor = UIColor.mainColor
                 
                 currentPositionLabels.append(label)
+                currentPositionRings.append(ring)
                 viewToPlaceChart.addSubview(label)
+                viewToPlaceChart.addSubview(ring)
             }
         }
         
-        //        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
-        //        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
-        
+//        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
+//        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
+//
         let chart = autoreleasepool{  Chart(
             frame: chartFrame,
             innerFrame: innerFrame,
@@ -195,11 +204,12 @@ class ChartController {
             layers: [
                 xAxisLayer,
                 yAxisLayer,
-                //                guidelinesLayer,
+//                guidelinesLayer,
                 chartPointsLineLayer,
                 chartPointsTrackerLayer
             ]
             ) }
+        
         return chart
         
     }

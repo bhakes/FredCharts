@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D1232B1422399BB200049B1E /* NumberFormatter+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */; };
+		D129C535231855F500F0195D /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D129C534231855F500F0195D /* Ring.swift */; };
 		D1393DDD22346A10001D8B91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1393DDC22346A10001D8B91 /* AppDelegate.swift */; };
 		D1393DE222346A10001D8B91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1393DE022346A10001D8B91 /* Main.storyboard */; };
 		D1393DE522346A10001D8B91 /* FredCharts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1393DE322346A10001D8B91 /* FredCharts.xcdatamodeld */; };
@@ -178,6 +179,7 @@
 
 /* Begin PBXFileReference section */
 		D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Convenience.swift"; sourceTree = "<group>"; };
+		D129C534231855F500F0195D /* Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
 		D1393DD922346A10001D8B91 /* FredCharts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FredCharts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1393DDC22346A10001D8B91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1393DE122346A10001D8B91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				D13B1CCA223845710013B514 /* Date+Convenience.swift */,
 				D13B1CCF22386F0E0013B514 /* StringFormatterForCharts.swift */,
 				D13B1CD1223870410013B514 /* UnitTypes.swift */,
+				D129C534231855F500F0195D /* Ring.swift */,
 				D1232B1322399BB100049B1E /* NumberFormatter+Convenience.swift */,
 				D15E241523131E6F007ECB02 /* APICallType */,
 				D12DAF3923104359008F676C /* UI Helpers */,
@@ -890,6 +893,7 @@
 				D1BAEF0D227BECF900793346 /* Keys.swift in Sources */,
 				D1BAEF13227BFE8E00793346 /* FetchRecentDataOperation.swift in Sources */,
 				D13A9F5F22EB58DC00844AA5 /* ChartConfig.swift in Sources */,
+				D129C535231855F500F0195D /* Ring.swift in Sources */,
 				D13A9F4B22EB58DC00844AA5 /* ChartAxisLayer.swift in Sources */,
 				D13A9F7422EB58DC00844AA5 /* ChartPointViewBarStacked.swift in Sources */,
 				D13A9F7722EB58DC00844AA5 /* ChartLinesView.swift in Sources */,
