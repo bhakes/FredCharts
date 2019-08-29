@@ -335,9 +335,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <connections>
-                                    <segue destination="OsK-xk-I2n" kind="show" identifier="ViewChartSegue" id="m3h-aC-Csd"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -363,7 +360,4 @@
             <point key="canvasLocation" x="-1319" y="92"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Bhk-Qt-ztx"/>
-    </inferredMetricsTieBreakers>
 </document>
