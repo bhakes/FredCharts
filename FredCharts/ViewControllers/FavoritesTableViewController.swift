@@ -201,12 +201,9 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let chartVC = ChartViewController()
-        chartVC.chartController = ChartController()
-        chartVC.fredController = fredController
-        chartVC.series = fetchedResultsController.object(at: indexPath)
-        chartVC.chartAlreadySaved = true
+    
+        let series = fetchedResultsController.object(at: indexPath)
+        let chartVC = ChartViewController(fredController: fredController, series: series, chartAlreadySaved: true)
         self.navigationController?.pushViewController(chartVC, animated: true)
     
     }

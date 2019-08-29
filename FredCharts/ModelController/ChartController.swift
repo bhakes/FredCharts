@@ -12,7 +12,7 @@ import UIKit
 
 class ChartController {
     
-    func updateChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart {
+    func createChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart {
         
         guard let units = series.units else { fatalError() }
         // Build Label Settings
@@ -67,7 +67,7 @@ class ChartController {
         
         var currentPositionLabels: [UILabel] = []
         
-        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.mainColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {[weak self] chartPointsWithScreenLoc in
+        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: .white, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {[weak self] chartPointsWithScreenLoc in
             
             currentPositionLabels.forEach{$0.removeFromSuperview()}
             
@@ -82,6 +82,8 @@ class ChartController {
                     label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
                     label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
                     label.textColor = UIColor.mainColor
+                    label.layer.cornerRadius = 4
+                    label.layer.masksToBounds = true
                     
                     currentPositionLabels.append(label)
                     viewToPlaceChart.addSubview(label)
@@ -109,8 +111,7 @@ class ChartController {
 
     }
     
-    
-    func updateChart(with modelPoints: [GridPoint], for seriesRep: FredSeriesSRepresentation, in viewToPlaceChart: UIView) -> Chart {
+    func createChart(with modelPoints: [GridPoint], for seriesRep: FredSeriesSRepresentation, in viewToPlaceChart: UIView) -> Chart {
         
         let units = seriesRep.units
         // Build Label Settings
@@ -158,7 +159,6 @@ class ChartController {
         
         // Chart Points Line Layer
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel], useView: false)
-        
         
         let thumbSettings = ChartPointsLineTrackerLayerThumbSettings(thumbSize: Env.iPad ? 24 : 12, thumbBorderWidth: Env.iPad ? 8 : 4)
         let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
@@ -212,7 +212,6 @@ class ChartController {
         let stringToReturn = dateFormatter.string(from: date)
         return stringToReturn
     }
-    
     
 }
 

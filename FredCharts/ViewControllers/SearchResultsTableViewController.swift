@@ -57,11 +57,9 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chartVC = ChartViewController()
+        
         let seriesRepresentation = self.fredController.searchResults[indexPath.row]
-        chartVC.fredController = self.fredController
-        chartVC.seriesRepresentation = seriesRepresentation
-        chartVC.chartController = ChartController()
+        let chartVC = ChartViewController(fredController: fredController, seriesRepresentation: seriesRepresentation)
         self.navigationController?.pushViewController(chartVC, animated: true)
     }
 

@@ -13,6 +13,25 @@ typealias GridPoint = (Double, Double)
 
 class ChartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: - Initializers
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(chartController: ChartController? = ChartController(), fredController: FredController, series: FredSeriesS? = nil, seriesRepresentation: FredSeriesSRepresentation? = nil, chartAlreadySaved: Bool? = false) {
+        self.init(nibName: nil, bundle: nil)
+        self.chartController = chartController
+        self.fredController = fredController
+        self.series = series
+        self.chartAlreadySaved = chartAlreadySaved ?? false
+        self.seriesRepresentation = seriesRepresentation
+    }
+    
+    
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,22 +39,21 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         setupViews()
         setupProgressHUD()
         
-        guard let fredController = fredController else { fatalError("FredController is empty")}
-        guard let id = chartAlreadySaved ? series?.id : seriesRepresentation?.id else { return }
+        guard let id = series?.id ?? seriesRepresentation?.id else { return }
         
-//        fredController.getObservationsForFredSeries(with: id) { [unowned self] resultingObservations, error in
-//
-//            self.seriesObservations = resultingObservations
-//            if let seriesObservations = self.seriesObservations {
-//
-//                let newModelPoints = self.parseObseration(for: seriesObservations)
-//                self.originalModelPoints = newModelPoints
-//
-//                self.filterChartDates(by: 1)
-//
-//            }
-//
-//        }
+        fredController.getObservationsForFredSeries(with: id) { [unowned self] resultingObservations, error in
+
+            self.seriesObservations = resultingObservations
+            if let seriesObservations = self.seriesObservations {
+
+                let newModelPoints = self.parseObseration(for: seriesObservations)
+                self.originalModelPoints = newModelPoints
+
+                self.filterChartDates(by: 1)
+
+            }
+
+        }
         
     }
     
@@ -109,7 +127,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         lastValueLabel.minimumScaleFactor = 0.5
         
         // Last Date Label
-        lastDateLabel = UILabel.label(for: .caption1, with: " ")
+        lastDateLabel = UILabel.label(for: .caption2, with: " ")
         lastDateLabel.textColor = .white
         lastDateLabel.textAlignment = .center
         
@@ -119,6 +137,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         lastStackView.addArrangedSubview(lastLabel)
         lastStackView.addArrangedSubview(lastValueLabel)
         lastStackView.addArrangedSubview(lastDateLabel)
+        lastStackView.constrain(width: 80)
         lastStackView.distribution = .fillProportionally
         
         // Peak Label
@@ -134,7 +153,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         peakValueLabel.minimumScaleFactor = 0.5
         
         // Peak Date Label
-        peakDateLabel = UILabel.label(for: .caption1, with: " ")
+        peakDateLabel = UILabel.label(for: .caption2, with: " ")
         peakDateLabel.textColor = .white
         peakDateLabel.textAlignment = .center
         
@@ -145,6 +164,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         peakStackView.addArrangedSubview(peakValueLabel)
         peakStackView.addArrangedSubview(peakDateLabel)
         peakStackView.distribution = .fillProportionally
+        peakStackView.constrain(width: 80)
         
         // SeparatorView
         let separatorView = UIView(frame: CGRect.zero)
@@ -171,7 +191,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         chartContainerView = UIView()
         chartContainerView.backgroundColor = .mainColor
         self.view.addSubview(chartContainerView)
-        chartContainerView.constrainToSiblingView(statsContainerView, below: 4, equalWidth: 1, height: 300)
+        chartContainerView.constrainToSiblingView(statsContainerView, below: 0, equalWidth: 0, height: view.bounds.height / 2)
     
     }
     
@@ -182,9 +202,9 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
         
-        self.view.addSubview(chartDetailsTableView)
-        chartDetailsTableView.constrainToSiblingView(statsContainerView, below: 4, equalWidth: 0)
-        chartDetailsTableView.constrainToSuperView(self.view, safeArea: true, bottom: 0)
+        chartDetailsTableView.constrainToSuperView(self.view, safeArea: false, bottom: 0, leading: 0, trailing: 0)
+        chartDetailsTableView.constrainToSiblingView(chartContainerView, below: 0)
+        
     }
     
     private func registerTableViewCellNibs(){
@@ -264,8 +284,6 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    
-    
     private func updateDatesAndLables(modelPoints: [GridPoint]) {
 
         var units: String
@@ -307,14 +325,18 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         if chartAlreadySaved {
             guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
-            chart = chartController?.updateChart(with: modelPoints, for: series, in: chartSubContainerView)
+            let _ = chart?.view.subviews.map { $0.removeFromSuperview() }
+            let _ = chartContainerView.subviews.map { $0.removeFromSuperview() }
+            chart = chartController?.createChart(with: modelPoints, for: series, in: chartContainerView)
         } else {
             guard let seriesRep = seriesRepresentation else { fatalError("Could not produce chart b/c there is no series present") }
-            chart = chartController?.updateChart(with: modelPoints, for: seriesRep, in: chartSubContainerView)
+            let _ = chart?.view.subviews.map { $0.removeFromSuperview() }
+            let _ = chartContainerView.subviews.map { $0.removeFromSuperview() }
+            chart = chartController?.createChart(with: modelPoints, for: seriesRep, in: chartContainerView)
         }
         
         guard let chart = chart else { fatalError("Could not produce chart") }
-        chartSubContainerView.addSubview(chart.view)
+        chart.view.constrainToFill(chartContainerView)
         
     }
     
@@ -341,19 +363,13 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: - TableView Data Source Delegate Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return /*4*/1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section{
         case 0:
             return 3
-            //        case 1:
-            //            return 1
-            //        case 2:
-            //            return 1
-            //        case 3:
-        //            return 7
         default:
             return 1
         }
@@ -478,7 +494,6 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    
     // MARK: - IBActions
     @objc func saveButtonTapped(sender: UIBarButtonItem) {
         
@@ -491,28 +506,28 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         } catch {
             print("could not save to core data")
         }
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     // MARK: - Properties
-    var seriesObservations: Observations?
-    var chartController: ChartController?
-    fileprivate var chart: Chart?
+    var fredController: FredController!
+    var chartController: ChartController!
+    
     var series: FredSeriesS?
     var seriesRepresentation: FredSeriesSRepresentation?
-    var progressHUD: ProgressHUD?
-    var modelPoints: [GridPoint] = []
+    var seriesObservations: Observations?
+    fileprivate var chart: Chart?
     
+    var modelPoints: [GridPoint] = []
     var originalModelPoints: [GridPoint] = []
-    var fredController: FredController?
+    
     var backgroundMOC: NSManagedObjectContext?
     
     // UI Properties
+    var progressHUD: ProgressHUD?
     var infoContainerView: UIView!
     var statsContainerView: UIView!
     var chartContainerView: UIView!
-    var chartSubContainerView: UIView!
     var chartDetailsTableView: ChartDetailsTableView!
     var statsStackView: UIStackView!
     var trackerStatsView: UIView!
@@ -521,7 +536,6 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     var peakValueLabel: UILabel!
     var lastDateLabel: UILabel!
     var peakDateLabel: UILabel!
-    
     
     var startDate: Date?
     var endDate: Date?
@@ -539,7 +553,7 @@ extension ChartViewController: ChartSegementedControlDelegate {
     func segmentedControlDidChange(with integer: Int?) {
         
         if let progressHUD = self.progressHUD {
-            self.chartSubContainerView.addSubview(progressHUD)
+            progressHUD.constrainToCenterIn(chartContainerView)
         }
         
         // catch if the data is old and
