@@ -62,7 +62,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         chartVC.fredController = self.fredController
         chartVC.seriesRepresentation = seriesRepresentation
         chartVC.chartController = ChartController()
-        present(chartVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(chartVC, animated: true)
     }
 
     // MARK: - UISearchBarDelegateMethods

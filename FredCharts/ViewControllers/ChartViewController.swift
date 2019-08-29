@@ -13,27 +13,29 @@ typealias GridPoint = (Double, Double)
 
 class ChartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViews()
         setupProgressHUD()
-        guard let fredController = fredController else { fatalError("FredController is empty")}
         
+        guard let fredController = fredController else { fatalError("FredController is empty")}
         guard let id = chartAlreadySaved ? series?.id : seriesRepresentation?.id else { return }
         
-        fredController.getObservationsForFredSeries(with: id) { [unowned self] resultingObservations, error in
-            
-            self.seriesObservations = resultingObservations
-            if let seriesObservations = self.seriesObservations {
-                
-                let newModelPoints = self.parseObseration(for: seriesObservations)
-                self.originalModelPoints = newModelPoints
-                
-                self.filterChartDates(by: 1)
-                
-            }
-            
-        }
+//        fredController.getObservationsForFredSeries(with: id) { [unowned self] resultingObservations, error in
+//
+//            self.seriesObservations = resultingObservations
+//            if let seriesObservations = self.seriesObservations {
+//
+//                let newModelPoints = self.parseObseration(for: seriesObservations)
+//                self.originalModelPoints = newModelPoints
+//
+//                self.filterChartDates(by: 1)
+//
+//            }
+//
+//        }
         
     }
     
@@ -43,41 +45,146 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationItem.largeTitleDisplayMode = .never
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if self.isMovingFromParent {
-            // Your code...
-            print("I'm going to disappear")
-        }
-        
-    }
     // MARK: - Private Methods
     
     private func setupViews(){
         
+        self.view.backgroundColor = .mainColor
+        
+        setupInfoContainerView()
+        setupStatsContainerView()
+        setupChartContainerView()
+        setupChartDetailsTableView()
+        registerTableViewCellNibs()
+        checkIfChartAlreadySaved()
+    }
+    
+    private func setupInfoContainerView() {
+        
+        infoContainerView = UIView()
+        self.view.addSubview(infoContainerView)
+        
+        // setup title label
+        let titleLabel = UILabel()
+        titleLabel.text = chartAlreadySaved ? series?.title : seriesRepresentation?.title
+        titleLabel.font = .boldSystemFont(ofSize: 30)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.5
+        titleLabel.textColor = .white
+        titleLabel.numberOfLines = 1
+        
+        // setup id label
+        let idLabel = UILabel()
+        idLabel.text = chartAlreadySaved ? series?.id : seriesRepresentation?.id
+        idLabel.font = .systemFont(ofSize: 12)
+        idLabel.textColor = .white
+        
+        let titleStackView = UIStackView()
+        titleStackView.axis = .vertical
+        titleStackView.addArrangedSubview(titleLabel)
+        titleStackView.addArrangedSubview(idLabel)
+        titleStackView.distribution = .fillProportionally
+        
+        titleStackView.constrainToFill(infoContainerView)
+        infoContainerView.constrainToSuperView(self.view, safeArea: true, top: 4, leading: 8, trailing: 8)
+        
+    }
+    
+    private func setupStatsContainerView(){
+        
+        // Stats Container View
+        statsContainerView = UIView()
+        statsContainerView.constrain(height: 80, width: 200)
+        
+        // Last Label
+        let lastLabel = UILabel.label(for: .caption2, with: "Last:")
+        lastLabel.textColor = .white
+        lastLabel.textAlignment = .center
+        
+        // Last Value Label
+        lastValueLabel = UILabel.label(for: .header2, with: " ")
+        lastValueLabel.textColor = .white
+        lastValueLabel.textAlignment = .center
+        lastValueLabel.adjustsFontSizeToFitWidth = true
+        lastValueLabel.minimumScaleFactor = 0.5
+        
+        // Last Date Label
+        lastDateLabel = UILabel.label(for: .caption1, with: " ")
+        lastDateLabel.textColor = .white
+        lastDateLabel.textAlignment = .center
+        
+        // Last Stack view
+        let lastStackView = UIStackView()
+        lastStackView.axis = .vertical
+        lastStackView.addArrangedSubview(lastLabel)
+        lastStackView.addArrangedSubview(lastValueLabel)
+        lastStackView.addArrangedSubview(lastDateLabel)
+        lastStackView.distribution = .fillProportionally
+        
+        // Peak Label
+        let peakLabel = UILabel.label(for: .caption2, with: "Peak:")
+        peakLabel.textColor = .white
+        peakLabel.textAlignment = .center
+        
+        // Peak Value Label
+        peakValueLabel = UILabel.label(for: .header2, with: " ")
+        peakValueLabel.textColor = .white
+        peakValueLabel.textAlignment = .center
+        peakValueLabel.adjustsFontSizeToFitWidth = true
+        peakValueLabel.minimumScaleFactor = 0.5
+        
+        // Peak Date Label
+        peakDateLabel = UILabel.label(for: .caption1, with: " ")
+        peakDateLabel.textColor = .white
+        peakDateLabel.textAlignment = .center
+        
+        // Peak Stack view
+        let peakStackView = UIStackView()
+        peakStackView.axis = .vertical
+        peakStackView.addArrangedSubview(peakLabel)
+        peakStackView.addArrangedSubview(peakValueLabel)
+        peakStackView.addArrangedSubview(peakDateLabel)
+        peakStackView.distribution = .fillProportionally
+        
+        // SeparatorView
+        let separatorView = UIView(frame: CGRect.zero)
+        separatorView.constrain(width: 2)
+        separatorView.backgroundColor = .white
+        
+        // stats stack view
+        let statsStackView = UIStackView()
+        statsStackView.axis = .horizontal
+        statsStackView.addArrangedSubview(lastStackView)
+        statsStackView.addArrangedSubview(separatorView)
+        statsStackView.addArrangedSubview(peakStackView)
+        statsStackView.spacing = 12
+        statsStackView.distribution = .equalCentering
+        
+        statsStackView.constrainToCenterIn(statsContainerView)
+        self.view.addSubview(statsContainerView)
+        statsContainerView.constrainToSiblingView(infoContainerView, below: 0, equalWidth: 0)
+        
+    }
+    
+    private func setupChartContainerView(){
+        
+        chartContainerView = UIView()
+        chartContainerView.backgroundColor = .mainColor
+        self.view.addSubview(chartContainerView)
+        chartContainerView.constrainToSiblingView(statsContainerView, below: 4, equalWidth: 1, height: 300)
+    
+    }
+    
+    private func setupChartDetailsTableView() {
+        
+        chartDetailsTableView = ChartDetailsTableView()
         chartDetailsTableView.delegate = self
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
-        headerContainer.backgroundColor = .mainColor
         
-        // title label
-        titleLabel.text = chartAlreadySaved ? series?.title : seriesRepresentation?.title
-        titleLabel.font = .boldSystemFont(ofSize: 32)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.4
-        titleLabel.textColor = .white
-        
-        peakLabel.adjustsFontSizeToFitWidth = true
-        peakLabel.minimumScaleFactor = 0.5
-        lastLabel.adjustsFontSizeToFitWidth = true
-        lastLabel.minimumScaleFactor = 0.5
-        chartContainerView.backgroundColor = .mainColor
-        idLabel.text = chartAlreadySaved ? series?.id : seriesRepresentation?.id
-        idLabel.textColor = .white
-        
-        registerTableViewCellNibs()
-        checkIfChartAlreadySaved()
+        self.view.addSubview(chartDetailsTableView)
+        chartDetailsTableView.constrainToSiblingView(statsContainerView, below: 4, equalWidth: 0)
+        chartDetailsTableView.constrainToSuperView(self.view, safeArea: true, bottom: 0)
     }
     
     private func registerTableViewCellNibs(){
@@ -87,16 +194,16 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func checkIfChartAlreadySaved(){
-        if chartAlreadySaved {
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        if !chartAlreadySaved {
+            // Create and Assign the Save BarButtonItem to the Right Bar Button Item
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped(sender:)))
         }
     }
     
     private func setupProgressHUD(){
         let progressHUD = ProgressHUD(text: "Loading Chart")
         self.progressHUD = progressHUD
-        self.chartSubContainerView.addSubview(progressHUD)
+        progressHUD.constrainToSuperView(chartContainerView, safeArea: true, centerX: 0, centerY: 0, height: 200, width: 200)
     }
     
     private func filterChartDates(by filterYears: Int){
@@ -184,8 +291,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         let dateStr2 = dateF.string(from: Date(timeIntervalSince1970: lastDate ?? 0))
         
         DispatchQueue.main.async {
-            self.peakLabel.text = formattedPeakValue
-            self.lastLabel.text = formattedLastValue
+            self.peakValueLabel.text = formattedPeakValue
+            self.lastValueLabel.text = formattedLastValue
             
             self.peakDateLabel.text = "\(dateStr)"
             self.lastDateLabel.text = "\(dateStr2)"
@@ -373,7 +480,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     // MARK: - IBActions
-    @IBAction func saveChart(_ sender: Any) {
+    @objc func saveButtonTapped(sender: UIBarButtonItem) {
         
         guard let seriesRep = seriesRepresentation else {
             return
@@ -388,8 +495,6 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    
-    
     // MARK: - Properties
     var seriesObservations: Observations?
     var chartController: ChartController?
@@ -403,19 +508,21 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     var fredController: FredController?
     var backgroundMOC: NSManagedObjectContext?
     
-    @IBOutlet weak var chartContainerView: UIView!
-    @IBOutlet weak var chartSubContainerView: UIView!
-    @IBOutlet weak var chartDetailsTableView: ChartDetailsTableView!
-    @IBOutlet weak var headerContainer: UIView!
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var statsStackView: UIStackView!
-    @IBOutlet weak var trackerStatsView: UIView!
-    @IBOutlet weak var trackerLabel: UILabel!
-    @IBOutlet weak var lastLabel: UILabel!
-    @IBOutlet weak var peakLabel: UILabel!
-    @IBOutlet weak var lastDateLabel: UILabel!
-    @IBOutlet weak var peakDateLabel: UILabel!
+    // UI Properties
+    var infoContainerView: UIView!
+    var statsContainerView: UIView!
+    var chartContainerView: UIView!
+    var chartSubContainerView: UIView!
+    var chartDetailsTableView: ChartDetailsTableView!
+    var statsStackView: UIStackView!
+    var trackerStatsView: UIView!
+    var trackerLabel: UILabel!
+    var lastValueLabel: UILabel!
+    var peakValueLabel: UILabel!
+    var lastDateLabel: UILabel!
+    var peakDateLabel: UILabel!
+    
+    
     var startDate: Date?
     var endDate: Date?
     var isInitialUpdate: Bool = true
