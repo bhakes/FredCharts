@@ -19,6 +19,13 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchBar.text = ""
+        tableView.reloadData()
+    }
+    
     // MARK: - Private Methods
     
     func setupViews(){

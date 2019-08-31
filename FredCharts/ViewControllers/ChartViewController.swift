@@ -619,6 +619,8 @@ extension ChartViewController: ChartDelegate {
         })
         animator.startAnimation()
         
+        
+        
 //        print(models.first)
     }
     
@@ -637,17 +639,19 @@ extension ChartViewController: ChartDelegate {
             if $0 is UILabel || $0 is Ring {
             $0.removeFromSuperview()
             }
+            
+        }
+        
+        let _ = detailStackView.subviews.map {
+            $0.removeFromSuperview()
         }
         
         let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
-            self.statsStackView.center.y += 50
             self.statsStackView.alpha = 1
             self.detailStackView.alpha = 0
-            self.detailStackView.center.y += -50
+            self.detailStackView.center.y -= 50
         })
         animator.startAnimation()
-        
-        
         
     }
     
