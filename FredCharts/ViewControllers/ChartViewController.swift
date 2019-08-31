@@ -30,7 +30,10 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.chartAlreadySaved = chartAlreadySaved ?? false
         self.seriesRepresentation = seriesRepresentation
     }
-    
+
+    deinit {
+        chart?.delegate = nil
+    }
     
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -113,6 +116,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Stats Container View
         statsContainerView = UIView()
         statsContainerView.constrain(height: 80, width: 200)
+        statsContainerView.constrainToSuperView(view, leading: 0, trailing: 0)
         
         // Last Label
         let lastLabel = UILabel.label(for: .caption2, with: "Last:")
@@ -139,6 +143,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         lastStackView.addArrangedSubview(lastDateLabel)
         lastStackView.constrain(width: 80)
         lastStackView.distribution = .fillProportionally
+        lastStackView.alignment = .center
         
         // Peak Label
         let peakLabel = UILabel.label(for: .caption2, with: "Peak:")
@@ -164,6 +169,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         peakStackView.addArrangedSubview(peakValueLabel)
         peakStackView.addArrangedSubview(peakDateLabel)
         peakStackView.distribution = .fillProportionally
+        peakStackView.alignment = .center
         peakStackView.constrain(width: 80)
         
         // SeparatorView
@@ -172,7 +178,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         separatorView.backgroundColor = .white
         
         // stats stack view
-        let statsStackView = UIStackView()
+        statsStackView = UIStackView()
         statsStackView.axis = .horizontal
         statsStackView.addArrangedSubview(lastStackView)
         statsStackView.addArrangedSubview(separatorView)
@@ -183,6 +189,21 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         statsStackView.constrainToCenterIn(statsContainerView)
         self.view.addSubview(statsContainerView)
         statsContainerView.constrainToSiblingView(infoContainerView, below: 0, equalWidth: 0)
+        
+        setupStatsDetailStackView()
+    }
+    
+    private func setupStatsDetailStackView(){
+        
+        // Last Stack view
+        detailStackView = UIStackView()
+        detailStackView.axis = .vertical
+        detailStackView.constrain(width: 180)
+        detailStackView.distribution = .fillProportionally
+        detailStackView.alignment = .center
+        
+        detailStackView.constrainToCenterIn(statsContainerView, yOffset: 0)
+        detailStackView.alpha = 0
         
     }
     
@@ -324,15 +345,20 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         updateDatesAndLables(modelPoints: modelPoints)
 
         if chartAlreadySaved {
+            
             guard let series = series else { fatalError("Could not produce chart b/c there is no series present") }
             let _ = chart?.view.subviews.map { $0.removeFromSuperview() }
             let _ = chartContainerView.subviews.map { $0.removeFromSuperview() }
-            chart = chartController?.createChart(with: modelPoints, for: series, in: chartContainerView)
+            chart?.delegate = nil
+            chart = chartController?.createChart(with: modelPoints, for: series, in: chartContainerView, delegateView: detailStackView)
+            chart?.delegate = self
         } else {
             guard let seriesRep = seriesRepresentation else { fatalError("Could not produce chart b/c there is no series present") }
             let _ = chart?.view.subviews.map { $0.removeFromSuperview() }
             let _ = chartContainerView.subviews.map { $0.removeFromSuperview() }
-            chart = chartController?.createChart(with: modelPoints, for: seriesRep, in: chartContainerView)
+            chart?.delegate = nil
+            chart = chartController?.createChart(with: modelPoints, for: seriesRep, in: chartContainerView, delegateView: detailStackView)
+            chart?.delegate = self
         }
         
         guard let chart = chart else { fatalError("Could not produce chart") }
@@ -463,37 +489,6 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    // MARK: - TapGesture
-    
-    @IBAction func longPressed(_ gestureRecognizer: UITapGestureRecognizer) {
-        guard gestureRecognizer.view != nil else { return }
-        
-        
-        if gestureRecognizer.state == .began {      // Move the view down and to the right when tapped.
-            
-            
-            trackerLabel.text = "Actived"
-            
-            let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
-                self.statsStackView.center.y -= 50
-                self.statsStackView.alpha = 0
-                self.trackerStatsView.alpha = 1
-                
-            })
-            animator.startAnimation()
-            
-        } else if gestureRecognizer.state == .ended{
-            trackerLabel.text = "Test"
-            let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
-                self.statsStackView.center.y += 50
-                self.statsStackView.alpha = 1
-                self.trackerStatsView.alpha = 0
-            })
-            animator.startAnimation()
-            
-        }
-    }
-    
     // MARK: - IBActions
     @objc func saveButtonTapped(sender: UIBarButtonItem) {
         
@@ -536,6 +531,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     var peakValueLabel: UILabel!
     var lastDateLabel: UILabel!
     var peakDateLabel: UILabel!
+    var detailStackView: UIStackView!
     
     var startDate: Date?
     var endDate: Date?
@@ -544,6 +540,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     let normalControlReuseID = "NormalControlCell"
     let sliderControlReuseID = "SliderControlCell"
     var chartAlreadySaved: Bool = false
+    
+    weak var chartDelegate: ChartDelegate?
 }
 
 
@@ -597,4 +595,62 @@ extension ChartViewController: PickerControlDelegate {
         filterChartDates()
         chartDetailsTableView.reloadData()
     }
+}
+
+extension ChartViewController: ChartDelegate {
+    
+    func onZoom(scaleX: CGFloat, scaleY: CGFloat, deltaX: CGFloat, deltaY: CGFloat, centerX: CGFloat, centerY: CGFloat, isGesture: Bool) {
+    }
+    
+    func onPan(transX: CGFloat, transY: CGFloat, deltaX: CGFloat, deltaY: CGFloat, isGesture: Bool, isDeceleration: Bool) {
+
+    }
+    
+    func onFirstTap(_ models: [TappedChartPointLayerModels<ChartPoint>]) {
+        let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactFeedbackGenerator.prepare()
+        impactFeedbackGenerator.impactOccurred()
+        let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
+            self.statsStackView.center.y += -50
+            self.statsStackView.alpha = 0
+            self.detailStackView.alpha = 1
+            self.detailStackView.center.y += 50
+            
+        })
+        animator.startAnimation()
+        
+//        print(models.first)
+    }
+    
+    func tapDidContinue(_ models: [TappedChartPointLayerModels<ChartPoint>]) {
+        
+    }
+    
+    func onTap(_ models: [TappedChartPointLayerModels<ChartPoint>]) {
+//        print(models)
+        
+    }
+    
+    func onRelease() {
+        
+        let _ = chartContainerView.subviews.map {
+            if $0 is UILabel || $0 is Ring {
+            $0.removeFromSuperview()
+            }
+        }
+        
+        let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
+            self.statsStackView.center.y += 50
+            self.statsStackView.alpha = 1
+            self.detailStackView.alpha = 0
+            self.detailStackView.center.y += -50
+        })
+        animator.startAnimation()
+        
+        
+        
+    }
+    
+    
+    
 }
