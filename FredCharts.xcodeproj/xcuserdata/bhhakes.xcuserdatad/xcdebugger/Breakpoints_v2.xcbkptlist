@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "589320698.935412"
+            timestampString = "589321208.1863641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "629"
@@ -70,139 +70,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588983982.201856"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "createChart(with:for:in:delegateView:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #6 (Swift.Array&lt;FredCharts.ChartTrackerSelectedChartPoint&lt;FredCharts.ChartPoint, Any&gt;&gt;) -&gt; () in FredCharts.ChartController.createChart(with: Swift.Array&lt;(Swift.Double, Swift.Double)&gt;, for: FredCharts.FredSeriesSRepresentation, in: __C.UIView, delegateView: __C.UIStackView) -&gt; FredCharts.Chart"
-                  moduleName = "FredCharts"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589320699.2805901"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "328">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UILabel) -&gt; () in closure #6 (Swift.Array&lt;FredCharts.ChartTrackerSelectedChartPoint&lt;FredCharts.ChartPoint, Any&gt;&gt;) -&gt; () in FredCharts.ChartController.createChart(with: Swift.Array&lt;(Swift.Double, Swift.Double)&gt;, for: FredCharts.FredSeriesSRepresentation, in: __C.UIView, delegateView: __C.UIStackView) -&gt; FredCharts.Chart"
-                  moduleName = "FredCharts"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589320699.283465"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588983982.2019"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "createChart(with:for:in:delegateView:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588983982.201942"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "createChart(with:for:in:delegateView:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FredCharts/ModelController/ChartController.swift"
-            timestampString = "588983982.201982"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "createChart(with:for:in:delegateView:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #6 (Swift.Array&lt;FredCharts.ChartTrackerSelectedChartPoint&lt;FredCharts.ChartPoint, Any&gt;&gt;) -&gt; () in FredCharts.ChartController.createChart(with: Swift.Array&lt;(Swift.Double, Swift.Double)&gt;, for: FredCharts.FredSeriesSRepresentation, in: __C.UIView, delegateView: __C.UIStackView) -&gt; FredCharts.Chart"
-                  moduleName = "FredCharts"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589320699.299268"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "596">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (FredCharts.Ring) -&gt; () in closure #6 (Swift.Array&lt;FredCharts.ChartTrackerSelectedChartPoint&lt;FredCharts.ChartPoint, Any&gt;&gt;) -&gt; () in FredCharts.ChartController.createChart(with: Swift.Array&lt;(Swift.Double, Swift.Double)&gt;, for: FredCharts.FredSeriesSRepresentation, in: __C.UIView, delegateView: __C.UIStackView) -&gt; FredCharts.Chart"
-                  moduleName = "FredCharts"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589320699.301475"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "182"
-                  endingLineNumber = "182"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "589320698.935896"
+            timestampString = "589321208.186785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "253"

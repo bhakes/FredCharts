@@ -91,7 +91,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 1
+        titleLabel.numberOfLines = 2
         
         // setup id label
         let idLabel = UILabel()
@@ -106,8 +106,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         titleStackView.distribution = .fillProportionally
         
         titleStackView.constrainToFill(infoContainerView)
-        infoContainerView.constrain(width: 300)
-        infoContainerView.constrainToSuperView(self.view, safeArea: true, top: 4, leading: 12, trailing: -40)
+        infoContainerView.constrain(height: self.view.bounds.height/12)
+        infoContainerView.constrainToSuperView(self.view, safeArea: true, top: 4, leading: 12, trailing: 12)
         
         
     }
@@ -212,8 +212,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         chartContainerView = UIView()
         chartContainerView.backgroundColor = .mainColor
-        chartContainerView.constrainToSuperView(self.view, safeArea: true, leading: 8, trailing: 8)
-        chartContainerView.constrainToSiblingView(statsContainerView, below: 0, height: view.bounds.height / 2)
+        chartContainerView.constrainToSuperView(self.view, safeArea: true, leading: 8, trailing: 12)
+        chartContainerView.constrainToSiblingView(statsContainerView, below: 0, height: view.bounds.height / 2.1)
     
     }
     
