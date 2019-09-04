@@ -11,7 +11,7 @@ import CoreData
 
 extension FredSeriesS {
     
-    convenience init(title: String,
+    @discardableResult convenience init(title: String,
                      id: String,
                      realtimeStart: String,
                      realtimeEnd: String,
@@ -65,7 +65,7 @@ extension FredSeriesS {
     
     }
     
-    convenience init?(fredSeriesSRepresentation: FredSeriesSRepresentation) {
+    @discardableResult convenience init?(fredSeriesSRepresentation: FredSeriesSRepresentation) {
         
         let title = fredSeriesSRepresentation.title
         let id = fredSeriesSRepresentation.id
@@ -87,7 +87,7 @@ extension FredSeriesS {
         self.init(title: title, id : id, realtimeStart: realtimeStart, realtimeEnd: realtimeEnd, observationStart: observationStart, observationEnd: observationEnd, frequency: frequency, frequencyShort: frequencyShort, units: units, unitsShort: unitsShort, seasonalAdjustment: seasonalAdjustment, seasonalAdjustmentShort: seasonalAdjustmentShort, lastUpdated: lastUpdated, popularity: popularity, groupPopularity: groupPopularity, notes: notes)
     }
     
-    convenience init?(fredSeriesSRepresentation: FredSeriesSRepresentation, with context: NSManagedObjectContext) {
+    @discardableResult convenience init?(fredSeriesSRepresentation: FredSeriesSRepresentation, with context: NSManagedObjectContext) {
         
         let title = fredSeriesSRepresentation.title
         let id = fredSeriesSRepresentation.id
@@ -109,7 +109,7 @@ extension FredSeriesS {
         self.init(title: title, id : id, realtimeStart: realtimeStart, realtimeEnd: realtimeEnd, observationStart: observationStart, observationEnd: observationEnd, frequency: frequency, frequencyShort: frequencyShort, units: units, unitsShort: unitsShort, seasonalAdjustment: seasonalAdjustment, seasonalAdjustmentShort: seasonalAdjustmentShort, lastUpdated: lastUpdated, popularity: popularity, groupPopularity: groupPopularity, notes: notes, context: context)
     }
     
-    convenience init(fredSeriesS: FredSeriesS, with context: NSManagedObjectContext) {
+    @discardableResult convenience init(fredSeriesS: FredSeriesS, with context: NSManagedObjectContext) {
         
         let title = fredSeriesS.title!
         let id = fredSeriesS.id!

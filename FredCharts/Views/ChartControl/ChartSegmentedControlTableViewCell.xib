@@ -18,32 +18,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="3" translatesAutoresizingMaskIntoConstraints="NO" id="zCo-T0-H38">
-                        <rect key="frame" x="40" y="8" width="240" height="29"/>
-                        <segments>
-                            <segment title="All"/>
-                            <segment title="10Y"/>
-                            <segment title="5Y"/>
-                            <segment title="1Y" enabled="NO"/>
-                            <segment title="6M"/>
-                        </segments>
-                        <connections>
-                            <action selector="segmentedControlDidChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="P6J-pS-TFP"/>
-                        </connections>
-                    </segmentedControl>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailing" secondItem="zCo-T0-H38" secondAttribute="trailing" constant="40" id="815-rG-EgC"/>
-                    <constraint firstItem="zCo-T0-H38" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="ZcD-6j-knk"/>
-                    <constraint firstItem="zCo-T0-H38" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hNs-2N-Yrs"/>
-                    <constraint firstItem="zCo-T0-H38" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="nK0-yp-rDc"/>
-                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="segmentControl" destination="zCo-T0-H38" id="Qrm-aM-rjc"/>
-            </connections>
         </tableViewCell>
     </objects>
 </document>

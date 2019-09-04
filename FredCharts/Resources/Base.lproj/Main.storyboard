@@ -82,8 +82,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="detailLabel" destination="za9-JR-Edm" id="fi2-uC-D5j"/>
-                                    <outlet property="titleLabel" destination="Q6I-t5-3g3" id="BDy-ZL-zJ4"/>
                                     <segue destination="OsK-xk-I2n" kind="show" identifier="PreviewSegue" id="Bhk-Qt-ztx"/>
                                 </connections>
                             </tableViewCell>
@@ -94,9 +92,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" largeTitleDisplayMode="always" id="fYn-cB-eaB"/>
-                    <connections>
-                        <outlet property="searchBar" destination="yEb-Za-VhQ" id="mio-Bb-2Pu"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLv-R0-JsZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,43 +105,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vc-kf-Nbr">
-                                <rect key="frame" x="0.0" y="187.5" width="375" height="309.5"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkB-fL-aBR">
-                                        <rect key="frame" x="2" y="0.0" width="369" height="309.5"/>
-                                        <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="kkB-fL-aBR" secondAttribute="trailing" constant="4" id="MAd-Qg-0YH"/>
-                                    <constraint firstItem="kkB-fL-aBR" firstAttribute="leading" secondItem="1vc-kf-Nbr" secondAttribute="leading" constant="2" id="hdd-cW-oEH"/>
-                                    <constraint firstItem="kkB-fL-aBR" firstAttribute="top" secondItem="1vc-kf-Nbr" secondAttribute="top" id="m38-hT-aUS"/>
-                                    <constraint firstAttribute="bottom" secondItem="kkB-fL-aBR" secondAttribute="bottom" id="tYr-T6-3Zu"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="O3i-lW-eah" appends="YES" id="IU7-WJ-p9p"/>
-                                </connections>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oo3-Pz-6Ct" customClass="ChartDetailsTableView" customModule="FredCharts" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="497" width="375" height="170"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="RJ7-b3-jlQ"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChartControlCell" id="gOX-4D-Mjn" customClass="ChartControlTableViewCell" customModule="FredCharts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gOX-4D-Mjn" id="e1u-Eh-gzo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-lN-Y3H">
                                 <rect key="frame" x="0.0" y="64" width="375" height="123.5"/>
                                 <subviews>
@@ -279,6 +237,40 @@
                                     <constraint firstItem="iqw-NN-owB" firstAttribute="top" secondItem="uh5-lN-Y3H" secondAttribute="top" constant="8" id="xU8-jf-Nnj"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vc-kf-Nbr">
+                                <rect key="frame" x="0.0" y="187.5" width="375" height="309.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkB-fL-aBR">
+                                        <rect key="frame" x="2" y="0.0" width="369" height="309.5"/>
+                                        <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.31372549020000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kkB-fL-aBR" secondAttribute="trailing" constant="4" id="MAd-Qg-0YH"/>
+                                    <constraint firstItem="kkB-fL-aBR" firstAttribute="leading" secondItem="1vc-kf-Nbr" secondAttribute="leading" constant="2" id="hdd-cW-oEH"/>
+                                    <constraint firstItem="kkB-fL-aBR" firstAttribute="top" secondItem="1vc-kf-Nbr" secondAttribute="top" id="m38-hT-aUS"/>
+                                    <constraint firstAttribute="bottom" secondItem="kkB-fL-aBR" secondAttribute="bottom" id="tYr-T6-3Zu"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oo3-Pz-6Ct" customClass="ChartDetailsTableView" customModule="FredCharts" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="497" width="375" height="170"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="RJ7-b3-jlQ"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChartControlCell" id="gOX-4D-Mjn" customClass="ChartControlTableViewCell" customModule="FredCharts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gOX-4D-Mjn" id="e1u-Eh-gzo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -298,61 +290,13 @@
                         <viewLayoutGuide key="safeArea" id="exk-jg-Fsu"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="VkD-Zx-RuP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2Up-u1-Lv2">
-                            <connections>
-                                <action selector="saveChart:" destination="OsK-xk-I2n" id="cwo-j9-PMz"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2Up-u1-Lv2"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="chartContainerView" destination="1vc-kf-Nbr" id="ym2-Tv-GGC"/>
-                        <outlet property="chartDetailsTableView" destination="Oo3-Pz-6Ct" id="0xf-f3-oUx"/>
-                        <outlet property="chartSubContainerView" destination="kkB-fL-aBR" id="9S4-MC-rIw"/>
-                        <outlet property="headerContainer" destination="uh5-lN-Y3H" id="CRl-MC-CsZ"/>
-                        <outlet property="idLabel" destination="zaJ-Za-6qM" id="Xyz-kQ-Z4G"/>
-                        <outlet property="lastDateLabel" destination="Ngd-nq-7yi" id="tHU-1e-QGa"/>
-                        <outlet property="lastLabel" destination="8kp-5W-0qM" id="Nqh-o1-v9T"/>
-                        <outlet property="peakDateLabel" destination="K8V-2W-oZ1" id="cu8-c2-Xch"/>
-                        <outlet property="peakLabel" destination="j5n-ht-dK8" id="pMy-q9-8zK"/>
-                        <outlet property="statsStackView" destination="TTc-pD-T48" id="Nb5-Hc-ixd"/>
-                        <outlet property="titleLabel" destination="mra-Pb-XAW" id="PTZ-U3-sin"/>
-                        <outlet property="trackerLabel" destination="zfL-D6-AmS" id="6vc-GA-F1n"/>
-                        <outlet property="trackerStatsView" destination="pF7-Q7-9aq" id="MnN-Nn-vLJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEB-h6-vrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="O3i-lW-eah">
-                    <connections>
-                        <action selector="longPressed:" destination="OsK-xk-I2n" id="H5O-h4-Cic"/>
-                    </connections>
-                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="O3i-lW-eah"/>
             </objects>
             <point key="canvasLocation" x="-2716" y="2010"/>
-        </scene>
-        <!--TestAR View Controller-->
-        <scene sceneID="3yZ-7W-5Uw">
-            <objects>
-                <viewController id="3FY-Pc-HR4" customClass="TestARViewController" customModule="FredCharts" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wlQ-3W-nwe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="526-HU-NHa">
-                                <rect key="frame" x="170" y="114" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissButtonClicked:" destination="3FY-Pc-HR4" eventType="touchUpInside" id="VfP-CT-qRo"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="vj0-JY-KrR"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RbG-S3-Vac" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-972" y="2104"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BKW-Ja-iYq">
@@ -387,9 +331,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <connections>
-                                    <segue destination="OsK-xk-I2n" kind="show" identifier="ViewChartSegue" id="m3h-aC-Csd"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -415,7 +356,4 @@
             <point key="canvasLocation" x="-1319" y="92"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Bhk-Qt-ztx"/>
-    </inferredMetricsTieBreakers>
 </document>

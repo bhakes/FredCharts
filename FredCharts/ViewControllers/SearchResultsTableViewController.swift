@@ -13,17 +13,34 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
+        // Register cell classes
+        self.tableView?.register(SearchResultTableViewCell.self, forCellReuseIdentifier: searchResultCellReuseID)
+        
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchBar.text = ""
+        tableView.reloadData()
     }
     
     // MARK: - Private Methods
     
     func setupViews(){
         self.tableView.tableFooterView = UIView()
+        tableView.separatorInset = .init(top: 0, left: 12, bottom: 0, right: 12)
         navigationController?.navigationBar.layer.borderWidth = 0.0
-        searchBar.barTintColor = .mainColor
-        searchBar.layer.borderWidth = 0.0
+        
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        searchBar.constrainToFill(tableView.tableHeaderView!)
+        tableView.backgroundColor = .mainColor
+        
+        // setup title
+        navigationItem.title = "Search"
+        
+        
     }
     // MARK: - Table view data source
 
@@ -40,6 +57,17 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         cell.detailLabel.text = fredController.searchResults[indexPath.row].id
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let seriesRepresentation = self.fredController.searchResults[indexPath.row]
+        let chartVC = ChartViewController(fredController: fredController, seriesRepresentation: seriesRepresentation)
+        self.navigationController?.pushViewController(chartVC, animated: true)
     }
 
     // MARK: - UISearchBarDelegateMethods
@@ -73,17 +101,19 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
             destVC.chartController = ChartController()
         }
         
-        
-        
     }
-    
-    // MARK: - IBActions
-    @IBAction func filterButtonTapped(_ sender: Any) {
-    }
-    
-    
+
     // MARK: - Properties
+    let searchResultCellReuseID = "SearchResultCell"
     var fredController: FredController = FredController()
-    @IBOutlet weak var searchBar: UISearchBar!
+    
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.barTintColor = .mainColor
+        searchBar.layer.borderWidth = 0.0
+        searchBar.placeholder = "Try \"Inflation\" or \"Oil\""
+        return searchBar
+    }()
     
 }

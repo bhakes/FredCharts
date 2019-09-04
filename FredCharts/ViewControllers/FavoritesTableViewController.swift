@@ -17,8 +17,8 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
 
         // Register cell classes
         self.tableView!.register(UINib(nibName: "FavoritesTableViewCell", bundle: nil), forCellReuseIdentifier: favoritesCellReuseID)
-        tableView.tableFooterView = UIView()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        updateViews()
         getDataUpdates()
     }
 
@@ -35,6 +35,30 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     // MARK: - Private Methods
+    
+    private func updateViews() {
+        
+        // View Background Color
+        self.view.backgroundColor = .mainColor
+        
+        // Add a simple footerView
+        let footerView = UIView()
+        footerView.backgroundColor = .mainColor
+        tableView.tableFooterView = footerView
+        
+        // Create and Assign Edit Button to Left Bar Button Item
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
+        
+        // Create and Assign the Search Bar Button to the Right Bar Button Item
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(sender:)))
+        
+        // setup title
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.sizeToFit()
+        navigationItem.title = "FedCharts"
+        
+    }
     
     private func getDataUpdates(forceUpdate: Bool = false){
         
@@ -54,7 +78,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                 
                 guard let id = series.id else { return }
                 
-                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { [unowned self] (observation, error) in
+                self.fredController.getObservationsForFredSeries(with: id, descendingSortOrder: true, observationCount: 2) { (observation, error) in
                     
                     if let lastValue = observation?.observations[0].value {
                         if let doubleLastValue = Double(lastValue){
@@ -93,7 +117,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         let operation2 = BlockOperation {
             do {
-                try CoreDataStack.shared.mainContext.save()
+                try CoreDataStack.shared.save()
             } catch {
                 print("Error saving managed object context.")
             }
@@ -112,11 +136,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
     }
     
-    
-    
-    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
@@ -145,6 +165,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         cell.titleLabel.text = series.title
         cell.idLabel.text = series.id
+        cell.selectionStyle = .gray
         
         var units = "Units"
         if series.units != nil {
@@ -181,13 +202,15 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        autoreleasepool {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: favoritesCellReuseID, for: indexPath) as? FavoritesTableViewCell else { fatalError("Could not dequeue cell as FavoritesTableViewCell") }
-            performSegue(withIdentifier: "ViewChartSegue", sender: cell)
-        }
-       
         
+        let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackGenerator.prepare()
+        impactFeedbackGenerator.impactOccurred()
         
+        let series = fetchedResultsController.object(at: indexPath)
+        let chartVC = ChartViewController(fredController: fredController, series: series, chartAlreadySaved: true)
+        self.navigationController?.pushViewController(chartVC, animated: true)
+    
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -203,7 +226,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         do
         {
-            try CoreDataStack.shared.mainContext.save()
+            try CoreDataStack.shared.save()
             
         } catch{
             print("Difficulty saving main context")
@@ -215,28 +238,17 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         return true
     }
     
-    @IBAction func editing(sender: UIBarButtonItem) {
+    @objc func editing(sender: UIBarButtonItem) {
         
         isEditing = !isEditing
         
     }
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    @objc func searchButtonTapped(sender: UIBarButtonItem) {
         
-        if segue.identifier == "ViewChartSegue" {
-            guard let destVC = segue.destination as? ChartViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
-            guard let indexPath = self.tableView.indexPathForSelectedRow else { fatalError("Could not get indexPath for selected item.") }
-            destVC.fredController = self.fredController
-            destVC.series = fetchedResultsController.object(at: indexPath)
-            destVC.chartAlreadySaved = true
-            destVC.chartController = ChartController()
-            
-        } else if segue.identifier == "SearchSegue" {
-            guard let destVC = segue.destination as? SearchResultsTableViewController else { fatalError("Destination segue is not recognized as a ChartTestViewController") }
-            destVC.fredController = self.fredController
-        }
+        let searchResultsTableVC = SearchResultsTableViewController()
+        searchResultsTableVC.fredController = fredController
+        self.navigationController?.pushViewController(searchResultsTableVC, animated: true)
         
     }
     
@@ -249,7 +261,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         tableView.endUpdates()
     }
     
-    @IBAction func editTapped(sender: UIBarButtonItem) {
+    @objc func editTapped(sender: UIBarButtonItem) {
         
         isEditing = !isEditing
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped(sender:)))
@@ -265,6 +277,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         self.navigationItem.leftBarButtonItem = editBarButton
         self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
+    
     // MARK: - Editing Style
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

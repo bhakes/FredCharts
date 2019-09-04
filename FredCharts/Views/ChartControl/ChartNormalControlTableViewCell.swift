@@ -21,6 +21,11 @@ class ChartNormalControlTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
     @IBOutlet weak var attributeTitleLabel: UILabel!
     @IBOutlet weak var attributeValueLabel: UILabel!
 }

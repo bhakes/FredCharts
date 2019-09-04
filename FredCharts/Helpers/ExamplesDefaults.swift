@@ -96,7 +96,7 @@ struct ExamplesDefaults {
     }
     
     static func fontWithSize(_ size: CGFloat) -> UIFont {
-        return UIFont(name: "Helvetica", size: size) ?? autoreleasepool { UIFont.systemFont(ofSize: size) }
+        return autoreleasepool { UIFont.systemFont(ofSize: size) }
     }
     
     static var guidelinesWidth: CGFloat {

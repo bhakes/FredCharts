@@ -12,7 +12,7 @@ import UIKit
 
 class ChartController {
     
-    func updateChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView) -> Chart {
+    func createChart(with modelPoints: [GridPoint], for series: FredSeriesS, in viewToPlaceChart: UIView, delegateView: UIStackView) -> Chart {
         
         guard let units = series.units else { fatalError() }
         // Build Label Settings
@@ -61,37 +61,49 @@ class ChartController {
         // Chart Points Line Layer
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel], useView: false)
         
-        
         let thumbSettings = ChartPointsLineTrackerLayerThumbSettings(thumbSize: Env.iPad ? 24 : 12, thumbBorderWidth: Env.iPad ? 8 : 4)
         let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
         
         var currentPositionLabels: [UILabel] = []
+        var currentPositionRings: [Ring] = []
         
-        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.mainColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {[weak self] chartPointsWithScreenLoc in
+        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: .fadedTextColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {[weak self] chartPointsWithScreenLoc in
             
             currentPositionLabels.forEach{$0.removeFromSuperview()}
+            currentPositionRings.forEach{$0.removeFromSuperview()}
             
-            for (index, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
+            for (_, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
                 
-                let label = UILabel()
+                let valueLabel = UILabel.label(for: .header1, with: "temp")
+                let dateLabel = UILabel.label(for: .caption1, with: "tempDate")
+                
+                let ring = Ring(frame: CGRect(x: chartPointWithScreenLoc.screenLoc.x - 8, y: chartPointWithScreenLoc.screenLoc.y - 8, width: 16, height: 16))
                 let date = Date(timeIntervalSince1970: chartPointWithScreenLoc.chartPoint.x.scalar)
                 
                 if let s = self {
-                    label.text = "\(s.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
-                    label.sizeToFit()
-                    label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
-                    label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
-                    label.textColor = UIColor.mainColor
                     
-                    currentPositionLabels.append(label)
-                    viewToPlaceChart.addSubview(label)
+                    
+                    valueLabel.text = UnitDefinition.bestDefinition(for: series.units ?? "Number").format(chartPointWithScreenLoc.chartPoint.y.scalar)
+                    valueLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 28,weight: UIFont.Weight.bold)
+                    valueLabel.textColor = .white
+                    
+                    dateLabel.text = "\(s.getDateFormatterDetailed(with: date))"
+                    dateLabel.font = UIFont(name: "Menlo-Regular", size: 14)
+                    dateLabel.textColor = .white
+                    
+                    currentPositionLabels.append(valueLabel)
+                    currentPositionLabels.append(dateLabel)
+                    currentPositionRings.append(ring)
+                    viewToPlaceChart.addSubview(ring)
+                    delegateView.addArrangedSubview(valueLabel)
+                    delegateView.addArrangedSubview(dateLabel)
                 }
                 
             }
         }
         
-        //        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
-        //        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
+//        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
+//        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
         let chart = autoreleasepool{ Chart(
             frame: chartFrame,
@@ -100,7 +112,7 @@ class ChartController {
             layers: [
                 xAxisLayer,
                 yAxisLayer,
-                //                guidelinesLayer,
+//                guidelinesLayer,
                 chartPointsLineLayer,
                 chartPointsTrackerLayer
             ]
@@ -109,8 +121,7 @@ class ChartController {
 
     }
     
-    
-    func updateChart(with modelPoints: [GridPoint], for seriesRep: FredSeriesSRepresentation, in viewToPlaceChart: UIView) -> Chart {
+    func createChart(with modelPoints: [GridPoint], for seriesRep: FredSeriesSRepresentation, in viewToPlaceChart: UIView, delegateView: UIStackView) -> Chart {
         
         let units = seriesRep.units
         // Build Label Settings
@@ -159,35 +170,44 @@ class ChartController {
         // Chart Points Line Layer
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lineModels: [lineModel], useView: false)
         
-        
         let thumbSettings = ChartPointsLineTrackerLayerThumbSettings(thumbSize: Env.iPad ? 24 : 12, thumbBorderWidth: Env.iPad ? 8 : 4)
         let trackerLayerSettings = ChartPointsLineTrackerLayerSettings(thumbSettings: thumbSettings)
         
         var currentPositionLabels: [UILabel] = []
+        var currentPositionRings: [Ring] = []
         
-        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: UIColor.mainColor, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {chartPointsWithScreenLoc in
+        let chartPointsTrackerLayer = ChartPointsLineTrackerLayer<ChartPoint, Any>(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, lines: [chartPoints], lineColor: .white, animDuration: 1, animDelay: 2, settings: trackerLayerSettings) {chartPointsWithScreenLoc in
             
             currentPositionLabels.forEach{$0.removeFromSuperview()}
+            currentPositionRings.forEach{$0.removeFromSuperview()}
             
-            for (index, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
+            for (_, chartPointWithScreenLoc) in chartPointsWithScreenLoc.enumerated() {
                 
-                let label = UILabel()
+                let valueLabel = UILabel.label(for: .header1, with: "temp")
+                let dateLabel = UILabel.label(for: .caption1, with: "tempDate")
+                let ring = Ring(frame: CGRect(x: chartPointWithScreenLoc.screenLoc.x - 8, y: chartPointWithScreenLoc.screenLoc.y - 8, width: 16, height: 16))
                 let date = Date(timeIntervalSince1970: chartPointWithScreenLoc.chartPoint.x.scalar)
                 
-                label.text = "\(self.getDateFormatter(with: date)) - \(String(format: "%.2f",chartPointWithScreenLoc.chartPoint.y.scalar))"
-                label.sizeToFit()
-                label.center = CGPoint(x: chartPointWithScreenLoc.screenLoc.x + label.frame.width / 2, y: chartPointWithScreenLoc.screenLoc.y + chartFrame.minY - label.frame.height / 2)
-                label.backgroundColor = index == 0 ? UIColor.white : UIColor.lightAccentColor
-                label.textColor = UIColor.mainColor
+                valueLabel.text = UnitDefinition.bestDefinition(for: units).format(chartPointWithScreenLoc.chartPoint.y.scalar)
+                valueLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 28,weight: UIFont.Weight.bold)
+                valueLabel.textColor = .white
                 
-                currentPositionLabels.append(label)
-                viewToPlaceChart.addSubview(label)
+                dateLabel.text = "\(self.getDateFormatterDetailed(with: date))"
+                dateLabel.font = UIFont(name: "Menlo-Regular", size: 14)
+                dateLabel.textColor = .white
+                
+                currentPositionLabels.append(valueLabel)
+                currentPositionLabels.append(dateLabel)
+                currentPositionRings.append(ring)
+                viewToPlaceChart.addSubview(ring)
+                delegateView.addArrangedSubview(valueLabel)
+                delegateView.addArrangedSubview(dateLabel)
             }
         }
         
-        //        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
-        //        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
-        
+//        let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
+//        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
+//
         let chart = autoreleasepool{  Chart(
             frame: chartFrame,
             innerFrame: innerFrame,
@@ -195,11 +215,12 @@ class ChartController {
             layers: [
                 xAxisLayer,
                 yAxisLayer,
-                //                guidelinesLayer,
+//                guidelinesLayer,
                 chartPointsLineLayer,
                 chartPointsTrackerLayer
             ]
             ) }
+        
         return chart
         
     }
@@ -213,6 +234,13 @@ class ChartController {
         return stringToReturn
     }
     
-    
+    func getDateFormatterDetailed(with date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, MMM dd, yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        let stringToReturn = dateFormatter.string(from: date)
+        return stringToReturn
+    }
 }
 
