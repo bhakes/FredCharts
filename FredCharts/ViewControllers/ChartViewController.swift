@@ -281,17 +281,15 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    
-    
     private func filterChartDates(){
         
         var newModelPoints: [GridPoint] = []
-//        guard let startDate = startDate, let endDate = endDate else { return }
-        newModelPoints = originalModelPoints /*.filter({ (arg) -> Bool in
+        guard let startDate = startDate, let endDate = endDate else { return }
+        newModelPoints = originalModelPoints.filter({ (arg) -> Bool in
             
             let (x, _) = arg
             return (startDate.timeIntervalSince1970 <= x && x <= endDate.timeIntervalSince1970)
-        })*/
+        })
         
         DispatchQueue.main.async {
             autoreleasepool{
