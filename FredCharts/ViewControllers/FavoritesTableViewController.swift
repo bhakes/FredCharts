@@ -248,6 +248,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         let searchResultsTableVC = SearchResultsTableViewController()
         searchResultsTableVC.fredController = fredController
+        searchResultsTableVC.fredController.searchResults = []
         self.navigationController?.pushViewController(searchResultsTableVC, animated: true)
         
     }
