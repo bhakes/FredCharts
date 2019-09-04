@@ -82,8 +82,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private func setupInfoContainerView() {
         
-        infoContainerView = UIView()
-        self.view.addSubview(infoContainerView)
+        infoContainerView = UIView(frame: .zero)
         
         // setup title label
         let titleLabel = UILabel()
@@ -107,7 +106,9 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         titleStackView.distribution = .fillProportionally
         
         titleStackView.constrainToFill(infoContainerView)
-        infoContainerView.constrainToSuperView(self.view, safeArea: true, top: 4, leading: 8, trailing: 8)
+        infoContainerView.constrain(width: 300)
+        infoContainerView.constrainToSuperView(self.view, safeArea: true, top: 4, leading: 12, trailing: -40)
+        
         
     }
     
@@ -187,8 +188,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         statsStackView.distribution = .equalCentering
         
         statsStackView.constrainToCenterIn(statsContainerView)
-        self.view.addSubview(statsContainerView)
-        statsContainerView.constrainToSiblingView(infoContainerView, below: 0, equalWidth: 0)
+        statsContainerView.constrainToSuperView(self.view, safeArea: true, leading: 8, trailing: 8)
+        statsContainerView.constrainToSiblingView(infoContainerView, below: 0)
         
         setupStatsDetailStackView()
     }
@@ -211,8 +212,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         chartContainerView = UIView()
         chartContainerView.backgroundColor = .mainColor
-        self.view.addSubview(chartContainerView)
-        chartContainerView.constrainToSiblingView(statsContainerView, below: 0, equalWidth: 0, height: view.bounds.height / 2)
+        chartContainerView.constrainToSuperView(self.view, safeArea: true, leading: 8, trailing: 8)
+        chartContainerView.constrainToSiblingView(statsContainerView, below: 0, height: view.bounds.height / 2)
     
     }
     
@@ -617,7 +618,7 @@ extension ChartViewController: ChartDelegate {
         impactFeedbackGenerator.prepare()
         impactFeedbackGenerator.impactOccurred()
         let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
-            self.statsStackView.center.y += -50
+//            self.statsStackView.center.y += -50
             self.statsStackView.alpha = 0
             self.detailStackView.alpha = 1
             self.detailStackView.center.y += 50
@@ -655,7 +656,7 @@ extension ChartViewController: ChartDelegate {
         let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn, animations: {
             self.statsStackView.alpha = 1
             self.detailStackView.alpha = 0
-            self.detailStackView.center.y -= 50
+//            self.detailStackView.center.y -= 50
         })
         animator.startAnimation()
         

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "589319440.280894"
+            timestampString = "589320698.935412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
+            startingLineNumber = "629"
+            endingLineNumber = "629"
             landmarkName = "onFirstTap(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,12 +90,12 @@
                   moduleName = "FredCharts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589319440.510474"
+                  timestampString = "589320699.2805901"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "395">
+                  offsetFromSymbolStart = "328">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "FredCharts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589319440.515095"
+                  timestampString = "589320699.283465"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -170,12 +170,12 @@
                   moduleName = "FredCharts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589319440.5331"
+                  timestampString = "589320699.299268"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
                   endingLineNumber = "182"
-                  offsetFromSymbolStart = "753">
+                  offsetFromSymbolStart = "596">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -185,12 +185,12 @@
                   moduleName = "FredCharts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bhhakes/development/iOS_Project_Week3/FredCharts/FredCharts/ModelController/ChartController.swift"
-                  timestampString = "589319440.535278"
+                  timestampString = "589320699.301475"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
                   endingLineNumber = "182"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "589319440.2813441"
+            timestampString = "589320698.935896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "filterChartDates(by:)"
             landmarkType = "7">
          </BreakpointContent>
