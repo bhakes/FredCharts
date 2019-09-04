@@ -550,9 +550,17 @@ extension ChartViewController: ChartSegementedControlDelegate {
     // MARK: - ChartSegementedControlDelegate
     func segmentedControlDidChange(with integer: Int?) {
         
+        let group = DispatchGroup()
+        group.enter()
+        
         if let progressHUD = self.progressHUD {
-            progressHUD.constrainToCenterIn(chartContainerView)
+            progressHUD.constrainToCenterIn(self.chartContainerView)
+            self.chartContainerView.bringSubviewToFront(progressHUD)
+            group.leave()
         }
+        
+        group.wait()
+        
         
         // catch if the data is old and
         // cannot be filtered by the segmented control0

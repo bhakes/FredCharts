@@ -21,9 +21,21 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        updateViews()
+        
+        segmentControl.addTarget(self, action: #selector(segmentedControlDidChange), for:.valueChanged)
+        segmentControl.addTarget(self, action: #selector(segmentedControlDidChange), for:.touchUpInside)
+    }
+    
     // MARK: IBActions
-    @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
-//        swit segmentControl.selectedSegmentIndex
+    @objc func segmentedControlDidChange(_ sender: UISegmentedControl) {
+        let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackGenerator.prepare()
+        impactFeedbackGenerator.impactOccurred()
+        
         switch segmentControl.selectedSegmentIndex  {
         case 0:
             delegate?.segmentedControlDidChange(with: nil)
@@ -41,8 +53,18 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Private Methods
+    private func updateViews() {
+        segmentControl.constrainToSuperView(self, safeArea: true, leading: 20, trailing: 20, centerX: 0)
+    }
     
-    // MARK: Properties
-    @IBOutlet weak var segmentControl: UISegmentedControl!
+    // MARK: - Properties
+    lazy var segmentControl: UISegmentedControl = {
+        let scItems = ["All", "10Y", "5Y", "1Y", "6M"]
+        let sc = UISegmentedControl(items: scItems)
+        sc.selectedSegmentIndex = 3
+        
+        return sc
+    }()
     weak var delegate: ChartSegementedControlDelegate?
 }

@@ -165,6 +165,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         
         cell.titleLabel.text = series.title
         cell.idLabel.text = series.id
+        cell.selectionStyle = .gray
         
         var units = "Units"
         if series.units != nil {
@@ -201,7 +202,11 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
+        let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackGenerator.prepare()
+        impactFeedbackGenerator.impactOccurred()
+        
         let series = fetchedResultsController.object(at: indexPath)
         let chartVC = ChartViewController(fredController: fredController, series: series, chartAlreadySaved: true)
         self.navigationController?.pushViewController(chartVC, animated: true)
