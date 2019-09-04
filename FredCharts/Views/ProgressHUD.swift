@@ -36,9 +36,9 @@ class ProgressHUD: UIVisualEffectView {
     }
     
     func setup() {
-        contentView.addSubview(vibrancyView)
-        contentView.addSubview(activityIndictor)
-        contentView.addSubview(label)
+        vibrancyView.constrainToCenterIn(contentView, yOffset: -12)
+        activityIndictor.constrainToCenterIn(contentView, yOffset: -12)
+        label.constrainToCenterIn(contentView, yOffset: 24)
         activityIndictor.startAnimating()
     }
     

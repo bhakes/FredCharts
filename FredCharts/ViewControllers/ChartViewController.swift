@@ -244,7 +244,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     private func setupProgressHUD(){
         let progressHUD = ProgressHUD(text: "Loading Chart")
         self.progressHUD = progressHUD
-        progressHUD.constrainToSuperView(chartContainerView, safeArea: true, centerX: 0, centerY: 0, height: 200, width: 200)
+        progressHUD.constrainToSuperView(chartContainerView, safeArea: true, centerX: 0, centerY: 0, height: 140, width: 140)
     }
     
     private func filterChartDates(by filterYears: Int){
