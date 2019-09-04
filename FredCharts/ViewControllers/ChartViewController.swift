@@ -251,8 +251,9 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     private func filterChartDates(by filterYears: Int){
         
         var newModelPoints: [GridPoint] = []
-        
-        if (filterYears == 0) {
+        if filterYears == -1 {
+          newModelPoints = originalModelPoints
+        } else if filterYears == 0 {
             let months = 6
             newModelPoints = originalModelPoints.filter({
                 Date.dateXMonthsAgo(numberOfMonthsAgo: months).timeIntervalSince1970 < $0.0
@@ -275,7 +276,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.progressHUD?.removeFromSuperview()
                 print("Updating the chart!")
                 self.updateChart(with: newModelPoints)
-                self.chartDetailsTableView.reloadData()
+                self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
             }
             
         }
@@ -298,7 +299,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.progressHUD?.removeFromSuperview()
                 print("Updating the chart!")
                 self.updateChart(with: newModelPoints)
-                self.chartDetailsTableView.reloadData()
+                self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
             }
         }
         
@@ -594,13 +595,13 @@ extension ChartViewController: PickerControlDelegate {
             startDate = date
         }
         filterChartDates()
-        chartDetailsTableView.reloadData()
+        self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
     }
     
     func pickerEndDateSelected(with date: Date) {
         endDate = date
         filterChartDates()
-        chartDetailsTableView.reloadData()
+        self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
     }
 }
 

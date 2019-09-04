@@ -35,10 +35,11 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
         let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
         impactFeedbackGenerator.prepare()
         impactFeedbackGenerator.impactOccurred()
+        sender.setNeedsDisplay()
         
         switch segmentControl.selectedSegmentIndex  {
         case 0:
-            delegate?.segmentedControlDidChange(with: nil)
+            delegate?.segmentedControlDidChange(with: -1)
         case 1:
             delegate?.segmentedControlDidChange(with: 10)
         case 2:

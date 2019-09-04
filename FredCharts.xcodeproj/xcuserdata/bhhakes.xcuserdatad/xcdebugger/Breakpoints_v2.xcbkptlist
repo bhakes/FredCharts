@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "589321208.1863641"
+            timestampString = "589322438.791633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "629"
-            endingLineNumber = "629"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
             landmarkName = "onFirstTap(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -64,22 +64,6 @@
             startingLineNumber = "392"
             endingLineNumber = "392"
             landmarkName = "onFirstTap(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FredCharts/ViewControllers/ChartViewController.swift"
-            timestampString = "589321208.186785"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "filterChartDates(by:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

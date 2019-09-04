@@ -228,7 +228,7 @@ class ChartController {
     func getDateFormatter(with date: Date) -> String {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/YY"
+        dateFormatter.dateFormat = "M/YY"
         dateFormatter.locale = Locale(identifier: "en_US")
         let stringToReturn = dateFormatter.string(from: date)
         return stringToReturn
