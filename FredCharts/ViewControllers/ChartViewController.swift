@@ -106,7 +106,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         titleStackView.distribution = .fillProportionally
         
         titleStackView.constrainToFill(infoContainerView)
-        infoContainerView.constrain(height: self.view.bounds.height/12)
+        infoContainerView.constrain(height: self.view.bounds.height/11)
         infoContainerView.constrainToSuperView(self.view, safeArea: true, top: 4, leading: 12, trailing: 12)
         
         
@@ -116,7 +116,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Stats Container View
         statsContainerView = UIView()
-        statsContainerView.constrain(height: 80, width: 200)
+        statsContainerView.constrain(height: 72, width: 200)
         statsContainerView.constrainToSuperView(view, leading: 0, trailing: 0)
         
         // Last Label
@@ -213,7 +213,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         chartContainerView = UIView()
         chartContainerView.backgroundColor = .mainColor
         chartContainerView.constrainToSuperView(self.view, safeArea: true, leading: 8, trailing: 12)
-        chartContainerView.constrainToSiblingView(statsContainerView, below: 0, height: view.bounds.height / 2.1)
+        chartContainerView.constrainToSiblingView(statsContainerView, below: 0)
     
     }
     
@@ -223,7 +223,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         chartDetailsTableView.delegate = self
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
-        
+        chartDetailsTableView.constrain(height: 182)
         chartDetailsTableView.constrainToSuperView(self.view, safeArea: false, bottom: 0, leading: 0, trailing: 0)
         chartDetailsTableView.constrainToSiblingView(chartContainerView, below: 0)
         
@@ -416,28 +416,41 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
                 cell.tag = 1
                 cell.attributeTitleLabel.text = "Begin Date:"
+                cell.selectionStyle = .none
                 
                 let beginDate = self.modelPoints.min {$0.0<$1.0}?.0
                 
                 let dateF = DateFormatter()
                 dateF.dateFormat = "MM-dd-YYYY"
-                let dateStr = dateF.string(from: Date(timeIntervalSince1970: beginDate ?? 0))
                 
-                cell.attributeValueLabel.text = "\(dateStr)"
+                
+                if let beginDate = beginDate {
+                    let dateStr = dateF.string(from: Date(timeIntervalSince1970: beginDate))
+                    
+                    cell.attributeValueLabel.text = "\(dateStr)"
+                } else {
+                    cell.attributeValueLabel.text = ""
+                }
+                
                 return cell
                 
             case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: normalControlReuseID, for: indexPath) as? ChartNormalControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
                 cell.tag = 1
                 cell.attributeTitleLabel.text = "End Date:"
+                cell.selectionStyle = .none
                 
                 let endDate = self.modelPoints.max {$0.0<$1.0}?.0
                 
                 let dateF = DateFormatter()
                 dateF.dateFormat = "MM-dd-YYYY"
-                let dateStr = dateF.string(from: Date(timeIntervalSince1970: endDate ?? 0))
+                if let endDate = endDate {
+                    let dateStr = dateF.string(from: Date(timeIntervalSince1970: endDate))
+                    cell.attributeValueLabel.text = "\(dateStr)"
+                } else {
+                    cell.attributeValueLabel.text = ""
+                }
                 
-                cell.attributeValueLabel.text = "\(dateStr)"
                 return cell
                 
             default:
