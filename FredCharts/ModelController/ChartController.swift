@@ -23,26 +23,25 @@ class ChartController {
         let chartPoints = modelPoints.map{ChartPoint(x: ChartAxisValueDouble($0.0, labelSettings: labelSettingsXAxis), y: ChartAxisValueDouble($0.1))}
         
         // build xValues and yValues
-        let xValues = ChartAxisValuesStaticGenerator.generateXAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDate(date: Date(timeIntervalSince1970: $0), formatter: {return self.getDateFormatter(with: $0)}, labelSettings: labelSettingsXAxis)}, addPaddingSegmentIfEdge: false)
+        let xValues = ChartAxisValuesStaticGenerator.generateXAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDate(date: Date(timeIntervalSince1970: $0), formatter: {return self.getDateFormatter(with: $0)}, labelSettings: labelSettingsXAxis)}, addPaddingSegmentIfEdge: true)
         
-        let firstModelValue = modelPoints.max {$0.1>$1.1}?.1
-        let lastModelValue = modelPoints.min{$0.1>$1.1}?.1
+        let maxModelValue = modelPoints.max {$0.1>$1.1}?.1 ?? 1
+        let minModelValue = modelPoints.min{$0.1>$1.1}?.1 ?? 0
+        let buffer = (maxModelValue - minModelValue)/20
         
-        let valuesGenerator = ChartAxisGeneratorMultiplier(((lastModelValue ?? 1) - (firstModelValue ?? 0))/10)
+        let valuesGenerator = ChartAxisGeneratorMultiplier((minModelValue - maxModelValue)/10)
         
         let numberFormatter = NumberFormatter.getNumberFormatter(with: units)
         
         let labelsGenerator = ChartAxisLabelsGeneratorNumber(labelSettings: labelSettingsYAxis, formatter: numberFormatter)
         
-//        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettingsYAxis)}, addPaddingSegmentIfEdge: false)
-//
+//        let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 10, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettingsYAxis)}, addPaddingSegmentIfEdge: true)
         
-        let yModel = ChartAxisModel(firstModelValue: firstModelValue ?? 0, lastModelValue: lastModelValue ?? 1, axisTitleLabel: ChartAxisLabel(text: units, settings: labelSettingsYAxis.defaultVertical()), axisValuesGenerator: valuesGenerator, labelsGenerator: labelsGenerator)
+        let yModel = ChartAxisModel(firstModelValue: maxModelValue + buffer, lastModelValue: minModelValue - buffer, axisTitleLabel: ChartAxisLabel(text: units, settings: labelSettingsYAxis.defaultVertical()), axisValuesGenerator: valuesGenerator, labelsGenerator: labelsGenerator)
         
         // build xModels and yModels
         let xModel = ChartAxisModel(axisValues: xValues)
-//        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: series.units, settings: labelSettingsYAxis.defaultVertical()))
-        
+
         // build chartFrame
         let chartFrame = viewToPlaceChart.bounds
         

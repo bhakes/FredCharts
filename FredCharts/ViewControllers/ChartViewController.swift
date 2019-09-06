@@ -223,7 +223,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         chartDetailsTableView.delegate = self
         chartDetailsTableView.dataSource = self
         chartDetailsTableView.tableFooterView = UIView()
-        chartDetailsTableView.constrain(height: 182)
+        chartDetailsTableView.constrain(height: 208)
         chartDetailsTableView.constrainToSuperView(self.view, safeArea: false, bottom: 0, leading: 0, trailing: 0)
         chartDetailsTableView.constrainToSiblingView(chartContainerView, below: 0)
         
@@ -476,6 +476,11 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         guard let startDate = startDate, let endDate = endDate else { return }
+        
+        let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackGenerator.prepare()
+        impactFeedbackGenerator.impactOccurred()
+        
         if cell.tag == 1 {
             
             let controller = PickerViewController(nibName: "PickerViewController", bundle: nil)
