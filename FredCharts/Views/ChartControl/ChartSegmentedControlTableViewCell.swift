@@ -32,6 +32,7 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
     
     // MARK: IBActions
     @objc func segmentedControlDidChange(_ sender: UISegmentedControl) {
+//        guard !isDiscontinuedChart else { return }
         let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
         impactFeedbackGenerator.prepare()
         impactFeedbackGenerator.impactOccurred()
@@ -67,5 +68,15 @@ class ChartSegmentedControlTableViewCell: UITableViewCell {
         
         return sc
     }()
+    var isDiscontinuedChart: Bool? {
+        didSet {
+            if self.isDiscontinuedChart ?? false {
+                segmentControl.selectedSegmentIndex = 0
+                segmentControl.isEnabled = false
+            } else {
+                segmentControl.isEnabled = true
+            }
+        }
+    }
     weak var delegate: ChartSegementedControlDelegate?
 }

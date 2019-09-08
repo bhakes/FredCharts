@@ -51,8 +51,22 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
 
                 let newModelPoints = self.parseObseration(for: seriesObservations)
                 self.originalModelPoints = newModelPoints
-
-                self.filterChartDates(by: 1)
+                
+                let lastModelDate = Date(timeIntervalSince1970: newModelPoints.last?.0 ?? 0)
+                let dateOneYearAgo = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+                
+                if lastModelDate < (dateOneYearAgo ?? Date()) {
+                    self.isDiscontinuedChart = true
+                    DispatchQueue.main.async {
+                        self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    }
+                    self.filterChartDates()
+                    print("Starting segement is 0")
+                } else {
+                    self.startingSegmentedControlIndex = 3
+                    self.filterChartDates(by: 1)
+                    print("Starting segement is 3")
+                }
 
             }
 
@@ -275,8 +289,14 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.chart?.view.removeFromSuperview()
                 self.progressHUD?.removeFromSuperview()
                 print("Updating the chart!")
-                self.updateChart(with: newModelPoints)
-                self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
+                if newModelPoints.count > 0 {
+                    self.updateChart(with: newModelPoints)
+                    self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
+                } else {
+                    self.segmentedControlDidChange(with: 0)
+                    self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
+                }
+                
             }
             
         }
@@ -286,7 +306,21 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     private func filterChartDates(){
         
         var newModelPoints: [GridPoint] = []
-        guard let startDate = startDate, let endDate = endDate else { return }
+    
+        var startDate = Date()
+        var endDate = Date()
+        if let existingStartDate = self.startDate {
+            startDate = existingStartDate
+        } else {
+            startDate = Date(timeIntervalSince1970: originalModelPoints.first?.0 ?? 0)
+        }
+        
+        if let existingEndDate = self.endDate {
+            endDate = existingEndDate
+        } else {
+            endDate = Date(timeIntervalSince1970: originalModelPoints.last?.0 ?? 0)
+        }
+        
         newModelPoints = originalModelPoints.filter({ (arg) -> Bool in
             
             let (x, _) = arg
@@ -320,11 +354,11 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         let lastValue = modelPoints.last?.1
         let lastDate = modelPoints.last?.0
         
-        self.startDate = Date(timeIntervalSince1970: modelPoints.first!.0)
-        self.endDate = Date(timeIntervalSince1970: lastDate!)
+        self.startDate = Date(timeIntervalSince1970: modelPoints.first?.0 ?? 0)
+        self.endDate = Date(timeIntervalSince1970: lastDate ?? 0)
         
-        let formattedPeakValue = UnitDefinition.bestDefinition(for: units).format(peakValue!)
-        let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(lastValue!)
+        let formattedPeakValue = UnitDefinition.bestDefinition(for: units).format(peakValue ?? 0)
+        let formattedLastValue = UnitDefinition.bestDefinition(for: units).format(lastValue ?? 0)
         let dateStr = dateF.string(from: Date(timeIntervalSince1970: peakDate ?? 0))
         
         let dateStr2 = dateF.string(from: Date(timeIntervalSince1970: lastDate ?? 0))
@@ -409,6 +443,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
             case 0:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: segmentedControlReuseID, for: indexPath) as? ChartSegmentedControlTableViewCell else { fatalError("Unable to deque cell as chart segmenet control cell")}
                 cell.delegate = self
+                cell.isDiscontinuedChart = self.isDiscontinuedChart
                 cell.selectionStyle = .none
                 return cell
                 
@@ -533,7 +568,8 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var modelPoints: [GridPoint] = []
     var originalModelPoints: [GridPoint] = []
-    
+    var startingSegmentedControlIndex = 3
+    var isDiscontinuedChart = false
     var backgroundMOC: NSManagedObjectContext?
     
     // UI Properties
@@ -683,4 +719,12 @@ extension ChartViewController: ChartDelegate {
     
     
     
+}
+
+enum SegmentedControlValues {
+    case All
+    case Ten
+    case Five
+    case One
+    case HalfYear
 }
