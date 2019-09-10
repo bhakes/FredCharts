@@ -644,7 +644,7 @@ extension ChartViewController: PickerControlDelegate {
          greater than the end date, return the startDate as the endDate minus a week.
          */
         if date >= endDate {
-            startDate = endDate - 1 // return a different date
+            startDate = endDate - 7 // return a different date
         } else {
             startDate = date
         }
@@ -653,7 +653,16 @@ extension ChartViewController: PickerControlDelegate {
     }
     
     func pickerEndDateSelected(with date: Date) {
-        endDate = date
+        guard let startDate = startDate else { return }
+        /* if the user uses the picker to try pass an end date that's
+         less than the start date, return the endDate as the startDate plus a week.
+         */
+        if date <= startDate {
+            endDate = startDate + 7 // return a different date
+        } else {
+            endDate = date
+        }
+        
         filterChartDates()
         self.chartDetailsTableView.reloadRows(at: [IndexPath(row: 1, section: 0), IndexPath(row: 2, section: 0)], with: .automatic)
     }
