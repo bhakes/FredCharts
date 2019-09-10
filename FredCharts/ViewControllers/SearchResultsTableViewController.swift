@@ -60,7 +60,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 70
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -112,7 +112,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         searchBar.delegate = self
         searchBar.barTintColor = .mainColor
         searchBar.layer.borderWidth = 0.0
-        searchBar.placeholder = "Try \"Inflation\" or \"Oil\""
+        searchBar.placeholder = "Try \"Inflation\", \"Oil\", or \"10-Year\""
         return searchBar
     }()
     

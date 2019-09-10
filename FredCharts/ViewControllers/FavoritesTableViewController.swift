@@ -50,7 +50,7 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         navigationItem.leftBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped(sender:)))
         
         // Create and Assign the Search Bar Button to the Right Bar Button Item
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchButtonTapped(sender:)))
         
         // setup title
         navigationController?.navigationBar.prefersLargeTitles = true

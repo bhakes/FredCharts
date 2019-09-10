@@ -105,7 +105,7 @@ class ChartViewController: UIViewController, UITableViewDataSource, UITableViewD
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 3
         
         // setup id label
         let idLabel = UILabel()
